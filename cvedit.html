@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CV & Portfolio</title>
+    <link href="css/cvstyles.css" type="text/css" rel="stylesheet" />
+    <link href="css/cveditstyles.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+    <nav id="navbar">
+        <a class="active" href="cv.html">Home</a>
+        <a href="#about">About</a>
+        <a href="#about">Skills</a>
+        <a href="#about">Experience</a>
+        <a href="#about">Education</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="content">
+        <!-- FRONT PAGE -->
+        <figure>
+            <img class="homeimg" src="img/cv_janeDoe_cropped2_darkened.jpg" alt="Jane Doe"/>
+            <div class="centered" id="fullname"><input class="inputfullname" type="text" name="fullname" placeholder="Full Name"/></div>
+            <div class="centered2" id="profession"><input class="inputprofession" type="text" name="profession" placeholder="Profession"/></div>
+        </figure>
+
+        <!-- ABOUT ME -->
+        <div class="row" id="rowbackground">
+            <div class="column">
+                <img class="aboutimg" src="img/cv_janeDoe2_cropped.jpg" alt="About Jane Doe" style="width:100%">
+            </div>
+            <div class="column2">
+                <h3><input class="inputhello" type="text" name="hello" placeholder="Hello.."/></h3>
+                <p class="aboutcolumn">
+                    <textarea rows="10" cols="50" class="inputabout" type="text" name="about" placeholder="Introduce yourself"></textarea>
+                </p>
+            </div>
+        </div>
+
+        <!-- SKILLS -->
+        <div align="center" class="portfolio"><h42>Skills</h42></div>
+        <figure>
+            <img class="skillsimg" src="img/skills.jpg" alt="Skills Jane Doe"/>
+            <p class="skillsp">Java</p>
+        </figure>
+
+
+        <!-- EXPERIENCE ja luo uusi kohta-->
+        <div align="center" class="portfolio"><h42>Experience</h42></div>
+        <div class="education">
+            <table align="center">
+                <tr>
+                    <td><p class="educationtime">2018--</p></td>
+                    <td class="timeline"><h6>Software Engineer</h6><p class="educationp">Bachelor of Engineering, Infor<br><i>Metropolia University of Applied Sciences</i></p></td>
+                </tr>
+                <tr>
+                    <td><p class="educationtime">2016-2017</p></td>
+                    <td class="timeline"><h6>Visual Merchandiser</h6><p class="educationp">Further Qualification<br><i>Vocational School</i></p></td>
+
+                </tr>
+            </table>
+        </div>
+
+        <!-- EDUCATION -->
+        <div align="center" class="portfolio"><h42>Education</h42></div>
+        <div class="education">
+            <table align="center">
+                <tr>
+                    <td><p class="educationtime">2018--</p></td>
+                    <td class="timeline"><h6>Software Engineer</h6><p class="educationp">Bachelor of Engineering, Information & Communications Technology<br><i>Metropolia University of Applied Sciences</i></p></td>
+                </tr>
+                <tr>
+                    <td><p class="educationtime">2016-2017</p></td>
+                    <td class="timeline"><h6>Visual Merchandiser</h6><p class="educationp">Further Qualification in Marketing Communications<br><i>Vocational School</i></p></td>
+
+                </tr>
+            </table>
+        </div>
+
+        <!-- PORTFOLIO -->
+        <div align="center" class="portfolio"><h42>Portfolio</h42></div>
+        <div class="row">
+
+            <div class="columncontainer">
+                <img class="image" src="img/cv_janeDoe2_cropped.jpg">
+                <div class="middle">
+                    <div class="text">Web Project<p class="portfolioinfo">CV & Portfolio Project</p></div>
+                </div>
+            </div>
+            <div class="columncontainer">
+                <img class="image" src="img/cv_janeDoe2_cropped.jpg">
+                <div class="middle">
+                    <div class="text">Web Project<p class="portfolioinfo">CV & Portfolio Project</p></div>
+                </div>
+            </div>
+            <div class="columncontainer">
+                <img class="image" src="img/cv_janeDoe2_cropped.jpg">
+                <div class="middle">
+                    <div class="text">Web Project<p class="portfolioinfo">CV & Portfolio Project</p></div>
+                </div>
+            </div>
+            <div class="columncontainer">
+                <img class="image" src="img/cv_janeDoe2_cropped.jpg">
+                <div class="middle">
+                    <div class="text">Web Project<p class="portfolioinfo">CV & Portfolio Project</p></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONTACT -->
+        <div class="contact">
+            <br>
+            <h4>Get In Touch!</h4>
+
+            <div class="row">
+                <div class="columncontainer3">
+                    <img class="icon" align="right" src="img/iconfinder_skype2512x512_197582.png">
+                </div>
+                <div class="columncontainer2">
+                    <h5>Call</h5><p class="contactp">123-456-7890​</p>
+                </div>
+                <div class="columncontainer3">
+                    <img class="icon" align="right" src="img/iconfinder_mail512x512_197584.png">
+                </div>
+                <div class="columncontainer2">
+                    <h5>Contact</h5><p class="contactp">jane.doe(at)mail.com</p>
+                </div>
+                <div class="columncontainer3">
+                    <img class="icon" align="right" src="img/iconfinder_home512x512_197589.png">
+                </div>
+                <div class="columncontainer2">
+                    <h5>Address</h5><p class="contactp">Example Street 10<br>London, UK</p>
+                </div>
+                <div class="columncontainer2">
+                    <img class="icon" align="right" src="img/iconfinder_linkedin_2691280.png">
+                    <img class="icon" align="right" src="img/iconfinder_twitter_2691271.png">
+                    <img class="icon" align="right" src="img/iconfinder_instagram_2691281.png">
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script>
+        window.onscroll = function() {myFunction()};
+
+        var navbar = document.getElementById("navbar");
+        var sticky = navbar.offsetTop;
+
+        function myFunction() {
+            if (window.pageYOffset >= sticky) {
+                navbar.classList.add("sticky")
+            } else {
+                navbar.classList.remove("sticky");
+            }
+        }
+    </script>
+
+</body>
+</html>
