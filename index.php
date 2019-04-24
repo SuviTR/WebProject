@@ -38,27 +38,12 @@
 # Handlers
 # ------------------------------
 # These are mock implementations
-	function postPerson($parameters) {
-		# implements POST method for person
-		# Example: POST /staffapi/person/id=13&firstname="John"&lastname="Doe"
+	function getAbout($parameters) {
+		# implements GET method for cv About
+		# Example: GET /cv/about/
 		$firstname=urldecode($parameters["firstname"]);
 		$lastname=urldecode($parameters["lastname"]);
 		echo "Posted ".$parameters["id"]." ".$firstname." ".$lastname;
-	}
-	function getPersons() {
-		# implements GET method for persons (collection)
-		# Example: GET /staffapi/persons
-		echo "Getting list of persons";
-	}
-	function getPerson($id) {
-		# implements GET method for person
-		# Example: GET /staffapi/person/13
-		echo "Getting person: ".$id;
-	}
-	function deletePerson($id) {
-		# implements DELETE method for person
-		# Example: DELETE /staffapi/person/13
-		echo "Deleting person: ".$id;
 	}
 # Main
 # ----
@@ -67,10 +52,12 @@ echo "REQUEST_URI: " . $_SERVER['REQUEST_URI'];
 echo "REQUEST_METHOD " . $_SERVER['REQUEST_URI'];
 	$resource = getResource();
     $request_method = getMethod();
-    $parameters = getParameters();
+    $parameters = array_splice($resource, 0 ,2);
+
     # Redirect to appropriate handlers.
 	if ($resource[0]=="cv") {
     	if ($request_method=="GET" && $resource[1]=="") {
+
         	postPerson($parameters);
     	}
 		else if ($request_method=="PUT" && $resource[1]=="") {
