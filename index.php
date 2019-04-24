@@ -50,17 +50,20 @@
 
 echo "REQUEST_URI: " . $_SERVER['REQUEST_URI'];
 echo "REQUEST_METHOD " . $_SERVER['REQUEST_URI'];
-	$resource = getResource();
+
+	  $resource = getResource();
     $request_method = getMethod();
     $parameters = array_splice($resource, 0 ,2);
+    $loddegin = false;
 
     # Redirect to appropriate handlers.
 	if ($resource[0]=="cv") {
     	if ($request_method=="GET" && $resource[1]=="") {
 
-        	postPerson($parameters);
+        	getAbout($parameters);
     	}
-		else if ($request_method=="PUT" && $resource[1]=="") {
+		else if ($request_method=="PUT" && $resource[1]==""
+    && $loggedin) {
 			getPersons();
 		}
 		else if ($request_method=="DELETE" && $resource[1]=="") {
