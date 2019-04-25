@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>CV & Portfolio</title>
+    <title>Jane Doe</title> <!--Vaihda nimi aina uuteen-->
     <link href="css/cvstyles.css" type="text/css" rel="stylesheet" />
 </head>
 
@@ -15,6 +15,7 @@
         <a href="#about">Education</a>
         <a href="#portfolio">Portfolio</a>
         <a href="#contact">Contact</a>
+        <a class="log" href="#login">Log in</a>
     </nav>
 
     <div class="content">
@@ -40,6 +41,7 @@
                     I am also fun and caring. My family including my sweet dog means everything to me.
                     I love hanging out with my family and friends.
                     On my spare time I enjoy reading, going hiking and just walking in nature.
+                    <br><br><button class="resumebutton">See My Resume</button>
                 </p>
             </div>
         </div>
@@ -53,7 +55,7 @@
                 <tr>
                     <div class="skillsbar">
                         <td class="skillstdh"><h7>HTML5</h7></td>
-                        <td>
+                        <td class="skillstd">
                             <div class="skillsbarcontainer">
                                 <div class="skillsbarvalue value-90"></div>
                             </div>
@@ -65,7 +67,7 @@
                 <tr>
                     <div class="skillsbar">
                         <td class="skillstdh"><h7>CSS3</h7></td>
-                        <td>
+                        <td class="skillstd">
                             <div class="skillsbarcontainer">
                                 <div class="skillsbarvalue value-80"></div>
                             </div>
@@ -82,7 +84,7 @@
         <div class="education">
             <table align="center">
                 <tr>
-                    <td><p class="time">2018--</p><p class="experiencep">Junior Software Engineer</p></td>
+                    <td><p class="time">2018--</p><p class="experiencep">Junior Developer</p></td>
                     <td class="timeline"><h6>Rovio Entertainment Oyj</h6><p class="educationpi">I made a website for my company's client.</p></td>
                 </tr>
                 <tr>
@@ -171,23 +173,7 @@
             </div>
         </div>
 
-
     </div>
-
-    <script>
-        window.onscroll = function() {myFunction()};
-
-        var navbar = document.getElementById("navbar");
-        var sticky = navbar.offsetTop;
-
-        function myFunction() {
-            if (window.pageYOffset >= sticky) {
-                navbar.classList.add("sticky")
-            } else {
-                navbar.classList.remove("sticky");
-            }
-        }
-    </script>
-
+    <script src="js/navigationbar.js"></script>
 </body>
 </html>

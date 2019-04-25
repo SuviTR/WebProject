@@ -1,13 +1,27 @@
+.log {
+    float: right;
+}
+
 input:focus::-webkit-input-placeholder {
     color:transparent;
 }
 input {
     padding: 0px 0px;
 }
-
+.button {
+    background-color: crimson;
+    border: none;
+    color: white;
+    padding: 6px 20px;
+    font-family: 'Questrial', sans-serif;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    margin-left: 2px;
+}
 /*----- FRONT PAGE -----*/
 /*----- Name -----*/
-
 
 .inputfullname {
     font-size: 60px;
@@ -50,4 +64,90 @@ input {
     letter-spacing: 0.1em;
     line-height: 2em;
     width: 450px;
+}
+
+/*----- SKILLS -----*/
+
+.inputskillsh {
+    font-family: 'Questrial', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+    letter-spacing: 0.1em;
+    text-align: left;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    padding-right: 5px;
+    float: left;
+}
+.inputskills {
+    width: 70px;
+    font-family: 'Questrial', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+    letter-spacing: 0.1em;
+    text-align: left;
+    line-height: 0px;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+
+/*----- EXPERIENCE -----*/
+
+.inputtime {
+    width: 100px;
+    font-family: 'Questrial', sans-serif;
+    font-size: 12px;
+    color: crimson;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    text-align: right;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+.inputtitle {
+    width: 200px;
+    font-family: 'Questrial', sans-serif;
+    font-size: 11px;
+    color: black;
+    letter-spacing: 0.2em;
+    text-align: right;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+.inputcompany {
+    width: 250px;
+    font-family: 'Questrial', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: goldenrod;
+    letter-spacing: 0.1em;
+    text-align: left;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+.inputschool {
+    width: 250px;
+    font-family: 'Questrial', sans-serif;
+    font-size: 12px;
+    color: black;
+    letter-spacing: 0.1em;
+    text-align: left;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+.inputdesc {
+    font-family: 'Questrial', sans-serif;
+    font-size: 12px;
+    font-style: italic;
+    color: black;
+    letter-spacing: 0.1em;
+    text-align: left;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+
+.portfoliosmall {
+    padding-bottom: 10px;
 }

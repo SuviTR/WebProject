@@ -35,6 +35,9 @@ nav a.active {
     width: 100%;
     background-color: white;
 }
+.log {
+    float: right;
+}
 
 /*----- FRONT PAGE -----*/
 /*----- Front Page Image -----*/
@@ -146,6 +149,21 @@ h3 {
 #rowbackground{
     /*background-color:  #e6e6e6;*/
 }
+.resumebutton {
+    font-family: 'Questrial', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    line-height: 2em;
+    background-color: crimson;
+    border: none;
+    color: white;
+    padding: 3px 13px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 1px;
+    border: crimson;
+}
 
 /* ----- SKILLS -----*/
 
@@ -167,6 +185,13 @@ h3 {
 .skillstdh {
     width: 100px;
 }
+
+.skillstd {
+    padding: 10px 0px 10px;
+    padding-bottom: 12px;
+    vertical-align: top;
+    width: 330px;
+}
 h72{
     font-family: 'Questrial', sans-serif;
     font-size: 14px;
@@ -177,7 +202,7 @@ h72{
     line-height: 20px;
     margin-block-start: 0em;
     margin-block-end: 0em;
-    padding-right: 5px;
+
     float: left;
 }
 
@@ -225,7 +250,18 @@ h7 {
     padding-right: 5px;
     float: left;
 }
-/* ----- EDUCATION -----*/
+/* ----- EXPERIENCE & EDUCATION -----*/
+.experiencep {
+    font-family: 'Questrial', sans-serif;
+    font-size: 11px;
+    color: black;
+    letter-spacing: 0.2em;
+    text-align: right;
+    line-height: 20px;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+
 .education {
     padding-bottom: 60px;
 }
@@ -251,16 +287,6 @@ h6 {
     margin-block-start: 0em;
     margin-block-end: 0em;
     width: 200px;
-}
-.experiencep {
-    font-family: 'Questrial', sans-serif;
-    font-size: 11px;
-    color: black;
-    letter-spacing: 0.2em;
-    text-align: right;
-    line-height: 20px;
-    margin-block-start: 0em;
-    margin-block-end: 0em;
 }
 .educationp {
     font-family: 'Questrial', sans-serif;

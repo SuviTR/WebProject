@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>CV & Portfolio</title>
+    <title>Edit CV & Portfolio</title>
     <link href="css/cvstyles.css" type="text/css" rel="stylesheet" />
     <link href="css/cveditstyles.css" type="text/css" rel="stylesheet" />
 </head>
@@ -16,6 +16,7 @@
         <a href="#about">Education</a>
         <a href="#portfolio">Portfolio</a>
         <a href="#contact">Contact</a>
+        <a class="log" href="#login">Log in</a>
     </nav>
 
     <div class="content">
@@ -40,48 +41,83 @@
         </div>
 
         <!-- SKILLS -->
-        <div align="center" class="portfolio"><h42>Skills</h42></div>
-        <figure>
-            <img class="skillsimg" src="img/skills.jpg" alt="Skills Jane Doe"/>
-            <p class="skillsp">Java</p>
-        </figure>
+        <div align="center" class="portfoliosmall"><h42>Skills</h42></div>
+        <div align="center" class="portfolio"><input type="button" class="button" value="Add new skill" /></div>
+        <div class="skillsdiv">
 
-
-        <!-- EXPERIENCE ja luo uusi kohta-->
-        <div align="center" class="portfolio"><h42>Experience</h42></div>
-        <div class="education">
             <table align="center">
                 <tr>
-                    <td><p class="educationtime">2018--</p></td>
-                    <td class="timeline"><h6>Software Engineer</h6><p class="educationp">Bachelor of Engineering, Infor<br><i>Metropolia University of Applied Sciences</i></p></td>
+                    <div class="skillsbar">
+                        <td class="skillstdh"><h7><input class="inputskillsh" type="text" name="skill" placeholder="HTML5"/></h7></td>
+                        <td class="skillstd">
+                            <div class="skillsbarcontainer">
+                                <div class="skillsbarvalue value-90"></div>
+                            </div>
+                        </td>
+                        <td class="skillstdh"><h72><input class="inputskills" type="text" name="skill" placeholder="90%"/></h72></td>
+                    </div>
                 </tr>
-                <tr>
-                    <td><p class="educationtime">2016-2017</p></td>
-                    <td class="timeline"><h6>Visual Merchandiser</h6><p class="educationp">Further Qualification<br><i>Vocational School</i></p></td>
 
+                <tr>
+                    <div class="skillsbar">
+                        <td class="skillstdh"><h7><input class="inputskillsh" type="text" name="skill" placeholder="CSS3"/></h7></td>
+                        <td class="skillstd">
+                            <div class="skillsbarcontainer">
+                                <div class="skillsbarvalue value-80"></div>
+                            </div>
+                        </td>
+                        <td class="skillstdh"><h72><input class="inputskills" type="text" name="skill" placeholder="80%"/></h72></td>
+                    </div>
                 </tr>
             </table>
         </div>
 
-        <!-- EDUCATION -->
-        <div align="center" class="portfolio"><h42>Education</h42></div>
+
+        <!-- EXPERIENCE-->
+        <div align="center" class="portfoliosmall"><h42>Experience</h42></div>
+        <div align="center" class="portfolio"><input type="button" class="button" value="Add new experience" /></div>
         <div class="education">
             <table align="center">
                 <tr>
-                    <td><p class="educationtime">2018--</p></td>
-                    <td class="timeline"><h6>Software Engineer</h6><p class="educationp">Bachelor of Engineering, Information & Communications Technology<br><i>Metropolia University of Applied Sciences</i></p></td>
+                    <td><p class="time"><input class="inputtime" type="text" name="time" placeholder="2018--"/></p><p class="experiencep"><input class="inputtitle" type="text" name="time" placeholder="Junior developer"/></p></td>
+                    <td class="timeline"><h6><input class="inputcompany" type="text" name="time" placeholder="Rovio Entertainment Oyj"/></h6><p class="educationpi"><textarea rows="3" cols="30" class="inputdesc" type="text" name="time" placeholder="I made.."/></textarea></p></td>
                 </tr>
                 <tr>
-                    <td><p class="educationtime">2016-2017</p></td>
-                    <td class="timeline"><h6>Visual Merchandiser</h6><p class="educationp">Further Qualification in Marketing Communications<br><i>Vocational School</i></p></td>
+                    <td><p class="time"><input class="inputtime" type="text" name="time" placeholder="2016-2017"/></p><p class="experiencep"><p class="experiencep"><input class="inputtitle" type="text" name="time" placeholder="Visual Merchandiser"/></p></td>
+                    <td class="timeline"><h6><input class="inputcompany" type="text" name="time" placeholder="Stockmann Oyj Abp"/></h6><p class="educationpi"><textarea rows="3" cols="30" class="inputdesc" type="text" name="time" placeholder="I made.."/></textarea></p></td>
+                </tr>
+            </table>
+
+            </div>
+        </div>
+
+        <!-- EDUCATION -->
+        <div align="center" class="portfoliosmall"><h42>Education</h42></div>
+        <div align="center" class="portfolio"><input type="button" class="button" value="Add new education" /></div>
+        <div class="education">
+            <table align="center">
+                <tr>
+                    <td><p class="time"><input class="inputtime" type="text" name="time" placeholder="2018--"/></p>
+                        <p class="experiencep"><input class="inputtitle" type="text" name="time" placeholder="Bachelor's Degree"/></p></td>
+                    <td class="timeline"><h6><input class="inputcompany" type="text" name="time" placeholder="Software Engineer"/></h6>
+                        <p class="educationp"><input class="inputschool" type="text" name="time" placeholder="Metropolia University of Applied Sciences"/></p>
+                        <p class="educationpi"><textarea rows="3" cols="30" class="inputdesc" type="text" name="time" placeholder="I graduated.."/></textarea></p></td>
+                </tr>
+                <tr>
+                    <td><p class="time"><input class="inputtime" type="text" name="time" placeholder="2016-2017"/></p>
+                        <p class="experiencep"><input class="inputtitle" type="text" name="time" placeholder="Further Qualification in Marketing Communications"/></p></td>
+                    <td class="timeline"><h6><input class="inputcompany" type="text" name="time" placeholder="Visual Merchandiser"/></h6>
+                        <p class="educationp"><input class="inputschool" type="text" name="time" placeholder="Vocational School"/></p>
+                        <p class="educationpi"><textarea rows="3" cols="30" class="inputdesc" type="text" name="time" placeholder="I graduated.."/></textarea></p></td>
 
                 </tr>
             </table>
         </div>
 
         <!-- PORTFOLIO -->
-        <div align="center" class="portfolio"><h42>Portfolio</h42></div>
-        <div class="row">
+        <div align="center" class="portfoliosmall"><h42>Portfolio</h42></div>
+        <div align="center" class="portfolio"><input type="button" class="button" value="Add new project" /></div>
+        <div class="row2">
 
             <div class="columncontainer">
                 <img class="image" src="img/cv_janeDoe2_cropped.jpg">
@@ -143,21 +179,6 @@
 
 
     </div>
-
-    <script>
-        window.onscroll = function() {myFunction()};
-
-        var navbar = document.getElementById("navbar");
-        var sticky = navbar.offsetTop;
-
-        function myFunction() {
-            if (window.pageYOffset >= sticky) {
-                navbar.classList.add("sticky")
-            } else {
-                navbar.classList.remove("sticky");
-            }
-        }
-    </script>
-
+    <script src="js/navigationbar.js"></script>
 </body>
 </html>
