@@ -54,7 +54,7 @@ echo "REQUEST_METHOD " . $_SERVER['REQUEST_URI'];
     $resource = getResource();
     $request_method = getMethod();
     $parameters = array_splice($resource, 0 ,2);
-    $loddegin = false;
+    $loggedin = false;
 
     # Redirect to appropriate handlers.
 	if ($resource[0]=="cv") {
