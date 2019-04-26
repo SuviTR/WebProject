@@ -49,7 +49,7 @@
 # ----
 
 echo "REQUEST_URI: " . $_SERVER['REQUEST_URI'];
-echo "REQUEST_METHOD " . $_SERVER['REQUEST_URI'];
+echo "<br>REQUEST_METHOD " . $_SERVER['REQUEST_METHOD'];
 
     $resource = getResource();
     $request_method = getMethod();
