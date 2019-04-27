@@ -8,6 +8,10 @@ input:focus::-webkit-input-placeholder {
 input {
     padding: 0px 0px;
 }
+input[type="file"] {
+    display: none;
+}
+
 .button {
     background-color: crimson;
     border: none;
@@ -22,7 +26,18 @@ input {
 }
 /*----- FRONT PAGE -----*/
 /*----- Name -----*/
-
+.inputhomeimg {
+    max-width: 100%;
+}
+.labelhome {
+    height: 100vh; /* For 100% screen height */
+    width:  100vw; /* For 100% screen width */
+    margin-left: 0px;
+    margin-top: 0px;
+    padding-right: 50px;
+    padding-left: 800px;
+    padding-top: 190px;
+}
 .inputfullname {
     font-size: 60px;
     font-family: 'Roboto', sans-serif;
@@ -55,7 +70,7 @@ input {
     text-align: left;
     width: 450px;
     height: 50px;
-    margin-left: 27px;
+    margin-left: 0px;
 }
 .inputabout {
     float: left;
@@ -64,6 +79,26 @@ input {
     letter-spacing: 0.1em;
     line-height: 2em;
     width: 450px;
+}
+.inputaboutimg {
+    width: 300px;
+    height: 250px;
+    float: left;
+    padding-top: 100px;
+    padding-bottom: 90px;
+    padding-left: 180px;
+    padding-right: 180px;
+}
+label{
+    margin-left: 100px;
+    margin-top: 100px;
+    margin-bottom: 10px;
+    background: #F0F0F0;
+    display: table;
+    font-family: 'Questrial', sans-serif;
+    font-size: 12px;
+    color: black;
+    letter-spacing: 0.1em;
 }
 
 /*----- SKILLS -----*/

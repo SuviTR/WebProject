@@ -56,7 +56,8 @@
 
 /*----- Description Header -----*/
 h32 {
-    padding-left: 37px;
+    padding-left: 40px;
+    padding-top: 60px;
     margin-block-end: 0em;
     font-family: 'Roboto', sans-serif;
     font-size: 40px;
@@ -64,7 +65,7 @@ h32 {
     color: black;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    text-align: center;
+    text-align: left;
 }
 /*----- Description Text -----*/
 .portfoliocolumn {
