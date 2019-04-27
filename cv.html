@@ -10,17 +10,17 @@
 <body>
 
     <nav id="navbar">
-        <a class="scroll active" href="#top">Home</a>
+        <a class="active" href="#front">Home</a>
         <a href="#about">About</a>
-        <a class="scroll" href="#skills">Skills</a>
-        <a href="#about">Experience</a>
-        <a href="#about">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
         <a href="#portfolio">Portfolio</a>
         <a href="#contact">Contact</a>
         <a class="log" href="#login">Log in</a>
     </nav>
 
-    <div class="content">
+    <div class="content" id="front">
         <!-- FRONT PAGE -->
         <figure>
             <img class="homeimg" src="img/cv_janeDoe_cropped2_darkened.jpg" alt="Jane Doe"/>
@@ -46,13 +46,14 @@
                     <br><br><button class="resumebutton">See My Resume</button>
                 </p>
             </div>
+            <p id="about"></p>
         </div>
 
+
         <!-- SKILLS -->
-
-        <div align="center" class="portfolio" id="skills"><h42>Skills</h42></div>
+        <p id="skills"></p>
+        <div align="center" class="portfolio"><h42>Skills</h42></div>
         <div class="skillsdiv">
-
             <table align="center">
                 <tr>
                     <div class="skillsbar">
@@ -78,6 +79,7 @@
                     </div>
                 </tr>
             </table>
+            <p id="experience"></p>
         </div>
 
 
@@ -92,9 +94,9 @@
                 <tr>
                     <td><p class="time">2016-2017</p><p class="experiencep">Visual Merchandiser Assistant</p></td>
                     <td class="timeline"><h6>Stockmann Oyj Abp</h6><p class="educationpi">I made campaigns.</p></td>
-
                 </tr>
             </table>
+            <p id="education"></p>
         </div>
 
         <!-- EDUCATION -->
@@ -110,9 +112,9 @@
                     <td><p class="time">2016-2017</p><p class="experiencep">Further Qualification in Marketing Communications</p></td>
                     <td class="timeline"><h6>Visual Merchandiser</h6><p class="educationp">Vocational School</p>
                         <p class="educationpi">I graduated from Vocational School.</p></td>
-
                 </tr>
             </table>
+            <p id="portfolio"></p>
         </div>
 
         <!-- PORTFOLIO -->
@@ -148,7 +150,7 @@
         </div>
 
         <!-- CONTACT -->
-        <div class="contact">
+        <div class="contact" id="contact">
             <br>
             <h4>Get In Touch!</h4>
 
@@ -182,5 +184,6 @@
     </div>
     <script src="js/app.js"></script>
     <script src="js/navigationbar.js"></script>
+
 </body>
 </html>

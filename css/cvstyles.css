@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 @import url('https://fonts.googleapis.com/css?family=Questrial');
+html {
+    scroll-behavior: smooth;
+}
 
 body {
     margin: 0;
