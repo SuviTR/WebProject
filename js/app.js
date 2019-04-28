@@ -7,7 +7,7 @@ window.addEventListener('load', () => {
 	})
 
 
-	router.add('/index.html', () => {
+	router.add('/', () => {
 		showTemplate('index');
 	})
 
