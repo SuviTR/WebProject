@@ -11,9 +11,8 @@ window.addEventListener('load', () => {
 		showTemplate('index');
 	})
 
-	router.add('/test', () => {
-		showTemplate('boxtemplate');
-		$('#var1').html('Ykkönen');
+	router.add('/portfolio/project1', () => {
+		showTemplate('project');
 	});
 
 	router.navigateTo(window.location.pathname);
@@ -25,12 +24,10 @@ window.addEventListener('load', () => {
 		console.log('hello!');
 		event.preventDefault();
 
-		const target = $(event.target);
-
-		console.log('target: ', target);
+		var target = $(event.target).closest('a');
 
 		const href = target.attr('href');
-		const path = href.substr(href.lastIndexOf('/'));
+		const path = href;
 
 		console.log(path);
 		router.navigateTo(path);
