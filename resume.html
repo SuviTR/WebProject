@@ -4,160 +4,109 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Jane Doe Resume</title> <!--Vaihda nimi aina uuteen-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link href="css/resumestyles.css" type="text/css" rel="stylesheet" />
 </head>
 
 <body>
 
-
+<a href="cv.html"><img class="close" src="img/close_cropped.png"></a> <!-- Muuta linkki-->
 <div class="content">
 
     <!-- IMAGE -->
     <div class="row">
         <div class="columnleft">
-            <img class="img" src="img/cv_janeDoe2_cropped.jpg" alt="Jane Doe">
+            <img class="img img-fluid" src="img/cv_janeDoe2_cropped.jpg" alt="Jane Doe">
+
+            <h74>Personal Info</h74>
+
+            <p class="infoh">Phone</p>
+            <p class="infocolumn">123-456-7890</p>
+            <p class="infoh">Mail</p>
+            <p class="infocolumn">jane.doe(at)mail.com</p>
+            <p class="infoh">Address</p>
+            <p class="infocolumn">Example Street 10 <br>London, UK</p>
+            <p><br><br><br></p>
+
+            <!-- SKILLS -->
+            <h74>Skills</h74>
+
+            <div class="skillsdiv">
+
+                <table class="skillstable">
+                    <tr>
+                        <div class="skillsbar">
+                            <td class="skillstdh"><h7>HTML5</h7></td>
+                            <td class="skillstd">
+                                <div class="skillsbarcontainer">
+                                    <div class="skillsbarvalue value-90"></div>
+                                </div>
+                            </td>
+                            <td class="skillstdh"><h72>90%</h72></td>
+                        </div>
+                    </tr>
+
+                    <tr>
+                        <div class="skillsbar">
+                            <td class="skillstdh"><h7>CSS3</h7></td>
+                            <td class="skillstd">
+                                <div class="skillsbarcontainer">
+                                    <div class="skillsbarvalue value-80"></div>
+                                </div>
+                            </td>
+                            <td class="skillstdh"><h72>80%</h72></td>
+                        </div>
+                    </tr>
+                </table>
+            </div>
+
+
         </div>
         <div class="columnright">
             <h3>Jane Doe</h3>
-            <p class="aboutcolumn">I am energetic software engineer
-                with 4 years experience developing robust code for high-volume businesses.
-                I'm a hard working, flexible and reliable person,
+
+            <p class="profession">Software Engineer & Visual Merchandiser</p>
+            <p class="resumecolumn">IT Professional with over 4 years of experience
+                developing robust code for high-volume businesses.
+                My greatest strength is business awareness, flexibility and accuracy.
+                I'm a hard working and reliable person,
                 who learns quickly and willing to undertake any task given me.
                 I enjoy meeting people and work well as part of a team or on my own.
-                I am also fun and caring. My family including my sweet dog means everything to me.
-                I love hanging out with my family and friends.
-                On my spare time I enjoy reading, going hiking and just walking in nature.
-                <br><br><button class="resumebutton">See My Resume</button>
             </p>
-        </div>
-    </div>
 
-    <!-- SKILLS -->
+            <!-- EXPERIENCE -->
+            <h73>Experience</h73>
+            <p>
+                <table align="left" class="resumetable">
+                    <tr>
+                        <td class="td"><p class="time">2018--</p><p class="experiencep">Junior Developer</p></td>
+                        <td><h6>Rovio Entertainment Oyj</h6><p class="educationpi">I made a website for my company's client.</p></td>
+                    </tr>
+                    <tr>
+                        <td class="td"><p class="time">2016-2017</p><p class="experiencep">Visual Merchandiser Assistant</p></td>
+                        <td><h6>Stockmann Oyj Abp</h6><p class="educationpi">I made campaigns.</p></td>
+                    </tr>
+                </table>
+            </p>
 
-    <div align="center" class="portfolio" id="skills"><h42>Skills</h42></div>
-    <div class="skillsdiv">
+            <!-- EDUCATION -->
+            <h73>Education</h73>
+            <p>
+                <table align="left" class="resumetable">
+                    <tr>
+                        <td class="td"><p class="time">2012-2015</p><p class="experiencep">Bachelor's Degree</p></td>
+                        <td><h6>Software Engineer</h6><p class="educationp">Metropolia University of Applied Sciences</p>
+                            <p class="educationpi">I gratuated</p></td>
+                    </tr>
+                    <tr>
+                        <td class="td"><p class="time">2016-2017</p><p class="experiencep">Further Qualification in Marketing Communications</p></td>
+                        <td><h6>Visual Merchandiser</h6><p class="educationp">Vocational School</p>
+                            <p class="educationpi">I graduated from Vocational School.</p></td>
 
-        <table align="center">
-            <tr>
-                <div class="skillsbar">
-                    <td class="skillstdh"><h7>HTML5</h7></td>
-                    <td class="skillstd">
-                        <div class="skillsbarcontainer">
-                            <div class="skillsbarvalue value-90"></div>
-                        </div>
-                    </td>
-                    <td class="skillstdh"><h72>90%</h72></td>
-                </div>
-            </tr>
+                    </tr>
+                </table>
+            </p>
 
-            <tr>
-                <div class="skillsbar">
-                    <td class="skillstdh"><h7>CSS3</h7></td>
-                    <td class="skillstd">
-                        <div class="skillsbarcontainer">
-                            <div class="skillsbarvalue value-80"></div>
-                        </div>
-                    </td>
-                    <td class="skillstdh"><h72>80%</h72></td>
-                </div>
-            </tr>
-        </table>
-    </div>
-
-
-    <!-- EXPERIENCE -->
-    <div align="center" class="portfolio"><h42>Experience</h42></div>
-    <div class="education">
-        <table align="center">
-            <tr>
-                <td><p class="time">2018--</p><p class="experiencep">Junior Developer</p></td>
-                <td class="timeline"><h6>Rovio Entertainment Oyj</h6><p class="educationpi">I made a website for my company's client.</p></td>
-            </tr>
-            <tr>
-                <td><p class="time">2016-2017</p><p class="experiencep">Visual Merchandiser Assistant</p></td>
-                <td class="timeline"><h6>Stockmann Oyj Abp</h6><p class="educationpi">I made campaigns.</p></td>
-
-            </tr>
-        </table>
-    </div>
-
-    <!-- EDUCATION -->
-    <div align="center" class="portfolio"><h42>Education</h42></div>
-    <div class="education">
-        <table align="center">
-            <tr>
-                <td><p class="time">2018--</p><p class="experiencep">Bachelor's Degree</p></td>
-                <td class="timeline"><h6>Software Engineer</h6><p class="educationp">Metropolia University of Applied Sciences</p>
-                    <p class="educationpi">I am going to graduate..</p></td>
-            </tr>
-            <tr>
-                <td><p class="time">2016-2017</p><p class="experiencep">Further Qualification in Marketing Communications</p></td>
-                <td class="timeline"><h6>Visual Merchandiser</h6><p class="educationp">Vocational School</p>
-                    <p class="educationpi">I graduated from Vocational School.</p></td>
-
-            </tr>
-        </table>
-    </div>
-
-    <!-- PORTFOLIO -->
-    <div align="center" class="portfolio"><h42>Portfolio</h42></div>
-    <div class="row2">
-
-        <div class="columncontainer">
-            <img class="image" src="img/cv_janeDoe2_cropped.jpg">
-            <div class="middle">
-                <div class="text">Web Project<p class="portfolioinfo">CV & Portfolio Project</p></div>
-            </div>
-        </div>
-        <div class="columncontainer">
-            <img class="image" src="img/cv_janeDoe2_cropped.jpg">
-            <div class="middle">
-                <div class="text">Web Project<p class="portfolioinfo">CV & Portfolio Project</p></div>
-            </div>
-        </div>
-        <div class="columncontainer">
-            <img class="image" src="img/cv_janeDoe2_cropped.jpg">
-            <div class="middle">
-                <div class="text">Web Project<p class="portfolioinfo">CV & Portfolio Project</p></div>
-            </div>
-        </div>
-        <div class="columncontainer">
-            <img class="image" src="img/cv_janeDoe2_cropped.jpg">
-            <div class="middle">
-                <div class="text">Web Project<p class="portfolioinfo">CV & Portfolio Project</p></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- CONTACT -->
-    <div class="contact">
-        <br>
-        <h4>Get In Touch!</h4>
-
-        <div class="row">
-            <div class="columncontainer3">
-                <img class="icon" align="right" src="img/iconfinder_skype2512x512_197582.png">
-            </div>
-            <div class="columncontainer2">
-                <h5>Call</h5><p class="contactp">123-456-7890​</p>
-            </div>
-            <div class="columncontainer3">
-                <img class="icon" align="right" src="img/iconfinder_mail512x512_197584.png">
-            </div>
-            <div class="columncontainer2">
-                <h5>Contact</h5><p class="contactp">jane.doe(at)mail.com</p>
-            </div>
-            <div class="columncontainer3">
-                <img class="icon" align="right" src="img/iconfinder_home512x512_197589.png">
-            </div>
-            <div class="columncontainer2">
-                <h5>Address</h5><p class="contactp">Example Street 10<br>London, UK</p>
-            </div>
-            <div class="columncontainer2">
-                <img class="icon" align="right" src="img/iconfinder_linkedin_2691280.png">
-                <img class="icon" align="right" src="img/iconfinder_twitter_2691271.png">
-                <img class="icon" align="right" src="img/iconfinder_instagram_2691281.png">
-            </div>
         </div>
     </div>
 

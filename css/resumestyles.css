@@ -5,32 +5,32 @@ body {
     margin: 0;
 }
 
-
-/*----- IMAGE -----*/
-/*----- Image -----*/
-.img {
-    width: 325px;
-    height: 380px;
-    float: left;
-    padding-top: 90px;
-    padding-bottom: 90px;
-    padding-left: 120px;
-}
 .columnleft {
     float: left;
-    width: 30%;
+    width: 36%;
     padding: 5px;
     position: relative;
 }
 .columnright {
     float: left;
-    width: 70%;
+    width: 64%;
     padding: 5px;
     position: relative;
 }
-/*----- About Me Text -----*/
+
+.close {
+    float: right;
+    margin-top: 50px;
+    margin-right: 60px;
+    height: 20px;
+    width: 20px;
+}
+
+/* ----- RIGHT SIDE -----*/
+
+/*----- INTRODUCTION -----*/
 h3 {
-    padding-left: 64px;
+    padding-left: 0px;
     padding-top: 60px;
     margin-block-end: 0em;
     font-family: 'Roboto', sans-serif;
@@ -41,11 +41,23 @@ h3 {
     letter-spacing: 0.1em;
     text-align: left;
 }
-.aboutcolumn {
+.profession {
+    font-family: 'Questrial', sans-serif;
+    font-size: 12px;
+    color: goldenrod;
+    letter-spacing: 0.2em;
+    text-align: left;
+    line-height: 20px;
+    padding-left: 0px;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+.resumecolumn {
     float: left;
     padding-top: 10px;
     padding-bottom: 64px;
-    padding-left: 64px;
+    padding-left: 0px;
+    padding-right: 120px;
     font-family: 'Questrial', sans-serif;
     font-size: 12px;
     letter-spacing: 0.1em;
@@ -65,48 +77,164 @@ h3 {
     display: table;
 }
 
-.resumebutton {
+/* ----- EXPERIENCE & EDUCATION -----*/
+table {
+    margin-bottom: 30px;
+}
+td {
+
+    padding-bottom: 20px;
+}
+
+.td {
+    width: 255px;
+}
+
+h73{
+    font-family: 'Questrial', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+    letter-spacing: 0.1em;
+    text-align: left;
+    line-height: 20px;
+    padding-left: 0px;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+.resumetable {
+    margin-left: 0px;
+    padding-left: 44px;
+    width: 100%;
+}
+.time {
     font-family: 'Questrial', sans-serif;
     font-size: 12px;
+    color: crimson;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    text-align: left;
+    line-height: 20px;
+    padding-left: 0px;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    width: 200px;
+}
+
+.experiencep {
+    font-family: 'Questrial', sans-serif;
+    font-size: 11px;
+    color: black;
+    letter-spacing: 0.2em;
+    text-align: left;
+    line-height: 20px;
+    padding-left: 0px;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+
+h6 {
+    font-family: 'Questrial', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: goldenrod;
+    letter-spacing: 0.1em;
+    text-align: left;
+    line-height: 20px;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+
+.educationpi {
+    font-family: 'Questrial', sans-serif;
+    font-size: 12px;
+    font-style: italic;
+    color: black;
+    letter-spacing: 0.1em;
+    text-align: left;
+    line-height: 20px;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+.educationp {
+    font-family: 'Questrial', sans-serif;
+    font-size: 12px;
+    color: black;
+    letter-spacing: 0.1em;
+    text-align: left;
+    line-height: 20px;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+
+/* ----- LEFT SIDE -----*/
+
+/*----- IMAGE -----*/
+/*----- Image -----*/
+.img {
+    width: 325px;
+    height: 250px;
+    padding-top: 64px;
+    padding-left: 140px;
+    margin-bottom: 87px;
+}
+
+h74{
+    font-family: 'Questrial', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+    letter-spacing: 0.1em;
+    text-align: left;
+    line-height: 20px;
+    width: 100%;
+    padding-left: 140px;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+/* ----- PERSONAL INFO -----*/
+.infoh {
+    font-family: 'Questrial', sans-serif;
+    font-size: 12px;
+    color: goldenrod;
+    letter-spacing: 0.2em;
+    text-align: left;
+    line-height: 20px;
+    padding-top: 10px;
+    padding-left: 140px;
+    width: 100%;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+.infocolumn {
+    float: left;
+    padding-left: 140px;
+    padding-right: 70px;
+    font-family: 'Questrial', sans-serif;
+    font-size: 12px;
+    width: 100%;
     letter-spacing: 0.1em;
     line-height: 2em;
-    background-color: crimson;
-    border: none;
-    color: white;
-    padding: 3px 13px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    margin-left: 1px;
-    border: crimson;
 }
 
 /* ----- SKILLS -----*/
 
-.skillsimg {
-    max-width: 100%;
-    padding-bottom: 60px;
-
-    /*transform: scaleX(-1);*/
-    /*opacity: 0.3;*/
+.skillstable {
+    margin-left: 140px;
 }
-.skillsp {
-    display: inline;
-}
-
-.skillsdiv {
-    padding-bottom: 60px;
-}
-
-.skillstdh {
-    width: 100px;
-}
-
-.skillstd {
-    padding: 10px 0px 10px;
-    padding-bottom: 12px;
-    vertical-align: top;
-    width: 330px;
+/* ----- Skills -----*/
+h7 {
+    font-family: 'Questrial', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+    letter-spacing: 0.1em;
+    text-align: left;
+    line-height: 20px;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    padding-right: 5px;
+    float: left;
 }
 h72{
     font-family: 'Questrial', sans-serif;
@@ -116,10 +244,30 @@ h72{
     letter-spacing: 0.1em;
     text-align: left;
     line-height: 20px;
+    padding-left: 5px;
     margin-block-start: 0em;
     margin-block-end: 0em;
-
     float: left;
+}
+
+.skillsp {
+    display: inline;
+}
+
+.skillsdiv {
+    padding-bottom: 60px;
+    width: 350px;
+}
+
+.skillstdh {
+    width: 100px;
+}
+
+.skillstd {
+    padding: 2px 0px 0px;
+    padding-bottom: 12px;
+    vertical-align: top;
+    width: 330px;
 }
 
 /* ----- Skills bar -----*/
@@ -151,238 +299,4 @@ h72{
 .value-80 { width: 80%; }
 .value-90 { width: 90%; }
 .value-100 { width: 100%; }
-
-/* ----- Skills -----*/
-h7 {
-    font-family: 'Questrial', sans-serif;
-    font-size: 14px;
-    font-weight: bold;
-    color: black;
-    letter-spacing: 0.1em;
-    text-align: left;
-    line-height: 20px;
-    margin-block-start: 0em;
-    margin-block-end: 0em;
-    padding-right: 5px;
-    float: left;
-}
-/* ----- EXPERIENCE & EDUCATION -----*/
-.experiencep {
-    font-family: 'Questrial', sans-serif;
-    font-size: 11px;
-    color: black;
-    letter-spacing: 0.2em;
-    text-align: right;
-    line-height: 20px;
-    margin-block-start: 0em;
-    margin-block-end: 0em;
-}
-
-.education {
-    padding-bottom: 60px;
-}
-h6 {
-    font-family: 'Questrial', sans-serif;
-    font-size: 14px;
-    font-weight: bold;
-    color: goldenrod;
-    letter-spacing: 0.1em;
-    text-align: left;
-    line-height: 20px;
-    margin-block-start: 0em;
-    margin-block-end: 0em;
-}
-.time {
-    font-family: 'Questrial', sans-serif;
-    font-size: 12px;
-    color: crimson;
-    font-weight: bold;
-    letter-spacing: 0.1em;
-    text-align: right;
-    line-height: 20px;
-    margin-block-start: 0em;
-    margin-block-end: 0em;
-    width: 200px;
-}
-.educationp {
-    font-family: 'Questrial', sans-serif;
-    font-size: 12px;
-    color: black;
-    letter-spacing: 0.1em;
-    text-align: left;
-    line-height: 20px;
-    margin-block-start: 0em;
-    margin-block-end: 0em;
-}
-.educationpi {
-    font-family: 'Questrial', sans-serif;
-    font-size: 12px;
-    font-style: italic;
-    color: black;
-    letter-spacing: 0.1em;
-    text-align: left;
-    line-height: 20px;
-    margin-block-start: 0em;
-    margin-block-end: 0em;
-}
-table {
-    border-spacing: 0px;
-    width: 600px;
-    margin-left: 25%;
-}
-.timeline {
-    border-left: 1px solid grey;
-    width: 500px;
-}
-
-td {
-    padding: 10px 20px 10px;
-    padding-bottom: 12px;
-    vertical-align: top;
-}
-/* ----- PORTFOLIO -----*/
-h42 {
-    font-family: 'Roboto', sans-serif;
-    font-size: 40px;
-    color: black;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    text-align: center;
-}
-
-.portfolio {
-    padding-bottom: 60px;
-}
-
-* {
-    box-sizing: border-box;
-}
-
-.row2::after {
-    content: "";
-    clear: both;
-    display: table;
-}
-.row2 {
-    padding-left: 30px;
-    padding-right: 30px;
-}
-
-.columncontainer {
-    float: left;
-    width: 25%;
-    padding: 5px;
-    position: relative;
-}
-/* ----- Mouseover -----*/
-.image {
-    opacity: 1;
-    display: block;
-    width: 100%;
-    height: auto;
-    transition: .5s ease;
-    backface-visibility: hidden;
-}
-.middle {
-    transition: .5s ease;
-    opacity: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    text-align: center;
-    width: 90%;
-}
-.columncontainer:hover .image {
-    opacity: 0.3;
-}
-.columncontainer:hover .middle {
-    /*background-color: goldenrod;*/
-    opacity: 1;
-}
-.text {
-    font-family: 'Roboto', sans-serif;
-    color: darkgoldenrod;
-    font-size: 22px;
-    text-transform: uppercase;
-    font-weight: bold;
-    letter-spacing: 0.1em;
-}
-
-.portfolioinfo {
-    font-family: 'Roboto', sans-serif;
-    color: black;
-    font-size: 13px;
-    text-transform: none;
-    font-weight: normal;
-    letter-spacing: 0.1em;
-}
-/*----- CONTACT -----*/
-.contact {
-    background-color: goldenrod;
-    margin-top: 90px;
-    padding-bottom: 60px;
-}
-/*----- Get In Touch -----*/
-h4 {
-    font-family: 'Roboto', sans-serif;
-    font-size: 40px;
-    color: white;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    text-align: center;
-    border: 5px solid white;
-    padding-top: 10px;
-    padding-bottom: 8px;
-    width: 355px;
-    margin-left:auto;
-    margin-right:auto;
-}
-/*----- Column Headers -----*/
-h5 {
-    font-family: 'Roboto', sans-serif;
-    font-size: 20px;
-    color: white;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    text-align: left;
-    margin-block-start: 0em;
-    margin-block-end: 0em;
-}
-/*----- Contact Text -----*/
-.contactp {
-    font-family: 'Questrial', sans-serif;
-    font-size: 12px;
-    color: white;
-    letter-spacing: 0.1em;
-    text-align: left;
-    line-height: 20px;
-    margin-block-start: 0em;
-    margin-block-end: 0em;
-}
-
-.columncontainer2 {
-    float: left;
-    width: 15%;
-    padding: 5px;
-    position: relative;
-}
-.columncontainer3 {
-    float: left;
-    width: 10%;
-    padding: 5px;
-    position: relative;
-}
-
-.icon {
-    /*https://www.iconfinder.com/iconsets/red-website-beauty
-      https://www.iconfinder.com/iconsets/bubble-gradient-social-media-1*/
-    width: 50px;
-    height: 50px;
-    /*filter: grayscale(100%) contrast(200%) brightness(200%);*/
-}
 
