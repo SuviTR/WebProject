@@ -99,10 +99,9 @@ figure {
 
 /*----- ABOUT -----*/
 /*----- About Me Image -----*/
-.aboutimg {
-    width: 100%;
-    height: 100%;
-    float: left;
+.aboutimg {     /*Bootstrap kaventaa kuvan*/
+    width: 1000px;
+    height: 600px;
     padding-top: 90px;
     padding-bottom: 90px;
     padding-left: 180px;
@@ -116,7 +115,7 @@ figure {
 /*----- About Me Text -----*/
 h3 {
     padding-left: 64px;
-    padding-top: 40px;
+    padding-top: 90px;
     margin-block-end: 0em;
     font-family: 'Roboto', sans-serif;
     font-size: 40px;
@@ -204,7 +203,6 @@ h72{
     line-height: 20px;
     margin-block-start: 0em;
     margin-block-end: 0em;
-
     float: left;
 }
 
@@ -426,6 +424,7 @@ h4 {
     width: 355px;
     margin-left:auto;
     margin-right:auto;
+    margin-bottom: 64px;
 }
 /*----- Column Headers -----*/
 h5 {
