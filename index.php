@@ -8,7 +8,7 @@ function getResource() {
     }
     $resource = array();
     $resource = explode('/', $resource_string);
-    array_shift($resource);
+    array_shift($resource); //There is an empty cell because of the trailing slash.
     return $resource;
 }
 function getParameters() {
@@ -97,9 +97,16 @@ echo "REQUEST_URI: " . $_SERVER['REQUEST_URI'];
 echo "<br>REQUEST_METHOD " . $_SERVER['REQUEST_METHOD'];
 
 $resource = getResource();
+echo "<br>resource: ";
+print_r($resource);
+
 $request_method = getMethod();
-$parameters = array_splice($resource, 0 ,2);
+
+$parameters = getParameters();
+
 $loggedin = false;
+
+echo "<br><br>";
 
 # Redirect to appropriate handlers.
 # ----- CV/ -----
