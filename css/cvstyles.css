@@ -419,11 +419,12 @@ h4 {
     letter-spacing: 0.1em;
     text-align: center;
     border: 5px solid white;
-    padding-top: 10px;
+    padding-top: 0px;
     padding-bottom: 8px;
     width: 355px;
     margin-left:auto;
     margin-right:auto;
+    margin-top: 50px;
     margin-bottom: 64px;
 }
 /*----- Column Headers -----*/
