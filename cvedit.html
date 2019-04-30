@@ -23,7 +23,7 @@
         <!-- FRONT PAGE -->
         <figure>
             <label class="labelhome"> Enter Your Picture
-                <input class="inputhomeimg" type="file" id="File" size="60" >
+                <input class="inputhomeimg" type="file" size="60" >
             </label>
             <div class="centered" id="fullname"><input class="inputfullname" type="text" name="fullname" placeholder="Full Name"/></div>
             <div class="centered2" id="profession"><input class="inputprofession" type="text" name="profession" placeholder="Profession"/></div>
@@ -33,7 +33,7 @@
         <div class="row" id="rowbackground">
             <div class="column">
                 <label class="inputaboutimg"> Enter Your Picture
-                    <input type="file" id="File" size="60" >
+                    <input type="file" size="60" >
                 </label>
             </div>
             <div class="column2">
@@ -120,7 +120,6 @@
 
         <!-- PORTFOLIO -->
         <div align="center" class="portfoliosmall"><h42>Portfolio</h42></div>
-        <div align="center" class="portfolio"><input type="button" class="button" value="Add new project" /></div>
         <div class="row2">
 
             <div class="columncontainer">
@@ -142,8 +141,19 @@
                 </div>
             </div>
             <div class="columncontainer">
-
+                <img class="image" src="img/cv_janeDoe2_cropped.jpg">
+                <div class="middle">
+                    <div class="text">Web Project<p class="portfolioinfo">CV & Portfolio Project</p></div>
+                </div>
             </div>
+            <div class="columncontainer">
+                <label class="labelportfolio"> Enter Your Picture
+                    <input type="file" size="60" >
+                </label>
+                <div class="text"><input class="inputportfolioname" type="text" placeholder="Web Project"/>​<p class="portfolioinfo"><input class="inputportfolioinfo" type="text" placeholder="CV & Portfolio"/>​</p></div>
+                <div align="center" class="portfolio"><input type="button" class="button" value="Add new project" /></div>
+            </div>
+
         </div>
 
         <!-- CONTACT -->
@@ -156,19 +166,19 @@
                     <img class="icon" align="right" src="img/iconfinder_skype2512x512_197582.png">
                 </div>
                 <div class="columncontainer2">
-                    <h5>Call</h5><p class="contactp"><input class="inputcontact" type="text" name="time" placeholder="123-456-7890"/>​</p>
+                    <h5>Call</h5><p class="contactp"><input class="inputcontact" type="text" name="call" placeholder="123-456-7890"/>​</p>
                 </div>
                 <div class="columncontainer3">
                     <img class="icon" align="right" src="img/iconfinder_mail512x512_197584.png">
                 </div>
                 <div class="columncontainer2">
-                    <h5>Contact</h5><p class="contactp"><input class="inputcontact" type="text" name="time" placeholder="jane.doe(at)mail.com"/></p>
+                    <h5>Contact</h5><p class="contactp"><input class="inputcontact" type="text" name="mail" placeholder="jane.doe(at)mail.com"/></p>
                 </div>
                 <div class="columncontainer3">
                     <img class="icon" align="right" src="img/iconfinder_home512x512_197589.png">
                 </div>
                 <div class="columncontainer2">
-                    <h5>Address</h5><p class="contactp"><input class="inputcontact" type="text" name="time" placeholder="Example Street 10, London, UK"/></p>
+                    <h5>Address</h5><p class="contactp"><input class="inputcontact" type="text" name="address" placeholder="Example Street 10, London, UK"/></p>
                 </div>
                 <div class="columncontainer2">
                     <img class="icon" align="right" src="img/iconfinder_linkedin_2691280.png">
@@ -177,7 +187,6 @@
                 </div>
             </div>
         </div>
-
 
     </div>
     <script src="js/navigationbar.js"></script>
