@@ -93,12 +93,12 @@ function getContact($parameters) {
 }
 
 # Main
-echo "REQUEST_URI: " . $_SERVER['REQUEST_URI'];
-echo "<br>REQUEST_METHOD " . $_SERVER['REQUEST_METHOD'];
+// echo "REQUEST_URI: " . $_SERVER['REQUEST_URI'];
+// echo "<br>REQUEST_METHOD " . $_SERVER['REQUEST_METHOD'];
 
 $resource = getResource();
-echo "<br>resource: ";
-print_r($resource);
+// echo "<br>resource: ";
+// print_r($resource);
 
 $request_method = getMethod();
 
@@ -106,7 +106,7 @@ $parameters = getParameters();
 
 $loggedin = false;
 
-echo "<br><br>";
+// echo "<br><br>";
 
 # Redirect to appropriate handlers.
 # ----- CV/ -----
@@ -151,10 +151,9 @@ if ($resource[0]=="cv") {
     else {
         http_response_code(405); # Method not allowed
     }
-}
 
 # ----- PORTFOLIO -----
-if ($resource[0]=="portfolio") {
+} else if ($resource[0]=="portfolio") {
     if ($request_method=="GET" && $resource[1]=="") {
         //getProjects($parameters);
         echo "projects";
@@ -174,9 +173,10 @@ if ($resource[0]=="portfolio") {
     else {
         http_response_code(405); # Method not allowed
     }
-}
-else if ($resource[0]=="portfolio"){
+} else if ($resource[0]=="oddball"){
     http_response_code(405); # Method not allowed
+} else {
+    //Let's fire up the default view!
+    include('index.html');
 }
-
 ?>
