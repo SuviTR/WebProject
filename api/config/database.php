@@ -8,9 +8,9 @@ class Database{
 
     //Specify your own database credentials
     private $host = "localhost";
-    private $db_name = "cv_db";
-    private $username = "olso";
-    private $password = "olso";
+    private $db_name = "webproject";
+    private $username = "webuser";
+    private $password = "webpass";
     public $conn;
 
     //The database connection
