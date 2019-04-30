@@ -93,12 +93,12 @@ function getContact($parameters) {
 }
 
 # Main
-echo "REQUEST_URI: " . $_SERVER['REQUEST_URI'];
-echo "<br>REQUEST_METHOD " . $_SERVER['REQUEST_METHOD'];
+// echo "REQUEST_URI: " . $_SERVER['REQUEST_URI'];
+// echo "<br>REQUEST_METHOD " . $_SERVER['REQUEST_METHOD'];
 
 $resource = getResource();
-echo "<br>resource: ";
-print_r($resource);
+// echo "<br>resource: ";
+// print_r($resource);
 
 $request_method = getMethod();
 
@@ -106,7 +106,7 @@ $parameters = getParameters();
 
 $loggedin = false;
 
-echo "<br><br>";
+// echo "<br><br>";
 
 # Redirect to appropriate handlers.
 # ----- CV/ -----
