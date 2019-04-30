@@ -121,7 +121,20 @@ if ($resource[0]=="cv") {
     }
     else if ($request_method=="GET" && $resource[1]=="about") {
         //getAbout($parameters);
-        echo "about";
+        $about_arr = ['heading' => "Hello! I'm Jane",
+                    'picture' => "img/cv_janeDoe2_cropped.jpg",
+                    'description' => "I am energetic software engineer
+                    with 4 years experience developing robust code for high-volume businesses.
+                    I'm a hard working, flexible and reliable person,
+                    who learns quickly and willing to undertake any task given me.
+                    I enjoy meeting people and work well as part of a team or on my own.
+                    I am also fun and caring. My family including my sweet dog means everything to me.
+                    I love hanging out with my family and friends.
+                    On my spare time I enjoy reading, going hiking and just walking in nature.
+                    <br><br><button class=\"resumebutton\" onclick=\"window.location.href = 'resume.html';\">See My Resume</button>
+                </p>"];
+        header("Content-Type: application/json; charset=UTF-8");
+        echo json_encode($about_arr);
     }
     else if ($request_method=="GET" && $resource[1]=="skills") {
         //getSkills($parameters);
