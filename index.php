@@ -34,6 +34,9 @@ function getMethod() {
     return $method;
 }
 
+# Sql operations -----------
+include_once 'config.php';
+
 # Handlers -----------
 function getCV($parameters) {
     # implements GET method for cv
@@ -46,14 +49,40 @@ function getFront($parameters) {
     $fullname = urldecode($parameters["fullname"]);
     $profession = urldecode($parameters["profession"]);
     $picture = "";
-    echo "Posted ".$fullname." ".$profession;
+
+    $conn = new Database();
+    $db = $conn->getConnection();
+
+    $sql = "SELECT Fullname, Profession, FrontPicture FROM CV WHERE id=1";
+    $statement = $conn->prepare($sql);
+
+    $statement->execute();
+    $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    echo "Selected Front: ";
+    foreach ($rows as $row) {
+        echo $row['Fullname']." ".$row['Profession']." ".$row['FrontPicture'];
+    }
 }
 function getAbout($parameters) {
     # Example: GET /cv/about
     $heading = urldecode($parameters["heading"]);
     $description = urldecode($parameters["description"]);
     $picture = "";
-    echo "Posted ".$heading." ".$description;
+
+    $conn = new Database();
+    $db = $conn->getConnection();
+
+    $sql = "SELECT AboutPicture, Heading, Description FROM CV WHERE id=1";
+    $statement = $conn->prepare($sql);
+
+    $statement->execute();
+    $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    echo "Selected About: ";
+    foreach ($rows as $row) {
+        echo $row['AboutPicture']." ".$row['Heading']." ".$row['Description'];
+    }
 }
 function getSkills($parameters) {
     # Example: GET /cv/skills
@@ -61,7 +90,21 @@ function getSkills($parameters) {
     $skill = urldecode($parameters["skill"]);
     $level = urldecode($parameters["level"]);
     $bar = "";
-    echo "Posted ".$parameters["id"]." ".$skill." ".$level;
+
+    $conn = new Database();
+    $db = $conn->getConnection();
+
+    $sql = "SELECT Name, SkillLevel FROM Skills WHERE Sid=:id";
+    $statement = $conn->prepare($sql);
+    $statement->bindParam(':id', $id, PDO::PARAM_STR);
+
+    $statement->execute();
+    $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    echo "Selected Skills: ";
+    foreach ($rows as $row) {
+        echo $row['Name']." ".$row['SkillLevel'];
+    }
 }
 function getExperience($parameters) {
     # Example: GET /cv/experience
@@ -71,7 +114,21 @@ function getExperience($parameters) {
     $company = urldecode($parameters["company"]);
     $description = urldecode($parameters["description"]);
     $projects = urldecode($parameters["projects"]);
-    echo "Posted ".$parameters["id"]." ".$year." ".$title." ".$company." ".$description." ".$projects;
+
+    $conn = new Database();
+    $db = $conn->getConnection();
+
+    $sql = "SELECT Title, Year, Company, Description, ProjectLink FROM Experience WHERE Exid=:id";
+    $statement = $conn->prepare($sql);
+    $statement->bindParam(':id', $id, PDO::PARAM_STR);
+
+    $statement->execute();
+    $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    echo "Selected Experience: ";
+    foreach ($rows as $row) {
+        echo $row['Title']." ".$row['Year']." ".$row['Company']." ".$row['Description']." ".$row['ProjectLink'];
+    }
 }
 function getEducation($parameters) {
     # Example: GET /cv/education
@@ -82,6 +139,22 @@ function getEducation($parameters) {
     $description = urldecode($parameters["description"]);
     $projects = urldecode($parameters["projects"]);
     echo "Posted ".$parameters["id"]." ".$year." ".$title." ".$academy." ".$description." ".$projects;
+
+    $conn = new Database();
+    $db = $conn->getConnection();
+
+    $sql = "SELECT Academy, Description, Degree, Year, ProjectLink FROM Education WHERE Edid=:id";
+    $statement = $conn->prepare($sql);
+    $statement->bindParam(':id', $id, PDO::PARAM_STR);
+
+    $statement->execute();
+    $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    echo "Selected Education: ";
+    foreach ($rows as $row) {
+        echo $row['Academy']." ".$row['Description']." ".$row['Degree']." ".$row['Year']." ".$row['ProjectLink'];
+    }
+
 }
 function getContact($parameters) {
     # Example: GET /cv/contact
@@ -90,6 +163,32 @@ function getContact($parameters) {
     $address = urldecode($parameters["address"]);
     $some = urldecode($parameters["some"]);
     echo "Posted ".$parameters["id"]." ".$call." ".$address." ".$some;
+
+    $conn = new Database();
+    $db = $conn->getConnection();
+
+    //Contact
+    $sql = "SELECT Call, Mail, Address FROM CV WHERE Id=1";
+    $statement = $conn->prepare($sql);
+
+    $statement->execute();
+    $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    echo "Selected Contact: ";
+    foreach ($rows as $row) {
+        echo $row['Call']." ".$row['Mail']." ".$row['Address'];
+    }
+
+    //Some
+    $sql = "SELECT Name, Link FROM Some";
+    $statement = $conn->prepare($sql);
+
+    $statement->execute();
+    $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    foreach ($rows as $row) {
+        echo $row['Name']." ".$row['Link'];
+    }
 }
 
 # Main
@@ -101,9 +200,7 @@ $resource = getResource();
 // print_r($resource);
 
 $request_method = getMethod();
-
 $parameters = getParameters();
-
 $loggedin = false;
 
 // echo "<br><br>";

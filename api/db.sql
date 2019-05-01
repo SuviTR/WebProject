@@ -24,7 +24,7 @@ CREATE TABLE CV
 CREATE TABLE Skills
 (
   Name VARCHAR(100) NOT NULL,
-  Level INT NOT NULL,
+  SkillLevel INT NOT NULL,
   SId INT NOT NULL,
   CvId INT NOT NULL,
   PRIMARY KEY (SId),
@@ -105,7 +105,7 @@ VALUES (1, "Jane Doe", "img/cv_janeDoe_cropped2_darkened.jpg",
                 </p>",
 "123-456-7890", "jane.doe(at)mail.com", "Example Street 10<br>London, UK");
 
-INSERT INTO Skills (Name, Level, SId, CVId)
+INSERT INTO Skills (Name, SkillLevel, SId, CVId)
 VALUES ("HTML", 90, 1, 1);
 
 INSERT INTO Experience (Title, Year, ExId, Company, Description, ProjectLink, CvId)
