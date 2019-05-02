@@ -24,7 +24,7 @@ CREATE TABLE CV
 CREATE TABLE Skills
 (
   Name VARCHAR(100) NOT NULL,
-  Level INT NOT NULL,
+  SkillLevel INT NOT NULL,
   SId INT NOT NULL,
   CvId INT NOT NULL,
   PRIMARY KEY (SId),
@@ -34,7 +34,7 @@ CREATE TABLE Skills
 CREATE TABLE Experience
 (
   Title VARCHAR(100) NOT NULL,
-  Year INT NOT NULL,
+  Year VARCHAR(50) NOT NULL,
   ExId INT NOT NULL,
   Company VARCHAR(100) NOT NULL,
   Description VARCHAR(2000) NOT NULL,
@@ -50,7 +50,7 @@ CREATE TABLE Education
   Academy VARCHAR(100) NOT NULL,
   Description VARCHAR(500) NOT NULL,
   Degree VARCHAR(100) NOT NULL,
-  Year INT NOT NULL,
+  Year VARCHAR(50) NOT NULL,
   ProjectLink VARCHAR(1000) NOT NULL,
   CvId INT NOT NULL,
   PRIMARY KEY (EdId),
@@ -71,6 +71,7 @@ CREATE TABLE Project
 (
   PId INT NOT NULL,
   Name VARCHAR(100) NOT NULL,
+  Subtitle VARCHAR(100) NOT NULL,
   Description VARCHAR(500) NOT NULL,
   Picture VARCHAR(1000) NOT NULL,
   Tag VARCHAR(100) NOT NULL,
@@ -81,7 +82,8 @@ CREATE TABLE Project
 
 CREATE TABLE Pictures
 (
-  Id INT NOT NULL,
+  PicId INT NOT NULL,
+  Link VARCHAR(1000) NOT NULL,
   PId INT NOT NULL,
   PRIMARY KEY (Id),
   FOREIGN KEY (PId) REFERENCES Project(PId)
@@ -101,4 +103,22 @@ VALUES (1, "Jane Doe", "img/cv_janeDoe_cropped2_darkened.jpg",
                     On my spare time I enjoy reading, going hiking and just walking in nature.
                     <br><br><button class="resumebutton" onclick="window.location.href = 'resume.html';">See My Resume</button>
                 </p>",
-"123-456-7890​", "jane.doe(at)mail.com", "Example Street 10<br>London, UK");
+"123-456-7890", "jane.doe(at)mail.com", "Example Street 10<br>London, UK");
+
+INSERT INTO Skills (Name, SkillLevel, SId, CVId)
+VALUES ("HTML", 90, 1, 1);
+
+INSERT INTO Experience (Title, Year, ExId, Company, Description, ProjectLink, CvId)
+VALUES ("Junior Developer", "2018--", 1, "Rovio Entertainment Oyj", "I made..", "", 1);
+
+INSERT INTO Education (EdId, Academy, Description, Degree, Year, ProjectLink, CvId)
+VALUES (1, "Metropolia University of Applied Sciences", "I graduated..", "Bachelor's Degree", "2012-2015", "", 1);
+
+INSERT INTO Some (SomeId, Name, Link, CvId)
+VALUES (1, "Instagram", "", 1);
+
+INSERT INTO Project (PId, Name, Subtitle, Description, Picture, Tag, CvId)
+VALUES (1, "Playroom", "Play room for 6 year old girl", "", "", "Visual Merchandising", 1);
+
+INSERT INTO Pictures(PicId, Link, PId)
+VALUES (1, "", 1);
