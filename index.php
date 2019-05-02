@@ -163,7 +163,7 @@ function getContact($parameters) {
     $somename = urldecode($parameters["somename"]);
     $somelink = urldecode($parameters["somelink"]);
 
-    echo "Posted ".$parameters["id"]." ".$call." ".$address." ".$some;
+    echo "Posted ".$parameters["id"]." ".$call." ".$address." ".$somename." ".$somelink;
 
     $conn = new Database();
     $db = $conn->getConnection();
@@ -448,7 +448,7 @@ function deleteProject($parameters){
     $statement->execute();
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-    echo "Selected Skills: ";
+    echo "Project deleted ";
     foreach ($rows as $row) {
         echo $row['Name']." ".$row['Subtitle']." ".$row['Description']." ".$row['Picture']." ".$row['Tag'];
     }
