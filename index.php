@@ -246,14 +246,19 @@ function putSkills($parameters) {
     $conn = new Database();
     $db = $conn->getConnection();
 
-    $sql = "SELECT Name, SkillLevel FROM Skills WHERE Sid=:id";
+    $sql = "IF EXISTS (SELECT * FROM Skills WHERE Sid=:id)
+            UPDATE Skills SET Name=:skill, SkillLevel=:level WHERE Sid=:id
+            ELSE INSERT INTO Skills (Name, SkillLevel) VALUES (:skill, :level)";
+
     $statement = $conn->prepare($sql);
     $statement->bindParam(':id', $id, PDO::PARAM_STR);
+    $statement->bindParam(':skill', $skill, PDO::PARAM_STR);
+    $statement->bindParam(':level', $level, PDO::PARAM_STR);
 
     $statement->execute();
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-    echo "Selected Skills: ";
+    echo "Updated or created skills: ";
     foreach ($rows as $row) {
         echo $row['Name']." ".$row['SkillLevel'];
     }
@@ -515,10 +520,10 @@ if ($resource[0]=="cv") {
     }
 
     else if ($request_method=="PUT" && $resource[1]=="front" && $loggedin) {
-        putFront($parameters);
+        //putFront($parameters);
     }
     else if ($request_method=="PUT" && $resource[1]=="about" && $loggedin) {
-        putAbout($parameters);
+        //putAbout($parameters);
     }
     else if ($request_method=="PUT" && $resource[1]=="skills" && $loggedin) {
 

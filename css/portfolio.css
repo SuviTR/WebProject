@@ -33,7 +33,6 @@
 /*----- Image -----*/
 .projectimg {
     width: 100%;
-    height: 100%;
     float: left;
     padding-bottom: 10px;
     padding-left: 170px;
@@ -57,6 +56,7 @@
 /*----- Description Header -----*/
 .columnportfolio2 h3 {
     padding-left: 38px;
+    margin-top: 40px;
     margin-block-end: 0em;
     font-family: 'Roboto', sans-serif;
     font-size: 40px;

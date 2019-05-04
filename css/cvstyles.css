@@ -23,10 +23,17 @@ nav a {
     padding: 14px 16px;
     text-decoration: none;
 }
+nav a:link {
+    color: black;
+}
+nav a:visited {
+    color: black;
+}
 nav a:hover {
     color: goldenrod;
+    text-decoration: none;
 }
-nav a.active {
+nav a:active {
     color: goldenrod;
 }
 
@@ -40,6 +47,28 @@ nav a.active {
 }
 .log {
     float: right;
+}
+
+/*----- LINKS -----*/
+/* unvisited link */
+.educationpi a:link {
+    color: crimson;
+}
+
+/* visited link */
+.educationpi a:visited {
+    color: salmon;
+}
+
+/* mouse over link */
+.educationpi a:hover {
+    color: goldenrod;
+    text-decoration: none;
+}
+
+/* selected link */
+.educationpi a:active {
+    color: crimson;
 }
 
 /*----- FRONT PAGE -----*/
@@ -99,10 +128,10 @@ figure {
 
 /*----- ABOUT -----*/
 /*----- About Me Image -----*/
-.aboutimg {     /*Bootstrap kaventaa kuvan*/
+.aboutimg {
     width: 1000px;
     padding-top: 90px;
-    padding-bottom: 90px;
+    padding-bottom: 14px;
     padding-left: 180px;
 }
 .column {
@@ -129,7 +158,6 @@ figure {
 .aboutcolumn {
     float: left;
     padding-top: 10px;
-    padding-bottom: 64px;
     padding-left: 64px;
     font-family: 'Questrial', sans-serif;
     font-size: 12px;
@@ -482,6 +510,7 @@ td {
     float: left;
     width: 15%;
     padding: 5px;
+    margin-left: 40px;
     position: relative;
 }
 
