@@ -455,7 +455,7 @@ $resource = getResource();
 
 $request_method = getMethod();
 $parameters = getParameters();
-$loggedin = false;
+$loggedin = true;
 
 // echo "<br><br>";
 
