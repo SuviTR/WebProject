@@ -137,7 +137,7 @@ function getContacts($parameters) {
     echo json_encode($rows);
 
     //Some
-    $sql = "SELECT Name, Link FROM Some";
+    $sql = "SELECT Name, Link, SomeIcon FROM Some";
     $statement = $conn->prepare($sql);
 
     $statement->execute();
@@ -276,8 +276,6 @@ function putContact($parameters) {
     $call = urldecode($parameters["call"]);
     $mail = urldecode($parameters["mail"]);
     $address = urldecode($parameters["address"]);
-    $somename = urldecode($parameters["somename"]);
-    $somelink = urldecode($parameters["somelink"]);
 
     $conn = new Database();
     $db = $conn->getConnection();
@@ -294,10 +292,22 @@ function putContact($parameters) {
 
     header("Content-Type: application/json; charset=UTF-8");
     echo json_encode($rows);
+}
+function putSome($parameters){
+    $id = urldecode($parameters["id"]);
+    $somename = urldecode($parameters["somename"]);
+    $somelink = urldecode($parameters["somelink"]);
+    $someicon = urldecode($parameters["someicon"]);
 
-    //Some
+    $conn = new Database();
+    $db = $conn->getConnection();
+
     $sql = "UPDATE Some SET Name=:name, Link=:link";
+    $sql = "IF EXISTS (SELECT * FROM Some WHERE Sid=:id)
+            UPDATE Some SET Name=:name, Link=:link WHERE SomeId=:id
+            ELSE INSERT INTO Some (Name, Link) VALUES (:name, :link)";
     $statement = $conn->prepare($sql);
+    $statement->bindParam(':id', $id, PDO::PARAM_STR);
     $statement->bindParam(':name', $somename, PDO::PARAM_STR);
     $statement->bindParam(':link', $somelink, PDO::PARAM_STR);
 
@@ -360,6 +370,24 @@ function deleteEducation($parameters) {
     echo json_encode($rows);
 }
 
+function deleteSome($parameters) {
+    $id = urldecode($parameters["id"]);
+
+    $conn = new Database();
+    $db = $conn->getConnection();
+
+    //Contact
+    $sql = "DELETE FROM Some WHERE Someid=:id";
+    $statement = $conn->prepare($sql);
+    $statement->bindParam(':id', $id, PDO::PARAM_STR);
+
+    $statement->execute();
+    $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    header("Content-Type: application/json; charset=UTF-8");
+    echo json_encode($rows);
+}
+
 # ----- PORTFOLIO Handlers -----
 
 function getPortfolio($parameters){
@@ -405,12 +433,19 @@ function putProject($parameters) {
     $conn = new Database();
     $db = $conn->getConnection();
 
-    $sql = "IF EXISTS (SELECT * FROM Education WHERE Sid=:id)
-            UPDATE Education SET Academy=:academy, Description=:description, Degree=:degree, Edu_year=:eduyear, TagLink=:taglink WHERE Sid=:id
-            ELSE INSERT INTO Education (Academy, Description, Degree, Edu_year, TagLink) VALUES (:academy, :description, :degree, :eduyear, :taglink)";
+    "SELECT Name, Subtitle, Description, Picture, Tag FROM Project";
+
+    $sql = "IF EXISTS (SELECT * FROM Project WHERE Sid=:id)
+            UPDATE Project SET Name=:name, Subtitle=:subtitle, Description=:description, Picture=:picture, Tag=:tag WHERE Sid=:id
+            ELSE INSERT INTO Project (Name, Subtitle, Description, Picture, Tag) VALUES (:name, :subtitle, :description, :picture, :tag)";
 
     $statement = $conn->prepare($sql);
     $statement->bindParam(':id', $id, PDO::PARAM_STR);
+    $statement->bindParam(':name', $name, PDO::PARAM_STR);
+    $statement->bindParam(':subtitle', $subtitle, PDO::PARAM_STR);
+    $statement->bindParam(':description', $description, PDO::PARAM_STR);
+    $statement->bindParam(':picture', $picture, PDO::PARAM_STR);
+    $statement->bindParam(':tag', $tag, PDO::PARAM_STR);
 
     $statement->execute();
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -479,39 +514,36 @@ if ($resource[0]=="cv") {
         echo json_encode($about_arr);
     }
     else if ($request_method=="GET" && $resource[1]=="skills") {
-        //getSkills($parameters);
-        echo "skills";
+        getSkills($parameters);
     }
     else if ($request_method=="GET" && $resource[1]=="experience") {
-        //getExperience($parameters);
-        echo "experience";
+        getExperiences($parameters);
     }
     else if ($request_method=="GET" && $resource[1]=="education") {
-        //getEducation($parameters);
-        echo "education";
+        getEducations($parameters);
     }
     else if ($request_method=="GET" && $resource[1]=="contact") {
-        //getContact($parameters);
-        echo "contact";
+        getContacts($parameters);
     }
 
     else if ($request_method=="PUT" && $resource[1]=="front" && $loggedin) {
-        //putFront($parameters);
+        putFront($parameters);
     }
     else if ($request_method=="PUT" && $resource[1]=="about" && $loggedin) {
-        //putAbout($parameters);
+        putAbout($parameters);
     }
     else if ($request_method=="PUT" && $resource[1]=="skills" && $loggedin) {
-
+        putSkills($parameters);
     }
     else if ($request_method=="PUT" && $resource[1]=="experience" && $loggedin) {
-
+        putExperience($parameters);
     }
     else if ($request_method=="PUT" && $resource[1]=="education" && $loggedin) {
-
+        putEducation($parameters);
     }
     else if ($request_method=="PUT" && $resource[1]=="contact" && $loggedin) {
         putContact($parameters);
+        putSome($parameters);
     }
 
     else if ($request_method=="DELETE" && $resource[1]=="skills" && $loggedin) {
@@ -523,8 +555,9 @@ if ($resource[0]=="cv") {
     else if ($request_method=="DELETE" && $resource[1]=="education" && $loggedin) {
         deleteEducation($parameters);
     }
-
-    //Entäpä somelinkit???
+    else if ($request_method=="DELETE" && $resource[1]=="contact" && $loggedin) {
+        deleteSome($parameters);
+    }
 
     else if ($request_method=="" && $resource[1]=="" && $loggedin) {
 
@@ -536,15 +569,13 @@ if ($resource[0]=="cv") {
 # ----- PORTFOLIO -----
 } else if ($resource[0]=="portfolio") {
     if ($request_method=="GET" && $resource[1]=="") {
-        //getPortfolio($parameters);
-        echo "portfolio";
+        getPortfolio($parameters);
     }
     else if ($request_method=="GET" && $resource[1]=="id") {
-        echo "one project with id";
         getProject($parameters);
     }
     else if ($request_method=="PUT" && $resource[1]=="id" && $loggedin) {
-
+        putProject($parameters);
     }
     else if ($request_method=="DELETE" && $resource[1]=="id" && $loggedin) {
         deleteProject($parameters);
