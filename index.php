@@ -45,9 +45,6 @@ function getCV($parameters) {
 }
 function getFront($parameters) {
     # Example: GET /cv/front
-    $fullname = urldecode($parameters["fullname"]);
-    $profession = urldecode($parameters["profession"]);
-    $picture = "";
 
     $db = new Database();
     $conn = $db->getConnection();

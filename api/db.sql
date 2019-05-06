@@ -111,10 +111,10 @@ VALUES (1, "Jane Doe", "img/cv_janeDoe_cropped2_darkened.jpg",
 INSERT INTO Skills (Name, SkillLevel, SId, CVId)
 VALUES ("HTML", 90, 1, 1);
 
-INSERT INTO Experience (Title, Exp_year, ExId, Company, Description, ProjectLink, CvId)
+INSERT INTO Experience (Title, Exp_year, ExId, Company, Description, TagLink, CvId)
 VALUES ("Junior Developer", "2018--", 1, "Rovio Entertainment Oyj", "I made..", "", 1);
 
-INSERT INTO Education (EdId, Academy, Description, Degree, Edu_year, ProjectLink, CvId)
+INSERT INTO Education (EdId, Academy, Description, Degree, Edu_year, TagLink, CvId)
 VALUES (1, "Metropolia University of Applied Sciences", "I graduated..", "Bachelor\'s Degree", "2012-2015", "", 1);
 
 INSERT INTO Some (SomeId, Name, Link, SomeIcon, CvId)
