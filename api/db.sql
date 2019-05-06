@@ -1,10 +1,12 @@
-DROP TABLE IF EXISTS 'CV';
-DROP TABLE IF EXISTS 'Skills';
-DROP TABLE IF EXISTS 'Experience';
-DROP TABLE IF EXISTS 'Education';
-DROP TABLE IF EXISTS 'Some';
-DROP TABLE IF EXISTS 'Project';
-DROP TABLE IF EXISTS 'Pictures';
+use webproject;
+
+DROP TABLE IF EXISTS Experience;
+DROP TABLE IF EXISTS Education;
+DROP TABLE IF EXISTS Skills;
+DROP TABLE IF EXISTS Some;
+DROP TABLE IF EXISTS Pictures;
+DROP TABLE IF EXISTS Project;
+DROP TABLE IF EXISTS CV;
 
 CREATE TABLE CV
 (
@@ -14,7 +16,7 @@ CREATE TABLE CV
   Profession VARCHAR(100) NOT NULL,
   Heading VARCHAR(100) NOT NULL,
   Description VARCHAR(1000) NOT NULL,
-  Call VARCHAR(100) NOT NULL,
+  Phone VARCHAR(100) NOT NULL,
   Mail VARCHAR(100) NOT NULL,
   Address VARCHAR(100) NOT NULL,
   CvId INT NOT NULL,
@@ -34,7 +36,7 @@ CREATE TABLE Skills
 CREATE TABLE Experience
 (
   Title VARCHAR(100) NOT NULL,
-  Year VARCHAR(50) NOT NULL,
+  Exp_year VARCHAR(50) NOT NULL,
   ExId INT NOT NULL,
   Company VARCHAR(100) NOT NULL,
   Description VARCHAR(2000) NOT NULL,
@@ -50,7 +52,7 @@ CREATE TABLE Education
   Academy VARCHAR(100) NOT NULL,
   Description VARCHAR(500) NOT NULL,
   Degree VARCHAR(100) NOT NULL,
-  Year VARCHAR(50) NOT NULL,
+  Edu_year VARCHAR(50) NOT NULL,
   ProjectLink VARCHAR(1000) NOT NULL,
   CvId INT NOT NULL,
   PRIMARY KEY (EdId),
@@ -85,12 +87,12 @@ CREATE TABLE Pictures
   PicId INT NOT NULL,
   Link VARCHAR(1000) NOT NULL,
   PId INT NOT NULL,
-  PRIMARY KEY (Id),
+  PRIMARY KEY (PicId),
   FOREIGN KEY (PId) REFERENCES Project(PId)
 );
 
-INSERT INTO CV (Id, Fullname, FrontPicture, AboutPicture, Profession, Heading,
-Description, Call, Mail, Address)
+INSERT INTO CV (CvId, Fullname, FrontPicture, AboutPicture, Profession, Heading,
+Description, Phone, Mail, Address)
 VALUES (1, "Jane Doe", "img/cv_janeDoe_cropped2_darkened.jpg",
 "img/cv_janeDoe2_cropped.jpg", "Software engineer", "Hello! I'm Jane",
 "I am energetic software engineer
@@ -101,18 +103,18 @@ VALUES (1, "Jane Doe", "img/cv_janeDoe_cropped2_darkened.jpg",
                     I am also fun and caring. My family including my sweet dog means everything to me.
                     I love hanging out with my family and friends.
                     On my spare time I enjoy reading, going hiking and just walking in nature.
-                    <br><br><button class="resumebutton" onclick="window.location.href = 'resume.html';">See My Resume</button>
+                    <br><br><button class=\"resumebutton\" onclick=\"window.location.href = \'resume.html\';\">See My Resume</button>
                 </p>",
 "123-456-7890", "jane.doe(at)mail.com", "Example Street 10<br>London, UK");
 
 INSERT INTO Skills (Name, SkillLevel, SId, CVId)
 VALUES ("HTML", 90, 1, 1);
 
-INSERT INTO Experience (Title, Year, ExId, Company, Description, ProjectLink, CvId)
+INSERT INTO Experience (Title, Exp_year, ExId, Company, Description, ProjectLink, CvId)
 VALUES ("Junior Developer", "2018--", 1, "Rovio Entertainment Oyj", "I made..", "", 1);
 
-INSERT INTO Education (EdId, Academy, Description, Degree, Year, ProjectLink, CvId)
-VALUES (1, "Metropolia University of Applied Sciences", "I graduated..", "Bachelor's Degree", "2012-2015", "", 1);
+INSERT INTO Education (EdId, Academy, Description, Degree, Edu_year, ProjectLink, CvId)
+VALUES (1, "Metropolia University of Applied Sciences", "I graduated..", "Bachelor\'s Degree", "2012-2015", "", 1);
 
 INSERT INTO Some (SomeId, Name, Link, CvId)
 VALUES (1, "Instagram", "", 1);
