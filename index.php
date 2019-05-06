@@ -49,14 +49,16 @@ function getFront($parameters) {
     $profession = urldecode($parameters["profession"]);
     $picture = "";
 
-    $conn = new Database();
-    $db = $conn->getConnection();
+    $db = new Database();
+    $conn = $db->getConnection();
 
-    $sql = "SELECT Fullname, Profession, FrontPicture FROM CV WHERE id=1";
+    $sql = "SELECT Fullname, Profession, FrontPicture FROM CV WHERE CvId=1";
     $statement = $conn->prepare($sql);
-
     $statement->execute();
+
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    print_r($rows);
 
     echo "Selected Front: ";
     foreach ($rows as $row) {
@@ -477,8 +479,7 @@ if ($resource[0]=="cv") {
         echo "cv";
     }
     else if ($request_method=="GET" && $resource[1]=="front") {
-        //getFront($parameters);
-        echo "front";
+        getFront($parameters);
     }
     else if ($request_method=="GET" && $resource[1]=="about") {
         //getAbout($parameters);
