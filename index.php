@@ -55,18 +55,12 @@ function getFront($parameters) {
 
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-    print_r($rows);
+    header("Content-Type: application/json; charset=UTF-8");
+    echo json_encode($rows);
 
-    echo "Selected Front: ";
-    foreach ($rows as $row) {
-        echo $row['Fullname']." ".$row['Profession']." ".$row['FrontPicture'];
-    }
 }
 function getAbout($parameters) {
     # Example: GET /cv/about
-    $heading = urldecode($parameters["heading"]);
-    $description = urldecode($parameters["description"]);
-    $picture = "";
 
     $conn = new Database();
     $db = $conn->getConnection();
@@ -77,107 +71,70 @@ function getAbout($parameters) {
     $statement->execute();
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-    echo "Selected About: ";
-    foreach ($rows as $row) {
-        echo $row['AboutPicture']." ".$row['Heading']." ".$row['Description'];
-    }
+    header("Content-Type: application/json; charset=UTF-8");
+    echo json_encode($rows);
 }
 function getSkills($parameters) {
     # Example: GET /cv/skills
-    $id = urldecode($parameters["id"]);
-    $skill = urldecode($parameters["skill"]);
-    $level = urldecode($parameters["level"]);
-    $bar = "";
 
     $conn = new Database();
     $db = $conn->getConnection();
 
-    $sql = "SELECT Name, SkillLevel FROM Skills WHERE Sid=:id";
+    $sql = "SELECT Name, SkillLevel FROM Skills";
     $statement = $conn->prepare($sql);
-    $statement->bindParam(':id', $id, PDO::PARAM_STR);
 
     $statement->execute();
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-    echo "Selected Skills: ";
-    foreach ($rows as $row) {
-        echo $row['Name']." ".$row['SkillLevel'];
-    }
+    header("Content-Type: application/json; charset=UTF-8");
+    echo json_encode($rows);
 }
-function getExperience($parameters) {
+function getExperiences($parameters) {
     # Example: GET /cv/experience
-    $id = urldecode($parameters["id"]);
-    $year = urldecode($parameters["year"]);
-    $title = urldecode($parameters["title"]);
-    $company = urldecode($parameters["company"]);
-    $description = urldecode($parameters["description"]);
-    $projects = urldecode($parameters["projects"]);
 
     $conn = new Database();
     $db = $conn->getConnection();
 
-    $sql = "SELECT Title, Year, Company, Description, ProjectLink FROM Experience WHERE Exid=:id";
+    $sql = "SELECT Title, Exp_Year, Company, Description, TagLink FROM Experience";
     $statement = $conn->prepare($sql);
-    $statement->bindParam(':id', $id, PDO::PARAM_STR);
 
     $statement->execute();
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-    echo "Selected Experience: ";
-    foreach ($rows as $row) {
-        echo $row['Title']." ".$row['Year']." ".$row['Company']." ".$row['Description']." ".$row['ProjectLink'];
-    }
+    header("Content-Type: application/json; charset=UTF-8");
+    echo json_encode($rows);
 }
-function getEducation($parameters) {
+function getEducations($parameters) {
     # Example: GET /cv/education
-    $id = urldecode($parameters["id"]);
-    $year = urldecode($parameters["year"]);
-    $title = urldecode($parameters["title"]);
-    $academy = urldecode($parameters["academy"]);
-    $description = urldecode($parameters["description"]);
-    $projects = urldecode($parameters["projects"]);
-    echo "Posted ".$parameters["id"]." ".$year." ".$title." ".$academy." ".$description." ".$projects;
 
     $conn = new Database();
     $db = $conn->getConnection();
 
-    $sql = "SELECT Academy, Description, Degree, Year, ProjectLink FROM Education WHERE Edid=:id";
+    $sql = "SELECT Academy, Description, Degree, Edu_Year, TagLink FROM Education";
     $statement = $conn->prepare($sql);
-    $statement->bindParam(':id', $id, PDO::PARAM_STR);
 
     $statement->execute();
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-    echo "Selected Education: ";
-    foreach ($rows as $row) {
-        echo $row['Academy']." ".$row['Description']." ".$row['Degree']." ".$row['Year']." ".$row['ProjectLink'];
-    }
+    header("Content-Type: application/json; charset=UTF-8");
+    echo json_encode($rows);
 }
 
-function getContact($parameters) {
+function getContacts($parameters) {
     # Example: GET /cv/contact
-    $call = urldecode($parameters["call"]);
-    $mail = urldecode($parameters["mail"]);
-    $address = urldecode($parameters["address"]);
-    $somename = urldecode($parameters["somename"]);
-    $somelink = urldecode($parameters["somelink"]);
-
-    echo "Posted ".$parameters["id"]." ".$call." ".$address." ".$somename." ".$somelink;
 
     $conn = new Database();
     $db = $conn->getConnection();
 
     //Contact
-    $sql = "SELECT Call, Mail, Address FROM CV WHERE Id=1";
+    $sql = "SELECT Call, Mail, Address FROM CV";
     $statement = $conn->prepare($sql);
 
     $statement->execute();
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-    echo "Selected Contact: ";
-    foreach ($rows as $row) {
-        echo $row['Call']." ".$row['Mail']." ".$row['Address'];
-    }
+    header("Content-Type: application/json; charset=UTF-8");
+    echo json_encode($rows);
 
     //Some
     $sql = "SELECT Name, Link FROM Some";
@@ -186,15 +143,14 @@ function getContact($parameters) {
     $statement->execute();
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-    foreach ($rows as $row) {
-        echo $row['Name']." ".$row['Link'];
-    }
+    header("Content-Type: application/json; charset=UTF-8");
+    echo json_encode($rows);
 }
 
 function putFront($parameters) {
     $fullname = urldecode($parameters["fullname"]);
     $profession = urldecode($parameters["profession"]);
-    $picture = "";
+    $picture = urldecode($parameters["picture"]);
 
     $conn = new Database();
     $db = $conn->getConnection();
@@ -208,15 +164,13 @@ function putFront($parameters) {
     $statement->execute();
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-    echo "Updated Front: ";
-    foreach ($rows as $row) {
-        echo $row['Fullname']." ".$row['Profession']." ".$row['FrontPicture'];
-    }
+    header("Content-Type: application/json; charset=UTF-8");
+    echo json_encode($rows);
 }
 function putAbout($parameters) {
     $heading = urldecode($parameters["heading"]);
     $description = urldecode($parameters["description"]);
-    $picture = "";
+    $picture = urldecode($parameters["picture"]);
 
     $conn = new Database();
     $db = $conn->getConnection();
@@ -230,17 +184,14 @@ function putAbout($parameters) {
     $statement->execute();
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-    echo "Updated About: ";
-    foreach ($rows as $row) {
-        echo $row['AboutPicture']." ".$row['Heading']." ".$row['Description'];
-    }
+    header("Content-Type: application/json; charset=UTF-8");
+    echo json_encode($rows);
 }
 function putSkills($parameters) {
     # Example: GET /cv/skills
     $id = urldecode($parameters["id"]);
     $skill = urldecode($parameters["skill"]);
     $level = urldecode($parameters["level"]);
-    $bar = "";
 
     $conn = new Database();
     $db = $conn->getConnection();
@@ -257,18 +208,68 @@ function putSkills($parameters) {
     $statement->execute();
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-    echo "Updated or created skills: ";
-    foreach ($rows as $row) {
-        echo $row['Name']." ".$row['SkillLevel'];
-    }
+    header("Content-Type: application/json; charset=UTF-8");
+    echo json_encode($rows);
 }
 
 function putExperience($parameters) {
+    $id = urldecode($parameters["id"]);
+    $title = urldecode($parameters["title"]);
+    $expyear = urldecode($parameters["expyear"]);
+    $company = urldecode($parameters["company"]);
+    $description = urldecode($parameters["description"]);
+    $taglink = urldecode($parameters["taglink"]);
 
+    $conn = new Database();
+    $db = $conn->getConnection();
+
+    $sql = "SELECT Title, Exp_Year, Company, Description, TagLink FROM Experience";
+
+    $sql = "IF EXISTS (SELECT * FROM Experience WHERE Sid=:id)
+            UPDATE Experience SET Title=:title, Exp_year=:expyear, Company=:company, Description=:description, TagLink=:taglink WHERE Sid=:id
+            ELSE INSERT INTO Experience (Title, Exp_year, Company, Description, TagLink) VALUES (:title, :expyear, :company, :description, :taglink)";
+    $statement = $conn->prepare($sql);
+    $statement->bindParam(':id', $id, PDO::PARAM_STR);
+    $statement->bindParam(':title', $title, PDO::PARAM_STR);
+    $statement->bindParam(':expyear', $expyear, PDO::PARAM_STR);
+    $statement->bindParam(':company', $company, PDO::PARAM_STR);
+    $statement->bindParam(':description', $description, PDO::PARAM_STR);
+    $statement->bindParam(':taglink', $taglink, PDO::PARAM_STR);
+
+    $statement->execute();
+    $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    header("Content-Type: application/json; charset=UTF-8");
+    echo json_encode($rows);
 }
 
 function putEducation($parameters) {
+    $id = urldecode($parameters["id"]);
+    $academy = urldecode($parameters["academy"]);
+    $description = urldecode($parameters["description"]);
+    $degree = urldecode($parameters["degree"]);
+    $eduyear = urldecode($parameters["eduyear"]);
+    $taglink = urldecode($parameters["taglink"]);
 
+    $conn = new Database();
+    $db = $conn->getConnection();
+
+    $sql = "IF EXISTS (SELECT * FROM Education WHERE Sid=:id)
+            UPDATE Education SET Academy=:academy, Description=:description, Degree=:degree, Edu_year=:eduyear, TagLink=:taglink WHERE Sid=:id
+            ELSE INSERT INTO Education (Academy, Description, Degree, Edu_year, TagLink) VALUES (:academy, :description, :degree, :eduyear, :taglink)";
+    $statement = $conn->prepare($sql);
+    $statement->bindParam(':id', $id, PDO::PARAM_STR);
+    $statement->bindParam(':academy', $academy, PDO::PARAM_STR);
+    $statement->bindParam(':description', $description, PDO::PARAM_STR);
+    $statement->bindParam(':degree', $degree, PDO::PARAM_STR);
+    $statement->bindParam(':eduyear', $eduyear, PDO::PARAM_STR);
+    $statement->bindParam(':taglink', $taglink, PDO::PARAM_STR);
+
+    $statement->execute();
+    $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    header("Content-Type: application/json; charset=UTF-8");
+    echo json_encode($rows);
 }
 
 function putContact($parameters) {
@@ -291,10 +292,8 @@ function putContact($parameters) {
     $statement->execute();
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-    echo "Selected Contact: ";
-    foreach ($rows as $row) {
-        echo $row['Call']." ".$row['Mail']." ".$row['Address'];
-    }
+    header("Content-Type: application/json; charset=UTF-8");
+    echo json_encode($rows);
 
     //Some
     $sql = "UPDATE Some SET Name=:name, Link=:link";
@@ -305,17 +304,13 @@ function putContact($parameters) {
     $statement->execute();
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-    foreach ($rows as $row) {
-        echo $row['Name']." ".$row['Link'];
-    }
+    header("Content-Type: application/json; charset=UTF-8");
+    echo json_encode($rows);
 }
 
 function deleteSkills($parameters) {
     # Example: GET /cv/skills
     $id = urldecode($parameters["id"]);
-    $skill = urldecode($parameters["skill"]);
-    $level = urldecode($parameters["level"]);
-    $bar = "";
 
     $conn = new Database();
     $db = $conn->getConnection();
@@ -327,19 +322,12 @@ function deleteSkills($parameters) {
     $statement->execute();
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-    echo "Skill deleted ";
-    foreach ($rows as $row) {
-        echo $row['Name']." ".$row['SkillLevel'];
-    }
+    header("Content-Type: application/json; charset=UTF-8");
+    echo json_encode($rows);
 }
 function deleteExperience($parameters) {
     # Example: GET /cv/experience
     $id = urldecode($parameters["id"]);
-    $year = urldecode($parameters["year"]);
-    $title = urldecode($parameters["title"]);
-    $company = urldecode($parameters["company"]);
-    $description = urldecode($parameters["description"]);
-    $projects = urldecode($parameters["projects"]);
 
     $conn = new Database();
     $db = $conn->getConnection();
@@ -351,20 +339,12 @@ function deleteExperience($parameters) {
     $statement->execute();
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-    echo "Experience deleted ";
-    foreach ($rows as $row) {
-        echo $row['Title']." ".$row['Year']." ".$row['Company']." ".$row['Description']." ".$row['ProjectLink'];
-    }
+    header("Content-Type: application/json; charset=UTF-8");
+    echo json_encode($rows);
 }
 function deleteEducation($parameters) {
     # Example: GET /cv/education
     $id = urldecode($parameters["id"]);
-    $year = urldecode($parameters["year"]);
-    $title = urldecode($parameters["title"]);
-    $academy = urldecode($parameters["academy"]);
-    $description = urldecode($parameters["description"]);
-    $projects = urldecode($parameters["projects"]);
-    echo "Posted ".$parameters["id"]." ".$year." ".$title." ".$academy." ".$description." ".$projects;
 
     $conn = new Database();
     $db = $conn->getConnection();
@@ -376,22 +356,14 @@ function deleteEducation($parameters) {
     $statement->execute();
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-    echo "Education deleted ";
-    foreach ($rows as $row) {
-        echo $row['Academy']." ".$row['Description']." ".$row['Degree']." ".$row['Year']." ".$row['ProjectLink'];
-    }
+    header("Content-Type: application/json; charset=UTF-8");
+    echo json_encode($rows);
 }
 
 # ----- PORTFOLIO Handlers -----
 
 function getPortfolio($parameters){
     # Example: GET /portfolio/
-    $id = urldecode($parameters["id"]);
-    $name = urldecode($parameters["name"]);
-    $subtitle = urldecode($parameters["subtitle"]);
-    $description = urldecode($parameters["description"]);
-    $picture = urldecode($parameters["picture"]);
-    $tag = urldecode($parameters["tag"]);
 
     $conn = new Database();
     $db = $conn->getConnection();
@@ -402,19 +374,12 @@ function getPortfolio($parameters){
     $statement->execute();
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-    echo "Selected Portfolio: ";
-    foreach ($rows as $row) {
-        echo $row['Name']." ".$row['Subtitle']." ".$row['Description']." ".$row['Picture']." ".$row['Tag'];
-    }
+    header("Content-Type: application/json; charset=UTF-8");
+    echo json_encode($rows);
 }
 function getProject($parameters){
     # Example: GET /portfolio/id
     $id = urldecode($parameters["id"]);
-    $name = urldecode($parameters["name"]);
-    $subtitle = urldecode($parameters["subtitle"]);
-    $description = urldecode($parameters["description"]);
-    $picture = urldecode($parameters["picture"]);
-    $tag = urldecode($parameters["tag"]);
 
     $conn = new Database();
     $db = $conn->getConnection();
@@ -426,21 +391,36 @@ function getProject($parameters){
     $statement->execute();
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-    echo "Selected Project: ";
-    foreach ($rows as $row) {
-        echo $row['Name']." ".$row['Subtitle']." ".$row['Description']." ".$row['Picture']." ".$row['Tag'];
-    }
+    header("Content-Type: application/json; charset=UTF-8");
+    echo json_encode($rows);
 }
 function putProject($parameters) {
-
-}
-function deleteProject($parameters){
     $id = urldecode($parameters["id"]);
     $name = urldecode($parameters["name"]);
     $subtitle = urldecode($parameters["subtitle"]);
     $description = urldecode($parameters["description"]);
     $picture = urldecode($parameters["picture"]);
     $tag = urldecode($parameters["tag"]);
+
+    $conn = new Database();
+    $db = $conn->getConnection();
+
+    $sql = "IF EXISTS (SELECT * FROM Education WHERE Sid=:id)
+            UPDATE Education SET Academy=:academy, Description=:description, Degree=:degree, Edu_year=:eduyear, TagLink=:taglink WHERE Sid=:id
+            ELSE INSERT INTO Education (Academy, Description, Degree, Edu_year, TagLink) VALUES (:academy, :description, :degree, :eduyear, :taglink)";
+
+    $statement = $conn->prepare($sql);
+    $statement->bindParam(':id', $id, PDO::PARAM_STR);
+
+    $statement->execute();
+    $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    header("Content-Type: application/json; charset=UTF-8");
+    echo json_encode($rows);
+
+}
+function deleteProject($parameters){
+    $id = urldecode($parameters["id"]);
 
     $conn = new Database();
     $db = $conn->getConnection();
@@ -452,10 +432,8 @@ function deleteProject($parameters){
     $statement->execute();
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-    echo "Project deleted ";
-    foreach ($rows as $row) {
-        echo $row['Name']." ".$row['Subtitle']." ".$row['Description']." ".$row['Picture']." ".$row['Tag'];
-    }
+    header("Content-Type: application/json; charset=UTF-8");
+    echo json_encode($rows);
 }
 
 
@@ -486,8 +464,8 @@ if ($resource[0]=="cv") {
     else if ($request_method=="GET" && $resource[1]=="about") {
         //getAbout($parameters);
         $about_arr = ['heading' => "Hello! I'm Jane",
-                    'picture' => "img/cv_janeDoe2_cropped.jpg",
-                    'description' => "I am energetic software engineer
+            'picture' => "img/cv_janeDoe2_cropped.jpg",
+            'description' => "I am energetic software engineer
                     with 4 years experience developing robust code for high-volume businesses.
                     I'm a hard working, flexible and reliable person,
                     who learns quickly and willing to undertake any task given me.
