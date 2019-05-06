@@ -16,11 +16,11 @@ nav a {
     float: left;
     font-family: 'Roboto', sans-serif;
     color: black;
-    font-size: 10px;
+    font-size: 0.63rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     text-align: center;
-    padding: 14px 16px;
+    padding: 0.85rem 0.98rem;
     text-decoration: none;
 }
 nav a:link {
@@ -90,7 +90,10 @@ figure {
     top: 45%;
     left: 30.1%;
     transform: translate(-50%, -50%);
-    font-size: 90px;
+}
+
+#fullname {
+    font-size: 5.6rem;
     font-family: 'Roboto', sans-serif;
     color: white;
     /*text-shadow: #A8A8A8 0.0001em 0 15px;*/
@@ -103,11 +106,12 @@ figure {
 #profession{
     font-family: 'Roboto', sans-serif;
     color: black;
-    font-size: 10px;
+    font-size: 0.6rem;
     text-transform: uppercase;
+    font-weight: bold;
     letter-spacing: 0.1em;
     text-align: center;
-    padding: 14px 16px;
+    padding: 0.85rem 0.98rem;
     text-decoration: none;
 }
 
@@ -116,14 +120,6 @@ figure {
     top: 60%;
     left: 30.1%;
     transform: translate(-50%, -50%);
-    font-size: 90px;
-    font-family: 'Roboto', sans-serif;
-    color: white;
-    line-height: 20px;
-    /*text-shadow: #A8A8A8 0.0001em 0 15px;*/
-    text-transform: uppercase;
-    font-weight: bold;
-    letter-spacing: 0.1em;
 }
 
 /*----- ABOUT -----*/
@@ -131,36 +127,36 @@ figure {
 .aboutimg {
     width: 1000px;
     padding-top: 90px;
-    padding-bottom: 14px;
-    padding-left: 180px;
+    padding-bottom: 0.85rem;
+    padding-left: 11.3rem;
 }
 .column {
     float: left;
     width: 50%;
-    padding: 5px;
+    padding: 0.2rem;
     position: relative;
 }
 /*----- About Me Text -----*/
 .column2 h3 {
-    padding-left: 64px;
-    padding-top: 90px;
+    padding-left: 3.76rem;
+    padding-top: 5.5rem;
     margin-block-end: 0em;
     font-family: 'Roboto', sans-serif;
-    font-size: 40px;
+    font-size: 2.5rem;
     font-weight: bold;
     color: black;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     text-align: left;
-    width: 550px;
+    width: 40rem;
 }
 
 .aboutcolumn {
     float: left;
-    padding-top: 10px;
-    padding-left: 64px;
+    padding-top: 0.65rem;
+    padding-left: 3.9rem;
     font-family: 'Questrial', sans-serif;
-    font-size: 12px;
+    font-size: 0.75rem;
     letter-spacing: 0.1em;
     line-height: 2em;
 }
@@ -168,7 +164,7 @@ figure {
 .column2 {
     float: left;
     width: 40%;
-    padding: 5px;
+    padding: 0.5rem;
 }
 
 /* Clearfix (clear floats) */
@@ -180,56 +176,49 @@ figure {
 
 .resumebutton {
     font-family: 'Questrial', sans-serif;
-    font-size: 12px;
+    font-size: 0.75rem;
     letter-spacing: 0.1em;
     line-height: 2em;
     background-color: crimson;
     border: none;
     color: white;
-    padding: 3px 13px;
+    padding: 0.25rem 0.73rem;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    margin-left: 1px;
+    margin-left: 0.05rem;
 }
 
 /* ----- SKILLS -----*/
 
-.skillsimg {
-    max-width: 100%;
-    padding-bottom: 60px;
-
-    /*transform: scaleX(-1);*/
-    /*opacity: 0.3;*/
-}
 .skillsp {
     display: inline;
 }
 
 .skillsdiv {
-    padding-bottom: 60px;
+    padding-bottom: 4rem;
 }
 
 .skillstdh {
-    width: 100px;
+    width: 5rem;
 }
 
 .skillstd {
-    padding: 10px 0px 10px;
-    padding-bottom: 12px;
+    padding: 0.6rem 0px 0.6rem;
+    padding-bottom: 0.75rem;
     vertical-align: top;
-    width: 330px;
+    width: 21rem;
 }
 
 /* ----- Skills bar -----*/
 .skillsbar {
-    margin-bottom: 26px;
+    margin-bottom: 4rem;
 }
 
 .skillsbarcontainer {
     width: 100%;
-    max-width: 350px;
-    height: 15px;
+    max-width: 23rem;
+    height: 1rem;
     background: gainsboro;
     overflow: hidden;
     /*border-radius: 5px;*/
@@ -254,26 +243,26 @@ figure {
 /* ----- Skills -----*/
 .skillstdh h5 {
     font-family: 'Questrial', sans-serif;
-    font-size: 14px;
+    font-size: 0.88rem;
     font-weight: bold;
     color: black;
     letter-spacing: 0.1em;
     text-align: left;
-    line-height: 20px;
+    line-height: 1rem;
     margin-block-start: 0em;
     margin-block-end: 0em;
-    padding-right: 5px;
+    padding-right: 0.3rem;
     float: left;
 }
 
 .skillstdh h6{
     font-family: 'Questrial', sans-serif;
-    font-size: 14px;
+    font-size: 0.88rem;
     font-weight: bold;
     color: #C0C0C0;
     letter-spacing: 0.1em;
     text-align: left;
-    line-height: 20px;
+    line-height: 1rem;
     margin-block-start: 0em;
     margin-block-end: 0em;
     float: left;
@@ -283,84 +272,84 @@ figure {
 /* ----- EXPERIENCE & EDUCATION -----*/
 .experiencep {
     font-family: 'Questrial', sans-serif;
-    font-size: 11px;
+    font-size: 0.69rem;
     color: black;
     letter-spacing: 0.2em;
     text-align: right;
-    line-height: 20px;
+    line-height: 1rem;
     margin-block-start: 0em;
     margin-block-end: 0em;
 }
 
 .education {
-    padding-bottom: 60px;
+    padding-bottom: 4rem;
 }
 .timeline h6 {
     font-family: 'Questrial', sans-serif;
-    font-size: 14px;
+    font-size: 0.88rem;
     font-weight: bold;
     color: goldenrod;
     letter-spacing: 0.1em;
     text-align: left;
-    line-height: 20px;
+    line-height: 1rem;
     margin-block-start: 0em;
     margin-block-end: 0em;
 }
 .time {
     font-family: 'Questrial', sans-serif;
-    font-size: 12px;
+    font-size: 0.75rem;
     color: crimson;
     font-weight: bold;
     letter-spacing: 0.1em;
     text-align: right;
-    line-height: 20px;
+    line-height: 1.3rem;
     margin-block-start: 0em;
     margin-block-end: 0em;
-    width: 200px;
+    width: 12rem;
 }
 .educationp {
     font-family: 'Questrial', sans-serif;
-    font-size: 12px;
+    font-size: 0.75rem;
     color: black;
     letter-spacing: 0.1em;
     text-align: left;
-    line-height: 20px;
+    line-height: 1.3rem;
     margin-block-start: 0em;
     margin-block-end: 0em;
 }
 .educationpi {
     font-family: 'Questrial', sans-serif;
-    font-size: 12px;
+    font-size: 0.75rem;
     font-style: italic;
     color: black;
     letter-spacing: 0.1em;
     text-align: left;
-    line-height: 20px;
+    line-height: 1.3rem;
     margin-block-start: 0em;
     margin-block-end: 0em;
 }
 table {
     border-spacing: 0px;
-    width: 600px;
+    width: 45rem;
     margin-left: 25%;
 }
 tr {
-    margin-bottom: 26px;
+    margin-bottom: 1rem;
 }
 .timeline {
-    border-left: 1px solid grey;
-    width: 500px;
+    border-left: 0.01rem solid grey;
+    width: 80rem;
 }
 
 td {
-    padding: 10px 20px 10px;
-    padding-bottom: 12px;
+    padding: 1rem 1.4rem 1rem;
+    padding-bottom: 0.74rem;
     vertical-align: top;
 }
 /* ----- PORTFOLIO -----*/
 .portfolio h3 {
     font-family: 'Roboto', sans-serif;
-    font-size: 40px;
+    font-size: 2.5rem;
     color: black;
     font-weight: bold;
     text-transform: uppercase;
@@ -368,8 +357,18 @@ td {
     text-align: center;
 }
 
+.portfolio h4 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    color: goldenrod;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-align: center;
+}
+
 .portfolio {
-    padding-bottom: 60px;
+    padding-bottom: 4rem;
     margin-left: auto;
     margin-right: auto;
 }
@@ -384,14 +383,14 @@ td {
     display: table;
 }
 .row2 {
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 2rem;
+    padding-right: 2rem;
 }
 
 .columncontainer {
     float: left;
     width: 25%;
-    padding: 5px;
+    padding: 0.35rem;
     position: relative;
 }
 /* ----- Mouseover -----*/
@@ -424,7 +423,7 @@ td {
 .text {
     font-family: 'Roboto', sans-serif;
     color: darkgoldenrod;
-    font-size: 22px;
+    font-size: 1.35rem;
     text-transform: uppercase;
     font-weight: bold;
     letter-spacing: 0.1em;
@@ -433,7 +432,7 @@ td {
 .portfolioinfo {
     font-family: 'Roboto', sans-serif;
     color: black;
-    font-size: 13px;
+    font-size: 0.8rem;
     text-transform: none;
     font-weight: normal;
     letter-spacing: 0.1em;
@@ -441,31 +440,31 @@ td {
 /*----- CONTACT -----*/
 .contact {
     background-color: goldenrod;
-    margin-top: 90px;
-    padding-bottom: 60px;
+    margin-top: 5rem;
+    padding-bottom: 4rem;
 }
 /*----- Get In Touch -----*/
 .contact h3 {
     font-family: 'Roboto', sans-serif;
-    font-size: 40px;
+    font-size: 2.5rem;
     color: white;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     text-align: center;
-    border: 5px solid white;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    width: 355px;
+    border: 0.3rem solid white;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    width: 25rem;
     margin-left:auto;
     margin-right:auto;
-    margin-top: 50px;
-    margin-bottom: 64px;
+    margin-top: 3.5rem;
+    margin-bottom: 4rem;
 }
 /*----- Column Headers -----*/
 .columncontainer2 h5 {
     font-family: 'Roboto', sans-serif;
-    font-size: 20px;
+    font-size: 1.25rem;
     color: white;
     font-weight: bold;
     text-transform: uppercase;
@@ -477,11 +476,11 @@ td {
 /*----- Contact Text -----*/
 .contactp {
     font-family: 'Questrial', sans-serif;
-    font-size: 12px;
+    font-size: 0.75rem;
     color: white;
     letter-spacing: 0.1em;
     text-align: left;
-    line-height: 20px;
+    line-height: 1rem;
     margin-block-start: 0em;
     margin-block-end: 0em;
 }
@@ -497,20 +496,20 @@ td {
 .columncontainer2 {
     float: left;
     width: 15%;
-    padding: 5px;
+    padding: 0.3rem;
     position: relative;
 }
 .columncontainer3 {
     float: left;
     width: 10%;
-    padding: 5px;
+    padding: 0.3rem;
     position: relative;
 }
 .columncontainer4 {
     float: left;
     width: 15%;
-    padding: 5px;
-    margin-left: 40px;
+    padding: 0.3rem;
+    margin-left: 2.5rem;
     position: relative;
 }
 

@@ -106,7 +106,7 @@ VALUES (1, "Jane Doe", "/img/cv_janeDoe_cropped2_darkened.jpg",
                     On my spare time I enjoy reading, going hiking and just walking in nature.
                     <br><br><button class=\"resumebutton\" onclick=\"window.location.href = \'resume.html\';\">See My Resume</button>
                 </p>",
-"123-456-7890", "jane.doe(at)mail.com", "Example Street 10<br>London, UK");
+"123-456-7890", "jane.doe(at)mail.com", "Example Street 10 London, UK");
 
 INSERT INTO Skills (Name, SkillLevel, SId, CVId)
 VALUES ("HTML", 90, 1, 1);
