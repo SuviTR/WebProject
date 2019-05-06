@@ -1,6 +1,7 @@
 window.addEventListener('load', () => {
 	const el = $('#app');
 	const serv = 'http://vcust539.louhi.net:81';
+	var json;
 
 
 	const router = new Router({
@@ -10,7 +11,20 @@ window.addEventListener('load', () => {
 
 	router.add('/', () => {
 		showTemplate('index');
-		getAjaxData(showIndexData);
+
+		getAjaxData('/cv/front', function(json) {
+			document.getElementById('fullname').innerHTML=json.fullname;
+			document.getElementById('profession')
+			.innerHTML=json.profession;
+			document.getElementById('frontpicture').setAttribute('src', json.FrontPicture);
+		});
+
+		getAjaxData('/cv/about', function(json) {
+			document.getElementById('aboutheading').innerHTML=json.heading;
+			document.getElementById('aboutdescription')
+			.innerHTML=json.description;
+			document.getElementById('aboutimg').setAttribute('src', json.picture);
+		});
 	})
 
 	router.add('/portfolio/project1', () => {
@@ -24,27 +38,20 @@ window.addEventListener('load', () => {
 
 
 	/* Contents functions */
-	function getAjaxData(processingFunction) {
+	function getAjaxData(address, processingFunction) {
 		httpRequest = new XMLHttpRequest();
 		httpRequest.onreadystatechange = function () {
 			if(httpRequest.readyState === XMLHttpRequest.DONE) {
 				if(httpRequest.status === 200 ) {
-					var result = JSON.parse(httpRequest.responseText)
-					processingFunction(result);
+					var json = JSON.parse(httpRequest.responseText)
+					processingFunction(json);
 				}
 			}
 		}
 
-		console.log('address: ' + serv + '/cv/about');
-		httpRequest.open('GET', serv + '/cv/about', true);
+		console.log('address: ' + serv + address);
+		httpRequest.open('GET', serv + address, true);
 		httpRequest.send();
-	}
-
-	function showIndexData(json) {
-		document.getElementById('aboutheading').innerHTML=json.heading;
-		document.getElementById('aboutdescription')
-		.innerHTML=json.description;
-		document.getElementById('aboutimg').setAttribute('src', json.picture);
 	}
 
 
