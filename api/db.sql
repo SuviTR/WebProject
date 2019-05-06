@@ -94,7 +94,7 @@ CREATE TABLE Pictures
 
 INSERT INTO CV (CvId, Fullname, FrontPicture, AboutPicture, Profession, Heading,
 Description, Phone, Mail, Address)
-VALUES (1, "Jane Doe", "img/cv_janeDoe_cropped2_darkened.jpg",
+VALUES (1, "Jane Doe", "/img/cv_janeDoe_cropped2_darkened.jpg",
 "img/cv_janeDoe2_cropped.jpg", "Software engineer", "Hello! I'm Jane",
 "I am energetic software engineer
                     with 4 years experience developing robust code for high-volume businesses.
