@@ -4,20 +4,29 @@
 body {
     margin: 0;
 }
-
+@media print {
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
 .columnleft {
     float: left;
     width: 36%;
-    padding: 5px;
     position: relative;
+    margin-right: 20px;
 }
 .columnright {
     float: left;
-    width: 64%;
-    padding: 5px;
+    width: 60%;
+    margin-left: 0px;
     position: relative;
 }
 
+.line{
+    border-left: 1px solid goldenrod;
+    margin-top: 60px;
+    padding-left: 20px;
+}
 .close {
     float: right;
     margin-top: 50px;
@@ -25,13 +34,29 @@ body {
     height: 20px;
     width: 20px;
 }
+.button {
+    background-color: white;
+    border: none;
+    color: crimson;
+    padding: 2px 0px;
+    font-family: 'Questrial', sans-serif;
+    text-align: right;
+    text-decoration: none;
+    display: block;
+    font-size: 13px;
+    margin-top: 50px;
+    margin-right: 20px;
+    margin-bottom: 30px;
+    float: right;
+    width: 90px;
+}
 
 /* ----- RIGHT SIDE -----*/
 
 /*----- INTRODUCTION -----*/
 h3 {
     padding-left: 0px;
-    padding-top: 60px;
+    padding-top: 0px;
     margin-block-end: 0em;
     font-family: 'Roboto', sans-serif;
     font-size: 40px;
@@ -55,9 +80,9 @@ h3 {
 .resumecolumn {
     float: left;
     padding-top: 10px;
-    padding-bottom: 64px;
+    padding-bottom: 60px;
     padding-left: 0px;
-    padding-right: 120px;
+    padding-right: 20px;
     font-family: 'Questrial', sans-serif;
     font-size: 12px;
     letter-spacing: 0.1em;
@@ -80,6 +105,7 @@ h3 {
 /* ----- EXPERIENCE & EDUCATION -----*/
 table {
     margin-bottom: 30px;
+    margin-left: 0px;
 }
 td {
 
@@ -90,7 +116,7 @@ td {
     width: 255px;
 }
 
-h73{
+.columnleft h4{
     font-family: 'Questrial', sans-serif;
     font-size: 14px;
     font-weight: bold;
@@ -98,7 +124,20 @@ h73{
     letter-spacing: 0.1em;
     text-align: left;
     line-height: 20px;
-    padding-left: 0px;
+    padding-left: 140px;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+.columnleft h5{
+    font-family: 'Questrial', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+    letter-spacing: 0.1em;
+    text-align: left;
+    line-height: 20px;
+    padding-left: 140px;
+    padding-bottom: 15px;
     margin-block-start: 0em;
     margin-block-end: 0em;
 }
@@ -172,14 +211,12 @@ h6 {
 /*----- IMAGE -----*/
 /*----- Image -----*/
 .img {
-    width: 325px;
-    height: 250px;
+    width: 100%;
     padding-top: 64px;
     padding-left: 140px;
-    margin-bottom: 87px;
+    margin-bottom: 64px;
 }
-
-h74{
+.columnright h4 {
     font-family: 'Questrial', sans-serif;
     font-size: 14px;
     font-weight: bold;
@@ -187,11 +224,24 @@ h74{
     letter-spacing: 0.1em;
     text-align: left;
     line-height: 20px;
-    width: 100%;
-    padding-left: 140px;
+    padding-left: 0px;
     margin-block-start: 0em;
     margin-block-end: 0em;
 }
+.columnright h5 {
+    font-family: 'Questrial', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+    letter-spacing: 0.1em;
+    text-align: left;
+    line-height: 20px;
+    padding-left: 0px;
+    padding-bottom: 15px;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+
 /* ----- PERSONAL INFO -----*/
 .infoh {
     font-family: 'Questrial', sans-serif;
@@ -220,10 +270,13 @@ h74{
 /* ----- SKILLS -----*/
 
 .skillstable {
-    margin-left: 140px;
+    margin-left: 0px;
+}
+tr {
+    margin-bottom: 26px;
 }
 /* ----- Skills -----*/
-h7 {
+.skillstdh h5 {
     font-family: 'Questrial', sans-serif;
     font-size: 14px;
     font-weight: bold;
@@ -236,7 +289,7 @@ h7 {
     padding-right: 5px;
     float: left;
 }
-h72{
+.skillstdh h6{
     font-family: 'Questrial', sans-serif;
     font-size: 14px;
     font-weight: bold;
@@ -299,4 +352,6 @@ h72{
 .value-80 { width: 80%; }
 .value-90 { width: 90%; }
 .value-100 { width: 100%; }
+
+
 

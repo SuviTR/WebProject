@@ -20,9 +20,10 @@ input[type="file"] {
     font-family: 'Questrial', sans-serif;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
+    display: block;
     font-size: 13px;
-    margin-left: 2px;
+    margin-left: auto;
+    margin-right: auto;
 }
 /*----- FRONT PAGE -----*/
 /*----- Name -----*/
@@ -60,6 +61,18 @@ input[type="file"] {
 }
 /*----- ABOUT -----*/
 /*----- Heading -----*/
+
+.portfoliosmall h3 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 40px;
+    color: black;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
 .inputhello {
     font-family: 'Roboto', sans-serif;
     font-size: 40px;
@@ -70,7 +83,8 @@ input[type="file"] {
     text-align: left;
     width: 450px;
     height: 50px;
-    margin-left: 0px;
+    margin-top: 160px;
+    margin-left: 64px;
 }
 .inputabout {
     float: left;
@@ -81,14 +95,17 @@ input[type="file"] {
     width: 450px;
 }
 .inputaboutimg {
-    width: 300px;
+    width: 380px;
     float: left;
-    padding-top: 130px;
-    padding-bottom: 130px;
-    padding-left: 180px;
-    padding-right: 180px;
+    margin-top: 150px;
+    margin-bottom: 130px;
+    margin-left: 180px;
+    padding-top: 170px;
+    padding-bottom: 170px;
+    padding-left: 120px;
+
 }
-label{
+figure label, .column label {
     margin-left: 100px;
     margin-top: 130px;
     margin-bottom: 10px;
@@ -189,10 +206,20 @@ label{
 .labelportfolio {
     margin-left: 0px;
     margin-top: 0px;
-    padding-top: 110px;
-    padding-bottom: 110px;
+    padding-top: 117px;
+    padding-bottom: 109px;
     padding-left: 100px;
     padding-right: 100px;
+}
+
+.columncontainer label {
+    margin-bottom: 10px;
+    background: #F0F0F0;
+    display: table;
+    font-family: 'Questrial', sans-serif;
+    font-size: 12px;
+    color: black;
+    letter-spacing: 0.1em;
 }
 
 .inputportfolioname {
@@ -216,7 +243,7 @@ label{
 }
 /*----- CONTACT -----*/
 .inputcontact {
-    width: 180px;
+    width: 170px;
     font-family: 'Questrial', sans-serif;
     font-size: 12px;
     color: white;
@@ -224,4 +251,28 @@ label{
     text-align: left;
     margin-block-start: 0em;
     margin-block-end: 0em;
+}
+
+.columncontainer4 label {
+    font-family: 'Questrial', sans-serif;
+    font-size: 12px;
+    color: white;
+    letter-spacing: 0.1em;
+    text-align: left;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+
+.button2 {
+    background-color: crimson;
+    border: none;
+    color: white;
+    padding: 6px 20px;
+    font-family: 'Questrial', sans-serif;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 13px;
+    margin-left: 1px;
+    margin-top: 3px;
 }

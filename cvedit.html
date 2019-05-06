@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit CV & Portfolio</title>
-    <link href="css/cvstyles.css" type="text/css" rel="stylesheet" />
     <link href="css/cveditstyles.css" type="text/css" rel="stylesheet" />
+    <link href="css/cvstyles.css" type="text/css" rel="stylesheet" />
+
 </head>
 
 <body>
-    <nav id="navbar">
+    <nav id="navbar">       <!-- Ei ole linkki toiminnallisuutta-->
         <a class="active" href="cv.html">Home</a>
         <a href="#about">About</a>
         <a href="#about">Skills</a>
@@ -37,58 +38,44 @@
                 </label>
             </div>
             <div class="column2">
-                <h3><input class="inputhello" type="text" name="hello" placeholder="Hello.."/></h3>
+                <input class="inputhello" type="text" name="hello" placeholder="Hello.."/>
                 <p class="aboutcolumn">
-                    <textarea rows="10" cols="50" class="inputabout" type="text" name="about" placeholder="Introduce yourself"></textarea>
+                    <textarea rows="10" cols="50" class="inputabout" name="about" placeholder="Introduce yourself"></textarea>
                 </p>
             </div>
         </div>
 
         <!-- SKILLS -->
-        <div align="center" class="portfoliosmall"><h42>Skills</h42></div>
-        <div align="center" class="portfolio"><input type="button" class="button" value="Add new skill" /></div>
+        <div class="portfoliosmall"><h3>Skills</h3></div>
+        <div class="portfolio"><button type="button" class="button">Add new skill</button></div>
         <div class="skillsdiv">
 
-            <table align="center">
+            <table>
                 <tr>
-                    <div class="skillsbar">
-                        <td class="skillstdh"><h7><input class="inputskillsh" type="text" name="skill" placeholder="HTML5"/></h7></td>
-                        <td class="skillstd">
-                            <div class="skillsbarcontainer">
-                                <div class="skillsbarvalue value-90"></div>
-                            </div>
-                        </td>
-                        <td class="skillstdh"><h72><input class="inputskills" type="text" name="skill" placeholder="90%"/></h72></td>
-                    </div>
+                    <td class="skillstdh"><h7><input class="inputskillsh" type="text" name="skill" placeholder="HTML5"/></h7></td>
+                    <td class="skillstd">
+                        <div class="skillsbarcontainer">
+                            <div class="skillsbarvalue value-90"></div>
+                        </div>
+                    </td>
+                    <td class="skillstdh"><h72><input class="inputskills" type="text" name="skill" placeholder="90%"/></h72></td>
                 </tr>
 
-                <tr>
-                    <div class="skillsbar">
-                        <td class="skillstdh"><h7><input class="inputskillsh" type="text" name="skill" placeholder="CSS3"/></h7></td>
-                        <td class="skillstd">
-                            <div class="skillsbarcontainer">
-                                <div class="skillsbarvalue value-80"></div>
-                            </div>
-                        </td>
-                        <td class="skillstdh"><h72><input class="inputskills" type="text" name="skill" placeholder="80%"/></h72></td>
-                    </div>
-                </tr>
             </table>
         </div>
 
 
         <!-- EXPERIENCE-->
-        <div align="center" class="portfoliosmall"><h42>Experience</h42></div>
-        <div align="center" class="portfolio"><input type="button" class="button" value="Add new experience" /></div>
+        <div class="portfoliosmall"><h3>Experience</h3></div>
+        <div class="portfolio"><button type="button" class="button">Add new experience</button></div>
         <div class="education">
-            <table align="center">
+            <table>
                 <tr>
-                    <td><p class="time"><input class="inputtime" type="text" name="time" placeholder="2018--"/></p><p class="experiencep"><input class="inputtitle" type="text" name="time" placeholder="Junior developer"/></p></td>
-                    <td class="timeline"><h6><input class="inputcompany" type="text" name="time" placeholder="Rovio Entertainment Oyj"/></h6><p class="educationpi"><textarea rows="3" cols="30" class="inputdesc" type="text" name="time" placeholder="I made.."/></textarea></p></td>
-                </tr>
-                <tr>
-                    <td><p class="time"><input class="inputtime" type="text" name="time" placeholder="2016-2017"/></p><p class="experiencep"><p class="experiencep"><input class="inputtitle" type="text" name="time" placeholder="Visual Merchandiser"/></p></td>
-                    <td class="timeline"><h6><input class="inputcompany" type="text" name="time" placeholder="Stockmann Oyj Abp"/></h6><p class="educationpi"><textarea rows="3" cols="30" class="inputdesc" type="text" name="time" placeholder="I made.."/></textarea></p></td>
+                    <td><p class="time"><input class="inputtime" type="text" name="year" placeholder="2018--"/></p>
+                        <p class="experiencep"><input class="inputtitle" type="text" name="jdeveloper" placeholder="Junior developer"/></p></td>
+                    <td class="timeline"><h6><input class="inputcompany" type="text" name="rovio" placeholder="Rovio Entertainment Oyj"/></h6>
+                        <p class="educationpi"><textarea rows="3" cols="30" class="inputdesc" type="text" name="desc" placeholder="I made.."/></textarea></p>
+                        <p class="educationpi"><input class="inputdesc" type="text" name="extag" placeholder="Add tag to projects 'Rovio'"/></p></td>
                 </tr>
             </table>
 
@@ -96,62 +83,41 @@
         </div>
 
         <!-- EDUCATION -->
-        <div align="center" class="portfoliosmall"><h42>Education</h42></div>
-        <div align="center" class="portfolio"><input type="button" class="button" value="Add new education" /></div>
+        <div class="portfoliosmall"><h3>Education</h3></div>
+        <div class="portfolio"><button type="button" class="button">Add new education</button></div>
         <div class="education">
-            <table align="center">
+            <table>
                 <tr>
-                    <td><p class="time"><input class="inputtime" type="text" name="time" placeholder="2012-2015"/></p>
-                        <p class="experiencep"><input class="inputtitle" type="text" name="time" placeholder="Bachelor's Degree"/></p></td>
-                    <td class="timeline"><h6><input class="inputcompany" type="text" name="time" placeholder="Software Engineer"/></h6>
-                        <p class="educationp"><input class="inputschool" type="text" name="time" placeholder="Metropolia University of Applied Sciences"/></p>
-                        <p class="educationpi"><textarea rows="3" cols="30" class="inputdesc" type="text" name="time" placeholder="I graduated.."/></textarea></p></td>
+                    <td><p class="time"><input class="inputtime" type="text" name="year" placeholder="2012-2015"/></p>
+                        <p class="experiencep"><input class="inputtitle" type="text" name="bachelors" placeholder="Bachelor's Degree"/></p></td>
+                    <td class="timeline"><h6><input class="inputcompany" type="text" name="swe" placeholder="Software Engineer"/></h6>
+                        <p class="educationp"><input class="inputschool" type="text" name="metropolia" placeholder="Metropolia University of Applied Sciences"/></p>
+                        <p class="educationpi"><textarea rows="3" cols="30" class="inputdesc" type="text" name="desc" placeholder="I graduated.."/></textarea></p>
+                        <p class="educationpi"><input class="inputdesc" type="text" name="extag" placeholder="Add tag to projects 'metropolia'"/></p></td>
                 </tr>
-                <tr>
-                    <td><p class="time"><input class="inputtime" type="text" name="time" placeholder="2011-2012"/></p>
-                        <p class="experiencep"><input class="inputtitle" type="text" name="time" placeholder="Further Qualification in Marketing Communications"/></p></td>
-                    <td class="timeline"><h6><input class="inputcompany" type="text" name="time" placeholder="Visual Merchandiser"/></h6>
-                        <p class="educationp"><input class="inputschool" type="text" name="time" placeholder="Vocational School"/></p>
-                        <p class="educationpi"><textarea rows="3" cols="30" class="inputdesc" type="text" name="time" placeholder="I graduated.."/></textarea></p></td>
 
-                </tr>
             </table>
         </div>
 
         <!-- PORTFOLIO -->
-        <div align="center" class="portfoliosmall"><h42>Portfolio</h42></div>
+        <div class="portfoliosmall"><h3>Portfolio</h3></div>
         <div class="row2">
 
             <div class="columncontainer">
-                <img class="image" src="img/cv_janeDoe2_cropped.jpg">
+                <img class="image" src="img/cv_janeDoe2_cropped.jpg" alt="Project">
                 <div class="middle">
                     <div class="text">Web Project<p class="portfolioinfo">CV & Portfolio Project</p></div>
                 </div>
             </div>
+
             <div class="columncontainer">
-                <img class="image" src="img/cv_janeDoe2_cropped.jpg">
-                <div class="middle">
-                    <div class="text">Web Project<p class="portfolioinfo">CV & Portfolio Project</p></div>
-                </div>
-            </div>
-            <div class="columncontainer">
-                <img class="image" src="img/cv_janeDoe2_cropped.jpg">
-                <div class="middle">
-                    <div class="text">Web Project<p class="portfolioinfo">CV & Portfolio Project</p></div>
-                </div>
-            </div>
-            <div class="columncontainer">
-                <img class="image" src="img/cv_janeDoe2_cropped.jpg">
-                <div class="middle">
-                    <div class="text">Web Project<p class="portfolioinfo">CV & Portfolio Project</p></div>
-                </div>
-            </div>
-            <div class="columncontainer">
-                <label class="labelportfolio"> Enter Your Picture
+                <label class="labelportfolio">Enter Your Picture
                     <input type="file" size="60" >
                 </label>
-                <div class="text"><input class="inputportfolioname" type="text" placeholder="Web Project"/>​<p class="portfolioinfo"><input class="inputportfolioinfo" type="text" placeholder="CV & Portfolio"/>​</p></div>
-                <div align="center" class="portfolio"><input type="button" class="button" value="Add new project" /></div>
+                <div class="text"><input class="inputportfolioname" type="text" placeholder="Project type"/>​<p class="portfolioinfo"><input class="inputportfolioinfo" type="text" placeholder="Project title"/>​</p>
+                    <p class="portfolioinfo"><input class="inputportfolioinfo" type="text" placeholder="Add experience or education tag"/>​</p>
+                </div>
+                <div class="portfolio"><button type="button" class="button">Add new project</button></div>
             </div>
 
         </div>
@@ -159,31 +125,34 @@
         <!-- CONTACT -->
         <div class="contact">
             <br>
-            <h4>Get In Touch!</h4>
+            <h3>Get In Touch!</h3>
 
             <div class="row">
                 <div class="columncontainer3">
-                    <img class="icon" align="right" src="img/iconfinder_skype2512x512_197582.png">
+                    <img class="icon" src="img/iconfinder_skype2512x512_197582.png" alt="Phone number">
                 </div>
                 <div class="columncontainer2">
                     <h5>Call</h5><p class="contactp"><input class="inputcontact" type="text" name="call" placeholder="123-456-7890"/>​</p>
                 </div>
                 <div class="columncontainer3">
-                    <img class="icon" align="right" src="img/iconfinder_mail512x512_197584.png">
+                    <img class="icon" src="img/iconfinder_mail512x512_197584.png" alt="Mail address">
                 </div>
                 <div class="columncontainer2">
                     <h5>Contact</h5><p class="contactp"><input class="inputcontact" type="text" name="mail" placeholder="jane.doe(at)mail.com"/></p>
                 </div>
                 <div class="columncontainer3">
-                    <img class="icon" align="right" src="img/iconfinder_home512x512_197589.png">
+                    <img class="icon" src="img/iconfinder_home512x512_197589.png" alt="Home address">
                 </div>
                 <div class="columncontainer2">
                     <h5>Address</h5><p class="contactp"><input class="inputcontact" type="text" name="address" placeholder="Example Street 10, London, UK"/></p>
                 </div>
-                <div class="columncontainer2">
-                    <img class="icon" align="right" src="img/iconfinder_linkedin_2691280.png">
-                    <img class="icon" align="right" src="img/iconfinder_twitter_2691271.png">
-                    <img class="icon" align="right" src="img/iconfinder_instagram_2691281.png">
+                <div class="columncontainer4">
+                    <form action="/action_page.php">
+                        <input class="inputcontact" type="text" name="linkedinlink" placeholder="LinkedIn link"><br>
+                        <input class="inputcontact" type="text" name="twitterlink" placeholder="Twitter link"><br>
+                        <input class="inputcontact" type="text" name="instagramlink" placeholder="Instagram link"><br>
+                        <input type="submit" value="Add Links" class="button2">
+                    </form>
                 </div>
             </div>
         </div>

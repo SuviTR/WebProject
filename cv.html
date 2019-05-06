@@ -11,7 +11,7 @@
 <body>
 
     <nav id="navbar">
-        <a class="active" href="#front">Home</a>
+        <a class="active" href="#front">Home</a> <!-- class täytyy vaihtaa, kun linkkiä klikkaa-->
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
         <a href="#experience">Experience</a>
@@ -24,7 +24,7 @@
     <div class="content" id="front">
         <!-- FRONT PAGE -->
         <figure>
-            <img class="homeimg" src="img/cv_janeDoe_cropped2_darkened.jpg" alt="Jane Doe"/>
+            <img class="homeimg" src="img/cv_janeDoe_cropped2_darkened.jpg" alt="Front page image"/>
             <div class="centered">Jane Doe</div>
             <div class="centered2" id="profession">Software engineer</div>
         </figure>
@@ -32,7 +32,7 @@
         <!-- ABOUT ME -->
         <div class="row">
             <div class="column">
-                <img class="aboutimg img-fluid" src="img/cv_janeDoe2_cropped.jpg" alt="Jane Doe">
+                <img class="aboutimg img-fluid" src="img/cv_janeDoe2_cropped.jpg" alt="Picture of Jane Doe">
             </div>
             <div class="column2">
                 <h3>Hello! I'm Jane</h3>
@@ -52,32 +52,29 @@
 
 
         <!-- SKILLS -->
-        <p id="skills"></p>
-        <div align="center" class="portfolio"><h42>Skills</h42></div>
+        <div class="portfolio"><p id="skills"></p></div>
+        <div class="portfolio"><h3>Skills</h3></div>
         <div class="skillsdiv">
-            <table align="center">
+
+            <table>
                 <tr>
-                    <div class="skillsbar">
-                        <td class="skillstdh"><h7>HTML5</h7></td>
-                        <td class="skillstd">
-                            <div class="skillsbarcontainer">
-                                <div class="skillsbarvalue value-90"></div>
-                            </div>
-                        </td>
-                        <td class="skillstdh"><h72>90%</h72></td>
-                    </div>
+                    <td class="skillstdh"><h5>HTML5</h5></td>
+                    <td class="skillstd">
+                        <div class="skillsbarcontainer">
+                            <div class="skillsbarvalue value-90"></div>
+                        </div>
+                    </td>
+                    <td class="skillstdh"><h6>90%</h6></td>
                 </tr>
 
                 <tr>
-                    <div class="skillsbar">
-                        <td class="skillstdh"><h7>CSS3</h7></td>
-                        <td class="skillstd">
-                            <div class="skillsbarcontainer">
-                                <div class="skillsbarvalue value-80"></div>
-                            </div>
-                        </td>
-                        <td class="skillstdh"><h72>80%</h72></td>
-                    </div>
+                    <td class="skillstdh"><h5>CSS3</h5></td>
+                    <td class="skillstd">
+                        <div class="skillsbarcontainer">
+                            <div class="skillsbarvalue value-80"></div>
+                        </div>
+                    </td>
+                    <td class="skillstdh"><h6>80%</h6></td>
                 </tr>
             </table>
             <p id="experience"></p>
@@ -85,65 +82,69 @@
 
 
         <!-- EXPERIENCE -->
-        <div align="center" class="portfolio"><h42>Experience</h42></div>
+        <div class="portfolio"><h3>Experience</h3></div>
         <div class="education">
-            <table align="center">
+            <table>
                 <tr>
                     <td><p class="time">2018--</p><p class="experiencep">Junior Developer</p></td>
-                    <td class="timeline"><h6>Rovio Entertainment Oyj</h6><p class="educationpi">I made a website for my company's client.</p></td>
+                    <td class="timeline"><h6>Rovio Entertainment Oyj</h6><p class="educationpi">I made a website for my company's client.
+                        <br><a href="#">See my projects</a></p></td>
                 </tr>
                 <tr>
                     <td><p class="time">2016-2017</p><p class="experiencep">Visual Merchandiser Assistant</p></td>
-                    <td class="timeline"><h6>Stockmann Oyj Abp</h6><p class="educationpi">I made campaigns.</p></td>
+                    <td class="timeline"><h6>Stockmann Oyj Abp</h6><p class="educationpi">I made campaigns.
+                        <br><a href="#">See my projects</a></p></td>
                 </tr>
             </table>
             <p id="education"></p>
         </div>
 
         <!-- EDUCATION -->
-        <div align="center" class="portfolio"><h42>Education</h42></div>
+        <div class="portfolio"><h3>Education</h3></div>
         <div class="education">
-            <table align="center">
+            <table>
                 <tr>
                     <td><p class="time">2012-2015</p><p class="experiencep">Bachelor's Degree</p></td>
                     <td class="timeline"><h6>Software Engineer</h6><p class="educationp">Metropolia University of Applied Sciences</p>
-                        <p class="educationpi">I graduated..</p></td>
+                        <p class="educationpi">I graduated..
+                            <br><a href="#">See my projects</a></p></td>
                 </tr>
                 <tr>
                     <td><p class="time">2011-2012</p><p class="experiencep">Further Qualification in Marketing Communications</p></td>
                     <td class="timeline"><h6>Visual Merchandiser</h6><p class="educationp">Vocational School</p>
-                        <p class="educationpi">I graduated from Vocational School.</p></td>
+                        <p class="educationpi">I graduated from Vocational School.
+                            <br><a href="#">See my projects</a></p></td>
                 </tr>
             </table>
             <p id="portfolio"></p>
         </div>
 
         <!-- PORTFOLIO -->
-        <div align="center" class="portfolio"><h42>Portfolio</h42></div>
+        <div class="portfolio"><h3>Portfolio</h3></div>
         <div class="row2">
 
             <a href="portfolio.html">
                 <div class="columncontainer">
-                    <img class="image" src="img/cv_janeDoe2_cropped.jpg">
+                    <img class="image" src="img/cv_janeDoe2_cropped.jpg" alt="Project">
                     <div class="middle">
                         <div class="text">Web Project<p class="portfolioinfo">CV & Portfolio Project</p></div>
                     </div>
                 </div>
             </a>
             <div class="columncontainer">
-                <img class="image" src="img/cv_janeDoe2_cropped.jpg">
+                <img class="image" src="img/cv_janeDoe2_cropped.jpg" alt="Project">
                 <div class="middle">
                     <div class="text">Web Project<p class="portfolioinfo">CV & Portfolio Project</p></div>
                 </div>
             </div>
             <div class="columncontainer">
-                <img class="image" src="img/cv_janeDoe2_cropped.jpg">
+                <img class="image" src="img/cv_janeDoe2_cropped.jpg" alt="Project">
                 <div class="middle">
                     <div class="text">Web Project<p class="portfolioinfo">CV & Portfolio Project</p></div>
                 </div>
             </div>
             <div class="columncontainer">
-                <img class="image" src="img/cv_janeDoe2_cropped.jpg">
+                <img class="image" src="img/cv_janeDoe2_cropped.jpg" alt="Project">
                 <div class="middle">
                     <div class="text">Web Project<p class="portfolioinfo">CV & Portfolio Project</p></div>
                 </div>
@@ -153,31 +154,31 @@
         <!-- CONTACT -->
         <div class="contact" id="contact">
             <br>
-            <h4>Get In Touch!</h4>
+            <h3>Get In Touch!</h3>
 
             <div class="row">
                 <div class="columncontainer3">
-                    <img class="icon img-fluid" align="right" src="img/iconfinder_skype2512x512_197582.png">
+                    <img class="icon img-fluid" src="img/iconfinder_skype2512x512_197582.png" alt="Phone number">
                 </div>
                 <div class="columncontainer2">
                     <h5>Call</h5><p class="contactp">123-456-7890​</p>
                 </div>
                 <div class="columncontainer3">
-                    <img class="icon img-fluid" align="right" src="img/iconfinder_mail512x512_197584.png">
+                    <img class="icon img-fluid" src="img/iconfinder_mail512x512_197584.png" alt="Mail address">
                 </div>
                 <div class="columncontainer2">
                     <h5>Contact</h5><p class="contactp">jane.doe(at)mail.com</p>
                 </div>
                 <div class="columncontainer3">
-                    <img class="icon img-fluid" align="right" src="img/iconfinder_home512x512_197589.png">
+                    <img class="icon img-fluid" src="img/iconfinder_home512x512_197589.png" alt="Home Address">
                 </div>
                 <div class="columncontainer2">
                     <h5>Address</h5><p class="contactp">Example Street 10<br>London, UK</p>
                 </div>
-                <div class="columncontainer2">
-                    <img class="icon img-fluid" align="right" src="img/iconfinder_linkedin_2691280.png">
-                    <img class="icon img-fluid" align="right" src="img/iconfinder_twitter_2691271.png">
-                    <img class="icon img-fluid" align="right" src="img/iconfinder_instagram_2691281.png">
+                <div class="columncontainer4">
+                    <img class="icon img-fluid" src="img/iconfinder_linkedin_2691280.png" alt="LinkedIn link">
+                    <img class="icon img-fluid" src="img/iconfinder_twitter_2691271.png" alt="Twitter link">
+                    <img class="icon img-fluid" src="img/iconfinder_instagram_2691281.png" alt="Instagram link">
                 </div>
             </div>
         </div>

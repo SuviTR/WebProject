@@ -40,7 +40,7 @@ CREATE TABLE Experience
   ExId INT NOT NULL,
   Company VARCHAR(100) NOT NULL,
   Description VARCHAR(2000) NOT NULL,
-  ProjectLink VARCHAR(1000) NOT NULL,
+  TagLink VARCHAR(1000) NOT NULL,
   CvId INT NOT NULL,
   PRIMARY KEY (ExId),
   FOREIGN KEY (CvId) REFERENCES CV(CvId)
@@ -53,7 +53,7 @@ CREATE TABLE Education
   Description VARCHAR(500) NOT NULL,
   Degree VARCHAR(100) NOT NULL,
   Edu_year VARCHAR(50) NOT NULL,
-  ProjectLink VARCHAR(1000) NOT NULL,
+  TagLink VARCHAR(1000) NOT NULL,
   CvId INT NOT NULL,
   PRIMARY KEY (EdId),
   FOREIGN KEY (CvId) REFERENCES CV(CvId)
@@ -64,6 +64,7 @@ CREATE TABLE Some
   SomeId INT NOT NULL,
   Name VARCHAR(100) NOT NULL,
   Link VARCHAR(1000) NOT NULL,
+  SomeIcon VARCHAR(1000) NOT NULL,
   CvId INT NOT NULL,
   PRIMARY KEY (SomeId),
   FOREIGN KEY (CvId) REFERENCES CV(CvId)
@@ -116,11 +117,12 @@ VALUES ("Junior Developer", "2018--", 1, "Rovio Entertainment Oyj", "I made..", 
 INSERT INTO Education (EdId, Academy, Description, Degree, Edu_year, ProjectLink, CvId)
 VALUES (1, "Metropolia University of Applied Sciences", "I graduated..", "Bachelor\'s Degree", "2012-2015", "", 1);
 
-INSERT INTO Some (SomeId, Name, Link, CvId)
-VALUES (1, "Instagram", "", 1);
+INSERT INTO Some (SomeId, Name, Link, SomeIcon, CvId)
+VALUES (1, "Instagram", "","img/", 1);
 
 INSERT INTO Project (PId, Name, Subtitle, Description, Picture, Tag, CvId)
 VALUES (1, "Playroom", "Play room for 6 year old girl", "", "", "Visual Merchandising", 1);
 
 INSERT INTO Pictures(PicId, Link, PId)
 VALUES (1, "", 1);
+
