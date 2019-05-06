@@ -62,10 +62,10 @@ function getFront($parameters) {
 function getAbout($parameters) {
     # Example: GET /cv/about
 
-    $conn = new Database();
-    $db = $conn->getConnection();
+    $db = new Database();
+    $conn = $db->getConnection();
 
-    $sql = "SELECT AboutPicture, Heading, Description FROM CV WHERE id=1";
+    $sql = "SELECT AboutPicture, Heading, Description FROM CV WHERE CvId=1";
     $statement = $conn->prepare($sql);
 
     $statement->execute();
@@ -77,8 +77,8 @@ function getAbout($parameters) {
 function getSkills($parameters) {
     # Example: GET /cv/skills
 
-    $conn = new Database();
-    $db = $conn->getConnection();
+    $db = new Database();
+    $conn = $db->getConnection();
 
     $sql = "SELECT Name, SkillLevel FROM Skills";
     $statement = $conn->prepare($sql);
@@ -92,8 +92,8 @@ function getSkills($parameters) {
 function getExperiences($parameters) {
     # Example: GET /cv/experience
 
-    $conn = new Database();
-    $db = $conn->getConnection();
+    $db = new Database();
+    $conn = $db->getConnection();
 
     $sql = "SELECT Title, Exp_Year, Company, Description, TagLink FROM Experience";
     $statement = $conn->prepare($sql);
@@ -107,8 +107,8 @@ function getExperiences($parameters) {
 function getEducations($parameters) {
     # Example: GET /cv/education
 
-    $conn = new Database();
-    $db = $conn->getConnection();
+    $db = new Database();
+    $conn = $db->getConnection();
 
     $sql = "SELECT Academy, Description, Degree, Edu_Year, TagLink FROM Education";
     $statement = $conn->prepare($sql);
@@ -123,11 +123,13 @@ function getEducations($parameters) {
 function getContacts($parameters) {
     # Example: GET /cv/contact
 
-    $conn = new Database();
-    $db = $conn->getConnection();
+    $db = new Database();
+    $conn = $db->getConnection();
 
     //Contact
-    $sql = "SELECT Call, Mail, Address FROM CV";
+    $sql = "SELECT Phone, Mail, Address, Name, Link ,SomeIcon FROM 
+            (SELECT c.phone, c.mail, c.address, s.name, s.link, s.someicon 
+            FROM Some s RIGHT OUTER JOIN CV c ON CvId = SomeId) as Some";
     $statement = $conn->prepare($sql);
 
     $statement->execute();
@@ -135,9 +137,15 @@ function getContacts($parameters) {
 
     header("Content-Type: application/json; charset=UTF-8");
     echo json_encode($rows);
+}
+function getSomes($parameters) {
+    # Example: GET /cv/contact
+
+    $db = new Database();
+    $conn = $db->getConnection();
 
     //Some
-    $sql = "SELECT Name, Link, SomeIcon FROM Some";
+    $sql = "SELECT Name, Link FROM Some";
     $statement = $conn->prepare($sql);
 
     $statement->execute();
@@ -152,10 +160,10 @@ function putFront($parameters) {
     $profession = urldecode($parameters["profession"]);
     $picture = urldecode($parameters["picture"]);
 
-    $conn = new Database();
-    $db = $conn->getConnection();
+    $db = new Database();
+    $conn = $db->getConnection();
 
-    $sql = "UPDATE CV SET Fullname=:fullname, Profession=:profession, FrontPicture=:picture WHERE id=1";
+    $sql = "UPDATE CV SET Fullname=:fullname, Profession=:profession, FrontPicture=:picture WHERE CvId=1";
     $statement = $conn->prepare($sql);
     $statement->bindParam(':fullname', $fullname, PDO::PARAM_STR);
     $statement->bindParam(':profession', $profession, PDO::PARAM_STR);
@@ -172,10 +180,10 @@ function putAbout($parameters) {
     $description = urldecode($parameters["description"]);
     $picture = urldecode($parameters["picture"]);
 
-    $conn = new Database();
-    $db = $conn->getConnection();
+    $db = new Database();
+    $conn = $db->getConnection();
 
-    $sql = "UPDATE CV SET AboutPicture=:picture, Heading=:heading, Description=:description WHERE id=1";
+    $sql = "UPDATE CV SET AboutPicture=:picture, Heading=:heading, Description=:description WHERE CvId=1";
     $statement = $conn->prepare($sql);
     $statement->bindParam(':picture', $picture, PDO::PARAM_STR);
     $statement->bindParam(':heading', $heading, PDO::PARAM_STR);
@@ -193,8 +201,8 @@ function putSkills($parameters) {
     $skill = urldecode($parameters["skill"]);
     $level = urldecode($parameters["level"]);
 
-    $conn = new Database();
-    $db = $conn->getConnection();
+    $db = new Database();
+    $conn = $db->getConnection();
 
     $sql = "IF EXISTS (SELECT * FROM Skills WHERE Sid=:id)
             UPDATE Skills SET Name=:skill, SkillLevel=:level WHERE Sid=:id
@@ -220,8 +228,8 @@ function putExperience($parameters) {
     $description = urldecode($parameters["description"]);
     $taglink = urldecode($parameters["taglink"]);
 
-    $conn = new Database();
-    $db = $conn->getConnection();
+    $db = new Database();
+    $conn = $db->getConnection();
 
     $sql = "SELECT Title, Exp_Year, Company, Description, TagLink FROM Experience";
 
@@ -251,8 +259,8 @@ function putEducation($parameters) {
     $eduyear = urldecode($parameters["eduyear"]);
     $taglink = urldecode($parameters["taglink"]);
 
-    $conn = new Database();
-    $db = $conn->getConnection();
+    $db = new Database();
+    $conn = $db->getConnection();
 
     $sql = "IF EXISTS (SELECT * FROM Education WHERE Sid=:id)
             UPDATE Education SET Academy=:academy, Description=:description, Degree=:degree, Edu_year=:eduyear, TagLink=:taglink WHERE Sid=:id
@@ -276,12 +284,14 @@ function putContact($parameters) {
     $call = urldecode($parameters["call"]);
     $mail = urldecode($parameters["mail"]);
     $address = urldecode($parameters["address"]);
+    $somename = urldecode($parameters["somename"]);
+    $somelink = urldecode($parameters["somelink"]);
 
-    $conn = new Database();
-    $db = $conn->getConnection();
+    $db = new Database();
+    $conn = $db->getConnection();
 
     //Contact
-    $sql = "UPDATE CV SET Call=:call, Mail=:mail, Address=:address WHERE Id=1";
+    $sql = "UPDATE CV SET Call=:call, Mail=:mail, Address=:address WHERE CvId=1";
     $statement = $conn->prepare($sql);
     $statement->bindParam(':call', $call, PDO::PARAM_STR);
     $statement->bindParam(':mail', $mail, PDO::PARAM_STR);
@@ -292,22 +302,10 @@ function putContact($parameters) {
 
     header("Content-Type: application/json; charset=UTF-8");
     echo json_encode($rows);
-}
-function putSome($parameters){
-    $id = urldecode($parameters["id"]);
-    $somename = urldecode($parameters["somename"]);
-    $somelink = urldecode($parameters["somelink"]);
-    $someicon = urldecode($parameters["someicon"]);
 
-    $conn = new Database();
-    $db = $conn->getConnection();
-
+    //Some
     $sql = "UPDATE Some SET Name=:name, Link=:link";
-    $sql = "IF EXISTS (SELECT * FROM Some WHERE Sid=:id)
-            UPDATE Some SET Name=:name, Link=:link WHERE SomeId=:id
-            ELSE INSERT INTO Some (Name, Link) VALUES (:name, :link)";
     $statement = $conn->prepare($sql);
-    $statement->bindParam(':id', $id, PDO::PARAM_STR);
     $statement->bindParam(':name', $somename, PDO::PARAM_STR);
     $statement->bindParam(':link', $somelink, PDO::PARAM_STR);
 
@@ -322,8 +320,8 @@ function deleteSkills($parameters) {
     # Example: GET /cv/skills
     $id = urldecode($parameters["id"]);
 
-    $conn = new Database();
-    $db = $conn->getConnection();
+    $db = new Database();
+    $conn = $db->getConnection();
 
     $sql = "DELETE FROM Skills WHERE Sid=:id";
     $statement = $conn->prepare($sql);
@@ -339,8 +337,8 @@ function deleteExperience($parameters) {
     # Example: GET /cv/experience
     $id = urldecode($parameters["id"]);
 
-    $conn = new Database();
-    $db = $conn->getConnection();
+    $db = new Database();
+    $conn = $db->getConnection();
 
     $sql = "DELETE FROM Experience WHERE Exid=:id";
     $statement = $conn->prepare($sql);
@@ -356,28 +354,10 @@ function deleteEducation($parameters) {
     # Example: GET /cv/education
     $id = urldecode($parameters["id"]);
 
-    $conn = new Database();
-    $db = $conn->getConnection();
+    $db = new Database();
+    $conn = $db->getConnection();
 
     $sql = "DELETE FROM Education WHERE Edid=:id";
-    $statement = $conn->prepare($sql);
-    $statement->bindParam(':id', $id, PDO::PARAM_STR);
-
-    $statement->execute();
-    $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-    header("Content-Type: application/json; charset=UTF-8");
-    echo json_encode($rows);
-}
-
-function deleteSome($parameters) {
-    $id = urldecode($parameters["id"]);
-
-    $conn = new Database();
-    $db = $conn->getConnection();
-
-    //Contact
-    $sql = "DELETE FROM Some WHERE Someid=:id";
     $statement = $conn->prepare($sql);
     $statement->bindParam(':id', $id, PDO::PARAM_STR);
 
@@ -393,8 +373,8 @@ function deleteSome($parameters) {
 function getPortfolio($parameters){
     # Example: GET /portfolio/
 
-    $conn = new Database();
-    $db = $conn->getConnection();
+    $db = new Database();
+    $conn = $db->getConnection();
 
     $sql = "SELECT Name, Subtitle, Description, Picture, Tag FROM Project";
     $statement = $conn->prepare($sql);
@@ -409,8 +389,8 @@ function getProject($parameters){
     # Example: GET /portfolio/id
     $id = urldecode($parameters["id"]);
 
-    $conn = new Database();
-    $db = $conn->getConnection();
+    $db = new Database();
+    $conn = $db->getConnection();
 
     $sql = "SELECT Name, Subtitle, Description, Picture, Tag FROM Project WHERE Pid=:id";
     $statement = $conn->prepare($sql);
@@ -430,22 +410,15 @@ function putProject($parameters) {
     $picture = urldecode($parameters["picture"]);
     $tag = urldecode($parameters["tag"]);
 
-    $conn = new Database();
-    $db = $conn->getConnection();
+    $db = new Database();
+    $conn = $db->getConnection();
 
-    "SELECT Name, Subtitle, Description, Picture, Tag FROM Project";
-
-    $sql = "IF EXISTS (SELECT * FROM Project WHERE Sid=:id)
-            UPDATE Project SET Name=:name, Subtitle=:subtitle, Description=:description, Picture=:picture, Tag=:tag WHERE Sid=:id
-            ELSE INSERT INTO Project (Name, Subtitle, Description, Picture, Tag) VALUES (:name, :subtitle, :description, :picture, :tag)";
+    $sql = "IF EXISTS (SELECT * FROM Education WHERE Sid=:id)
+            UPDATE Education SET Academy=:academy, Description=:description, Degree=:degree, Edu_year=:eduyear, TagLink=:taglink WHERE Sid=:id
+            ELSE INSERT INTO Education (Academy, Description, Degree, Edu_year, TagLink) VALUES (:academy, :description, :degree, :eduyear, :taglink)";
 
     $statement = $conn->prepare($sql);
     $statement->bindParam(':id', $id, PDO::PARAM_STR);
-    $statement->bindParam(':name', $name, PDO::PARAM_STR);
-    $statement->bindParam(':subtitle', $subtitle, PDO::PARAM_STR);
-    $statement->bindParam(':description', $description, PDO::PARAM_STR);
-    $statement->bindParam(':picture', $picture, PDO::PARAM_STR);
-    $statement->bindParam(':tag', $tag, PDO::PARAM_STR);
 
     $statement->execute();
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -457,8 +430,8 @@ function putProject($parameters) {
 function deleteProject($parameters){
     $id = urldecode($parameters["id"]);
 
-    $conn = new Database();
-    $db = $conn->getConnection();
+    $db = new Database();
+    $conn = $db->getConnection();
 
     $sql = "DELETE FROM Project WHERE Pid=:id";
     $statement = $conn->prepare($sql);
@@ -497,21 +470,7 @@ if ($resource[0]=="cv") {
         getFront($parameters);
     }
     else if ($request_method=="GET" && $resource[1]=="about") {
-        //getAbout($parameters);
-        $about_arr = ['heading' => "Hello! I'm Jane",
-            'picture' => "img/cv_janeDoe2_cropped.jpg",
-            'description' => "I am energetic software engineer
-                    with 4 years experience developing robust code for high-volume businesses.
-                    I'm a hard working, flexible and reliable person,
-                    who learns quickly and willing to undertake any task given me.
-                    I enjoy meeting people and work well as part of a team or on my own.
-                    I am also fun and caring. My family including my sweet dog means everything to me.
-                    I love hanging out with my family and friends.
-                    On my spare time I enjoy reading, going hiking and just walking in nature.
-                    <br><br><button class=\"resumebutton\" onclick=\"window.location.href = 'resume.html';\">See My Resume</button>
-                </p>"];
-        header("Content-Type: application/json; charset=UTF-8");
-        echo json_encode($about_arr);
+        getAbout($parameters);
     }
     else if ($request_method=="GET" && $resource[1]=="skills") {
         getSkills($parameters);
@@ -524,6 +483,7 @@ if ($resource[0]=="cv") {
     }
     else if ($request_method=="GET" && $resource[1]=="contact") {
         getContacts($parameters);
+
     }
 
     else if ($request_method=="PUT" && $resource[1]=="front" && $loggedin) {
@@ -543,7 +503,6 @@ if ($resource[0]=="cv") {
     }
     else if ($request_method=="PUT" && $resource[1]=="contact" && $loggedin) {
         putContact($parameters);
-        putSome($parameters);
     }
 
     else if ($request_method=="DELETE" && $resource[1]=="skills" && $loggedin) {
@@ -572,6 +531,7 @@ if ($resource[0]=="cv") {
         getPortfolio($parameters);
     }
     else if ($request_method=="GET" && $resource[1]=="id") {
+        echo "one project with id";
         getProject($parameters);
     }
     else if ($request_method=="PUT" && $resource[1]=="id" && $loggedin) {
