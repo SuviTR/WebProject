@@ -6,8 +6,8 @@
     <title>Jane Doe</title> <!--Vaihda nimi aina uuteen-->
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link href="css/cvstyles.css" type="text/css" rel="stylesheet" />
-    <link href="css/portfolio.css" type="text/css" rel="stylesheet" />
+    <link href="/css/cvstyles.css" type="text/css" rel="stylesheet" />
+    <link href="/css/portfolio.css" type="text/css" rel="stylesheet" />
 
 </head>
 
@@ -36,6 +36,21 @@
 
     </template>
 
+    <template id="login">
+        <nav id="navbar">
+                <a class="active" href="/#front">Home</a>
+                <a href="/#about">About</a>
+                <a href="/#skills">Skills</a>
+                <a href="/#experience">Experience</a>
+                <a href="/#education">Education</a>
+                <a href="/#portfolio">Portfolio</a>
+                <a href="/#contact">Contact</a>
+                <a class="log spa" href="/login">Log in</a>
+            </nav>
+        <p>This is a test login paragraph</p>
+        <a class="spa" href="/">Cancel login</a>
+    </template>
+
     <template id="index">
         <nav id="navbar">
                 <a class="active" href="#front">Home</a>
@@ -45,7 +60,7 @@
                 <a href="#education">Education</a>
                 <a href="#portfolio">Portfolio</a>
                 <a href="#contact">Contact</a>
-                <a class="log" href="#login">Log in</a>
+                <a class="log spa" href="/login">Log in</a>
             </nav>
 
             <div class="content" id="front">
