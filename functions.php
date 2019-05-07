@@ -34,6 +34,9 @@ function getMethod() {
     return $method;
 }
 
+# ----- SQL OPERATIONS -----
+include_once 'config.php';
+
 # ----- CV Handlers -----
 function getCV($parameters) {
     # implements GET method for cv -> GET /cv/
@@ -139,18 +142,17 @@ function getContacts($parameters) {
 }
 
 function putFront($parameters) {
-    $fullname = urldecode($parameters["fullname"]);
-    $profession = urldecode($parameters["profession"]);
-    $picture = urldecode($parameters["picture"]);
+    $putdata = file_get_contents('php://input');
+    $para = json_decode($putdata, true);
 
     $db = new Database();
     $conn = $db->getConnection();
 
     $sql = "UPDATE CV SET Fullname=:fullname, Profession=:profession, FrontPicture=:picture WHERE CvId=1";
     $statement = $conn->prepare($sql);
-    $statement->bindParam(':fullname', $fullname, PDO::PARAM_STR);
-    $statement->bindParam(':profession', $profession, PDO::PARAM_STR);
-    $statement->bindParam(':picture', $picture, PDO::PARAM_STR);
+    $statement->bindParam(':fullname', $para["Fullname"], PDO::PARAM_STR);
+    $statement->bindParam(':profession', $para["Profession"], PDO::PARAM_STR);
+    $statement->bindParam(':picture', $para["FrontPicture"], PDO::PARAM_STR);
 
     $statement->execute();
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -159,18 +161,17 @@ function putFront($parameters) {
     echo json_encode($rows);
 }
 function putAbout($parameters) {
-    $heading = urldecode($parameters["heading"]);
-    $description = urldecode($parameters["description"]);
-    $picture = urldecode($parameters["picture"]);
+    $putdata = file_get_contents('php://input');
+    $para = json_decode($putdata, true);
 
     $db = new Database();
     $conn = $db->getConnection();
 
     $sql = "UPDATE CV SET AboutPicture=:picture, Heading=:heading, Description=:description WHERE CvId=1";
     $statement = $conn->prepare($sql);
-    $statement->bindParam(':picture', $picture, PDO::PARAM_STR);
-    $statement->bindParam(':heading', $heading, PDO::PARAM_STR);
-    $statement->bindParam(':description', $description, PDO::PARAM_STR);
+    $statement->bindParam(':picture', $para["AboutPicture"], PDO::PARAM_STR);
+    $statement->bindParam(':heading', $para["Heading"], PDO::PARAM_STR);
+    $statement->bindParam(':description', $para["Description"], PDO::PARAM_STR);
 
     $statement->execute();
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -180,6 +181,7 @@ function putAbout($parameters) {
 }
 function putSkills($parameters) {
     # Example: GET /cv/skills
+
     $putdata = file_get_contents('php://input');
     $para = json_decode($putdata, true);
 
@@ -199,7 +201,6 @@ function putSkills($parameters) {
         header("Content-Type: application/json; charset=UTF-8");
         echo json_encode($rows);
     }
-
     else {
         $sql = "UPDATE Skills SET Name=:skill, SkillLevel=:level";
 
@@ -216,140 +217,224 @@ function putSkills($parameters) {
 }
 
 function putExperience($parameters) {
-
+    $putdata = file_get_contents('php://input');
+    $para = json_decode($putdata, true);
 
     $db = new Database();
     $conn = $db->getConnection();
 
-    $sql = "SELECT Title, Exp_Year, Company, Description, TagLink FROM Experience";
+    if (!isset($parameters)) {
 
-    $sql = "IF EXISTS (SELECT * FROM Experience WHERE Sid=:id)
-            UPDATE Experience SET Title=:title, Exp_year=:expyear, Company=:company, Description=:description, TagLink=:taglink WHERE Sid=:id
-            ELSE INSERT INTO Experience (Title, Exp_year, Company, Description, TagLink) VALUES (:title, :expyear, :company, :description, :taglink)";
-    $statement = $conn->prepare($sql);
-    $statement->bindParam(':id', $id, PDO::PARAM_STR);
-    $statement->bindParam(':title', $title, PDO::PARAM_STR);
-    $statement->bindParam(':expyear', $expyear, PDO::PARAM_STR);
-    $statement->bindParam(':company', $company, PDO::PARAM_STR);
-    $statement->bindParam(':description', $description, PDO::PARAM_STR);
-    $statement->bindParam(':taglink', $taglink, PDO::PARAM_STR);
+        $sql = "INSERT INTO Experience (Title, Exp_Year, Company, Description, TagLink) VALUES (:title, :exp_year, :company, :description, :taglink)";
 
-    $statement->execute();
-    $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $statement = $conn->prepare($sql);
 
-    header("Content-Type: application/json; charset=UTF-8");
-    echo json_encode($rows);
+        $statement->bindParam(':title', $para["Title"], PDO::PARAM_STR);
+        $statement->bindParam(':expyear', $para["Exp_year"], PDO::PARAM_STR);
+        $statement->bindParam(':company', $para["Company"], PDO::PARAM_STR);
+        $statement->bindParam(':description', $para["Description"], PDO::PARAM_STR);
+        $statement->bindParam(':taglink', $para["TagLink"], PDO::PARAM_STR);
+
+        $statement->execute();
+        $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        header("Content-Type: application/json; charset=UTF-8");
+        echo json_encode($rows);
+    }
+    else {
+        $sql = "UPDATE Experience SET Title=:title, Exp_Year=:expyear, Company=:company, Description=:description, TagLink=:taglink";
+
+        $statement = $conn->prepare($sql);
+
+        $statement->bindParam(':title', $para["Title"], PDO::PARAM_STR);
+        $statement->bindParam(':expyear', $para["Exp_year"], PDO::PARAM_STR);
+        $statement->bindParam(':company', $para["Company"], PDO::PARAM_STR);
+        $statement->bindParam(':description', $para["Description"], PDO::PARAM_STR);
+        $statement->bindParam(':taglink', $para["TagLink"], PDO::PARAM_STR);
+
+        $statement->execute();
+        $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        header("Content-Type: application/json; charset=UTF-8");
+        echo json_encode($rows);
+    }
 }
 
 function putEducation($parameters) {
-    $id = urldecode($parameters["id"]);
-    $academy = urldecode($parameters["academy"]);
-    $description = urldecode($parameters["description"]);
-    $degree = urldecode($parameters["degree"]);
-    $eduyear = urldecode($parameters["eduyear"]);
-    $taglink = urldecode($parameters["taglink"]);
+
+    $putdata = file_get_contents('php://input');
+    $para = json_decode($putdata, true);
 
     $db = new Database();
     $conn = $db->getConnection();
 
-    $sql = "IF EXISTS (SELECT * FROM Education WHERE Sid=:id)
-            UPDATE Education SET Academy=:academy, Description=:description, Degree=:degree, Edu_year=:eduyear, TagLink=:taglink WHERE Sid=:id
-            ELSE INSERT INTO Education (Academy, Description, Degree, Edu_year, TagLink) VALUES (:academy, :description, :degree, :eduyear, :taglink)";
-    $statement = $conn->prepare($sql);
-    $statement->bindParam(':id', $id, PDO::PARAM_STR);
-    $statement->bindParam(':academy', $academy, PDO::PARAM_STR);
-    $statement->bindParam(':description', $description, PDO::PARAM_STR);
-    $statement->bindParam(':degree', $degree, PDO::PARAM_STR);
-    $statement->bindParam(':eduyear', $eduyear, PDO::PARAM_STR);
-    $statement->bindParam(':taglink', $taglink, PDO::PARAM_STR);
+    if (!isset($parameters)) {
+        $sql = "INSERT INTO Education (Academy, Description, Degree, Edu_year, TagLink) VALUES (:academy, :description, :degree, :eduyear, :taglink)";
 
-    $statement->execute();
-    $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $statement = $conn->prepare($sql);
+        $statement->bindParam(':academy', $para["Academy"], PDO::PARAM_STR);
+        $statement->bindParam(':description', $para["Description"], PDO::PARAM_STR);
+        $statement->bindParam(':degree', $para["Degree"], PDO::PARAM_STR);
+        $statement->bindParam(':eduyear', $para["Edu_year"], PDO::PARAM_STR);
+        $statement->bindParam(':taglink', $para["TagLink"], PDO::PARAM_STR);
 
-    header("Content-Type: application/json; charset=UTF-8");
-    echo json_encode($rows);
+        $statement->execute();
+        $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        header("Content-Type: application/json; charset=UTF-8");
+        echo json_encode($rows);
+    }
+    else {
+        $sql = "UPDATE Education SET Academy=:academy, Description=:description, Degree=:degree, Edu_year=:eduyear, TagLink=:taglink";
+
+        $statement = $conn->prepare($sql);
+        $statement->bindParam(':academy', $para["Academy"], PDO::PARAM_STR);
+        $statement->bindParam(':description', $para["Description"], PDO::PARAM_STR);
+        $statement->bindParam(':degree', $para["Degree"], PDO::PARAM_STR);
+        $statement->bindParam(':eduyear', $para["Edu_year"], PDO::PARAM_STR);
+        $statement->bindParam(':taglink', $para["TagLink"], PDO::PARAM_STR);
+
+        $statement->execute();
+        $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        header("Content-Type: application/json; charset=UTF-8");
+        echo json_encode($rows);
+    }
 }
 
 function putContact($parameters) {
-    $call = urldecode($parameters["call"]);
-    $mail = urldecode($parameters["mail"]);
-    $address = urldecode($parameters["address"]);
-    $somename = urldecode($parameters["somename"]);
-    $somelink = urldecode($parameters["somelink"]);
+
+    $putdata = file_get_contents('php://input');
+    $para = json_decode($putdata, true);
 
     $db = new Database();
     $conn = $db->getConnection();
 
-    $sql = "BEGIN TRANSACTION
+    if (!isset($parameters)) {
+        $sql = "INSERT INTO Contact (Phone, Mail, Address) VALUES (:phone, :mail, :address)";
 
-            UPDATE CV SET Call=:call, Mail=:mail, Address=:address WHERE CvId=1    
-            UPDATE CV SET Name=:name, Link=:link
-            
-            COMMIT";
-    $statement = $conn->prepare($sql);
-    $statement->bindParam(':call', $call, PDO::PARAM_STR);
-    $statement->bindParam(':mail', $mail, PDO::PARAM_STR);
-    $statement->bindParam(':address', $address, PDO::PARAM_STR);
-    $statement->bindParam(':name', $somename, PDO::PARAM_STR);
-    $statement->bindParam(':link', $somelink, PDO::PARAM_STR);
+        $statement = $conn->prepare($sql);
+        $statement->bindParam(':phone', $para["Phone"], PDO::PARAM_STR);
+        $statement->bindParam(':mail', $para["Mail"], PDO::PARAM_STR);
+        $statement->bindParam(':address', $para["Address"], PDO::PARAM_STR);
 
-    $statement->execute();
-    $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $statement->execute();
+        $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-    header("Content-Type: application/json; charset=UTF-8");
-    echo json_encode($rows);
+        $sql = "INSERT INTO Some (Name, Link) VALUES (:name, :link)";
+
+        $statement = $conn->prepare($sql);
+        $statement->bindParam(':name', $para["Name"], PDO::PARAM_STR);
+        $statement->bindParam(':link', $para["Link"], PDO::PARAM_STR);
+
+        $statement->execute();
+        $rows2 = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        header("Content-Type: application/json; charset=UTF-8");
+        echo json_encode($rows);
+    }
+    else {
+        $sql = "UPDATE Contact SET Phone=:phone, Mail=:mail, Address=:address";
+
+        $statement = $conn->prepare($sql);
+        $statement->bindParam(':phone', $para["Phone"], PDO::PARAM_STR);
+        $statement->bindParam(':mail', $para["Mail"], PDO::PARAM_STR);
+        $statement->bindParam(':address', $para["Address"], PDO::PARAM_STR);
+
+        $statement->execute();
+        $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        $sql = "UPDATE Some SET (:name, :link)";
+
+        $statement = $conn->prepare($sql);
+        $statement->bindParam(':name', $para["Name"], PDO::PARAM_STR);
+        $statement->bindParam(':link', $para["Link"], PDO::PARAM_STR);
+
+        $statement->execute();
+        $rows2 = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        header("Content-Type: application/json; charset=UTF-8");
+        echo json_encode($rows);
+    }
 }
 
 function deleteSkills($parameters) {
     # Example: GET /cv/skills
-    $id = urldecode($parameters["id"]);
+    $message = array("msgS"=>"success", "msgE"=>"error");
+
+    $putdata = file_get_contents('php://input');
+    $para = json_decode($putdata, true);
 
     $db = new Database();
     $conn = $db->getConnection();
 
-    $sql = "DELETE FROM Skills WHERE Sid=:id";
-    $statement = $conn->prepare($sql);
-    $statement->bindParam(':id', $id, PDO::PARAM_STR);
+    if (!isset($parameters)) {
+        $sql = "DELETE FROM Skills WHERE SId=:id";
+        $statement = $conn->prepare($sql);
+        $statement->bindParam(':id', $para["SId"], PDO::PARAM_STR);
 
-    $statement->execute();
-    $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $statement->execute();
+        $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-    header("Content-Type: application/json; charset=UTF-8");
-    echo json_encode($rows);
+        header("Content-Type: application/json; charset=UTF-8");
+        echo json_encode($rows);
+        echo json_encode($message["msgS"]);
+    }
+    else {
+        echo json_encode($message["msgE"]);
+    }
 }
 function deleteExperience($parameters) {
     # Example: GET /cv/experience
-    $id = urldecode($parameters["id"]);
+    $message = array("msgS"=>"success", "msgE"=>"error");
+
+    $putdata = file_get_contents('php://input');
+    $para = json_decode($putdata, true);
 
     $db = new Database();
     $conn = $db->getConnection();
 
-    $sql = "DELETE FROM Experience WHERE Exid=:id";
-    $statement = $conn->prepare($sql);
-    $statement->bindParam(':id', $id, PDO::PARAM_STR);
+    if (!isset($parameters)) {
+        $sql = "DELETE FROM Experience WHERE ExId=:id";
+        $statement = $conn->prepare($sql);
+        $statement->bindParam(':id', $para["ExId"], PDO::PARAM_STR);
 
-    $statement->execute();
-    $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $statement->execute();
+        $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-    header("Content-Type: application/json; charset=UTF-8");
-    echo json_encode($rows);
+        header("Content-Type: application/json; charset=UTF-8");
+        echo json_encode($rows);
+        echo json_encode($message["msgS"]);
+    }
+    else {
+        json_encode($message["msgE"]);
+    }
 }
 function deleteEducation($parameters) {
     # Example: GET /cv/education
-    $id = urldecode($parameters["id"]);
+    $message = array("msgS"=>"success", "msgE"=>"error");
+
+    $putdata = file_get_contents('php://input');
+    $para = json_decode($putdata, true);
 
     $db = new Database();
     $conn = $db->getConnection();
 
-    $sql = "DELETE FROM Education WHERE Edid=:id";
-    $statement = $conn->prepare($sql);
-    $statement->bindParam(':id', $id, PDO::PARAM_STR);
+    if (!isset($parameters)) {
+        $sql = "DELETE FROM Education WHERE EdId=:id";
+        $statement = $conn->prepare($sql);
+        $statement->bindParam(':id', $para["EdId"], PDO::PARAM_STR);
 
-    $statement->execute();
-    $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $statement->execute();
+        $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-    header("Content-Type: application/json; charset=UTF-8");
-    echo json_encode($rows);
+        header("Content-Type: application/json; charset=UTF-8");
+        echo json_encode($rows);
+        echo json_encode($message["msgS"]);
+    }
+    else {
+        echo json_encode($message["msgE"]);
+    }
 }
 
 # ----- PORTFOLIO Handlers -----
@@ -371,14 +456,15 @@ function getPortfolio($parameters){
 }
 function getProject($parameters){
     # Example: GET /portfolio/id
-    $id = urldecode($parameters["id"]);
+    $putdata = file_get_contents('php://input');
+    $para = json_decode($putdata, true);
 
     $db = new Database();
     $conn = $db->getConnection();
 
-    $sql = "SELECT Name, Subtitle, Description, Picture, Tag FROM Project WHERE Pid=:id";
+    $sql = "SELECT Name, Subtitle, Description, Picture, Tag FROM Project WHERE PId=:id";
     $statement = $conn->prepare($sql);
-    $statement->bindParam(':id', $id, PDO::PARAM_STR);
+    $statement->bindParam(':id', $para["PId"], PDO::PARAM_STR);
 
     $statement->execute();
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -387,45 +473,67 @@ function getProject($parameters){
     echo json_encode($rows);
 }
 function putProject($parameters) {
-    $id = urldecode($parameters["id"]);
-    $name = urldecode($parameters["name"]);
-    $subtitle = urldecode($parameters["subtitle"]);
-    $description = urldecode($parameters["description"]);
-    $picture = urldecode($parameters["picture"]);
-    $tag = urldecode($parameters["tag"]);
+
+    $putdata = file_get_contents('php://input');
+    $para = json_decode($putdata, true);
 
     $db = new Database();
     $conn = $db->getConnection();
 
-    $sql = "IF EXISTS (SELECT * FROM Education WHERE Sid=:id)
-            UPDATE Education SET Academy=:academy, Description=:description, Degree=:degree, Edu_year=:eduyear, TagLink=:taglink WHERE Sid=:id
-            ELSE INSERT INTO Education (Academy, Description, Degree, Edu_year, TagLink) VALUES (:academy, :description, :degree, :eduyear, :taglink)";
+    if (!isset($parameters)) {
+        $sql = "INSERT INTO Project (Name, Subtitle, Decription, Picture, Tag) VALUES (:name, :subtitle, :description, :picture, :tag)";
 
-    $statement = $conn->prepare($sql);
-    $statement->bindParam(':id', $id, PDO::PARAM_STR);
+        $statement = $conn->prepare($sql);
+        $statement->bindParam(':name', $para["Name"], PDO::PARAM_STR);
+        $statement->bindParam(':subtitle', $para["Subtitle"], PDO::PARAM_STR);
+        $statement->bindParam(':description', $para["Description"], PDO::PARAM_STR);
+        $statement->bindParam(':picture', $para["Picture"], PDO::PARAM_STR);
+        $statement->bindParam(':tag', $para["Tag"], PDO::PARAM_STR);
 
-    $statement->execute();
-    $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $statement->execute();
+        $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-    header("Content-Type: application/json; charset=UTF-8");
-    echo json_encode($rows);
+        header("Content-Type: application/json; charset=UTF-8");
+        echo json_encode($rows);
+    }
+    else {
+        $sql = "UPDATE Project SET Name=:name, Subtitle=:subtitle, Description=:description, Picture=:picture, Tag=:tag";
 
+        $statement = $conn->prepare($sql);
+        $statement->bindParam(':name', $para["Name"], PDO::PARAM_STR);
+        $statement->bindParam(':subtitle', $para["Subtitle"], PDO::PARAM_STR);
+        $statement->bindParam(':description', $para["Description"], PDO::PARAM_STR);
+        $statement->bindParam(':picture', $para["Picture"], PDO::PARAM_STR);
+        $statement->bindParam(':tag', $para["Tag"], PDO::PARAM_STR);
+
+        $statement->execute();
+        $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        header("Content-Type: application/json; charset=UTF-8");
+        echo json_encode($rows);
+    }
+    function deleteProject($parameters){
+        $message = array("msgS"=>"success", "msgE"=>"error");
+
+        $putdata = file_get_contents('php://input');
+        $para = json_decode($putdata, true);
+
+        $db = new Database();
+        $conn = $db->getConnection();
+
+        if (!isset($parameters)) {
+            $sql = "DELETE FROM Project WHERE PId=:id";
+            $statement = $conn->prepare($sql);
+            $statement->bindParam(':id', $para["PId"], PDO::PARAM_STR);
+
+            $statement->execute();
+            $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+            header("Content-Type: application/json; charset=UTF-8");
+            echo json_encode($rows);
+            echo json_encode($message["msgS"]);
+        }
+        else {
+            echo json_encode($message["msgE"]);}
+    }
 }
-function deleteProject($parameters){
-    $id = urldecode($parameters["id"]);
-
-    $db = new Database();
-    $conn = $db->getConnection();
-
-    $sql = "DELETE FROM Project WHERE Pid=:id";
-    $statement = $conn->prepare($sql);
-    $statement->bindParam(':id', $id, PDO::PARAM_STR);
-
-    $statement->execute();
-    $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-    header("Content-Type: application/json; charset=UTF-8");
-    echo json_encode($rows);
-}
-
-?>
