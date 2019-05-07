@@ -11,15 +11,28 @@
 <body>
 
     <nav id="navbar">
-        <a class="active" href="#front">Home</a> <!-- class täytyy vaihtaa, kun linkkiä klikkaa-->
+        <a class="active" href="#front">Home</a> <!-- class täytyy vaihtaa, kun linkkiä klikkaa -->
         <a href="#about">About</a>
-        <a href="#skills">Skills</a>
+        <a href="#skills2">Skills</a>
         <a href="#experience">Experience</a>
         <a href="#education">Education</a>
         <a href="#portfolio">Portfolio</a>
-        <a href="#contact">Contact</a>
-        <a class="log" href="#login">Log in</a>
+        <a href="#contact">Contact</a>          <!-- <a class="log" href="#login">Log in</a> -->
+        <div class="dropdown log">
+            <a href="#login">Log in</a>
+            <div class="dropdown-content">
+                <form>
+                    <fieldset id="inputs">
+                        <input id="password" type="password" name="Password" placeholder="Password" required>
+                    </fieldset>
+                    <fieldset id="actions">
+                        <input type="submit" id="submit" class="resumebutton" value="Log in">
+                    </fieldset>
+                </form>
+            </div>
+        </div>
     </nav>
+
 
     <div class="content" id="front">
         <!-- FRONT PAGE -->
@@ -52,7 +65,7 @@
 
 
         <!-- SKILLS -->
-        <div class="portfolio"><p id="skills"></p></div>
+        <div class="portfolio"><p id="skills2"></p></div>
         <div class="portfolio"><h3>Skills</h3></div>
         <div class="skillsdiv">
 

@@ -9,8 +9,8 @@ body {
 }
 /*----- NAV BAR -----*/
 nav {
-    overflow: hidden;
     background-color: white;
+
 }
 nav a {
     float: left;
@@ -41,12 +41,48 @@ nav a:active {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 9999;
+    z-index: 999;
     width: 100%;
     background-color: white;
 }
 .log {
     float: right;
+}
+/*----- LOG IN -----*/
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0rem;
+    margin-top: 2.6rem;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 999;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+#password {
+    font-family: 'Questrial', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    line-height: 2em;
+    width: 10rem;
 }
 
 /*----- LINKS -----*/
@@ -73,8 +109,12 @@ nav a:active {
 
 /*----- FRONT PAGE -----*/
 /*----- Front Page Image -----*/
+.content {
+    z-index: -1;
+}
 .homeimg {
     max-width: 100%;
+    z-index: -1;
 }
 
 figure {
@@ -186,7 +226,7 @@ figure {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    margin-left: 0.05rem;
+
 }
 
 /* ----- SKILLS -----*/
