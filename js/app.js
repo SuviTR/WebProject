@@ -1,14 +1,13 @@
 const el = $('#app');
-const serv = 'http://vcust539.louhi.net:81/api';
+const serv = '/api';
 
+const router = new Router({
+	mode: 'history',
+})
 
 window.addEventListener('load', app);
 
 function app() {
-
-	const router = new Router({
-		mode: 'history',
-	})
 
 
 	router.add('/', () => {
@@ -33,6 +32,10 @@ function app() {
 		showTemplate('project');
 		getAjaxData('/portfolio/' + id, showProject);
 	});
+
+	router.add('/login', () => {
+		showTemplate('login');
+	})
 
 	router.navigateTo(window.location.pathname);
 
@@ -165,7 +168,7 @@ function showPortfolio(json) {
 		var project = document.importNode(template.content, true);
 
 		var link = project.querySelector('a');
-		link.setAttribute('href', '/portfolio/' + i);
+		link.setAttribute('href', '/portfolio/' + json[i].PId);
 		var image = project.querySelector('.image');
 		image.setAttribute('src', json[i].Picture);
 		project.querySelector('.name').textContent
@@ -191,12 +194,11 @@ function showContact(json) {
 function showProject(json) {
 	json = json[0];
 
-	console.log('json:' + json);
-
 	var content = document.getElementsByClassName('columnportfolio2')[0];
-	content.getElementsByTagName('h3')[0].textContent = "Kekkuli";
-	var textArea = content.getElementsByTagName('portfoliocolumn');
-	textArea.innerHTML = "<p>Test paragraph</p><p>Another text paragraph</p>";
+	content.getElementsByTagName('h3')[0].textContent = json.Subtitle;
+	var textArea = content.querySelector('.portfoliocolumn');
+	console.log(textArea);
+	textArea.innerHTML = json.Description;
 
 
 
