@@ -10,6 +10,7 @@ include_once 'functions.php';
 // echo "<br>REQUEST_METHOD " . $_SERVER['REQUEST_METHOD'];
 
 $resource = getResource();
+$is_api = array_shift($resource);
 // echo "<br>resource: ";
 // print_r($resource);
 
@@ -21,6 +22,11 @@ $loggedin = true;
 
 # Redirect to appropriate handlers.
 # ----- CV/ -----
+if($is_api != "api") {
+    //Let's fire up the default view!
+    include('index.html');
+    exit();
+}
 if ($resource[0]=="cv") {
     if ($request_method=="GET" && $resource[1]=="") {
         //getCV($parameters);
@@ -104,10 +110,5 @@ if ($resource[0]=="cv") {
     else {
         http_response_code(405); # Method not allowed
     }
-} else if ($resource[0]=="oddball"){
-    http_response_code(405); # Method not allowed
-} else {
-    //Let's fire up the default view!
-    include('index.html');
 }
 ?>
