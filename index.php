@@ -1,6 +1,5 @@
 <?php
 
-
 # ----- SQL OPERATIONS -----
 include_once 'config.php';
 include_once 'functions.php';
@@ -53,35 +52,35 @@ if ($resource[0]=="cv") {
     }
 
     else if ($request_method=="PUT" && $resource[1]=="front" && $loggedin) {
-        putFront($parameters);
+        putFront($resource[2]);
     }
     else if ($request_method=="PUT" && $resource[1]=="about" && $loggedin) {
-        putAbout($parameters);
+        putAbout($resource[2]);
     }
     else if ($request_method=="PUT" && $resource[1]=="skills" && $loggedin) {
         putSkills($resource[2]);
     }
     else if ($request_method=="PUT" && $resource[1]=="experience" && $loggedin) {
-        putExperience($parameters);
+        putExperience($resource[2]);
     }
     else if ($request_method=="PUT" && $resource[1]=="education" && $loggedin) {
-        putEducation($parameters);
+        putEducation($resource[2]);
     }
     else if ($request_method=="PUT" && $resource[1]=="contact" && $loggedin) {
-        putContact($parameters);
+        putContact($resource[2]);
     }
 
     else if ($request_method=="DELETE" && $resource[1]=="skills" && $loggedin) {
-        deleteSkills($parameters);
+        deleteSkills($resource[2]);
     }
     else if ($request_method=="DELETE" && $resource[1]=="experience" && $loggedin) {
-        deleteExperience($parameters);
+        deleteExperience($resource[2]);
     }
     else if ($request_method=="DELETE" && $resource[1]=="education" && $loggedin) {
-        deleteEducation($parameters);
+        deleteEducation($resource[2]);
     }
     else if ($request_method=="DELETE" && $resource[1]=="contact" && $loggedin) {
-        deleteSome($parameters);
+        deleteSome($resource[2]);
     }
 
     else if ($request_method=="" && $resource[1]=="" && $loggedin) {
@@ -98,13 +97,13 @@ if ($resource[0]=="cv") {
     }
     else if ($request_method=="GET" && $resource[1]=="id") {
         echo "one project with id";
-        getProject($parameters);
+        getProject($resource[2]);
     }
     else if ($request_method=="PUT" && $resource[1]=="id" && $loggedin) {
-        putProject($parameters);
+        putProject($resource[2]);
     }
     else if ($request_method=="DELETE" && $resource[1]=="id" && $loggedin) {
-        deleteProject($parameters);
+        deleteProject($resource[2]);
     }
 
     else {
