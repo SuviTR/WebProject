@@ -121,8 +121,13 @@ INSERT INTO Some (SomeId, Name, Link, SomeIcon, CvId)
 VALUES (1, "Instagram", "","img/", 1);
 
 INSERT INTO Project (PId, Name, Subtitle, Description, Picture, Tag, CvId)
-VALUES (1, "Playroom", "Play room for 6 year old girl", "", "", "Visual Merchandising", 1);
+VALUES (1, "Playroom", "Play room for 6 year old girl", "This is a Description of the project", "/img/playroom.jpeg", "Visual Merchandising", 1);
 
 INSERT INTO Pictures(PicId, Link, PId)
-VALUES (1, "", 1);
-
+VALUES (1, "/img/playroom.jpeg", 1);
+INSERT INTO Pictures(PicId, Link, PId)
+VALUES (2, "/img/playroom2.jpg", 1);
+INSERT INTO Pictures(PicId, Link, PId)
+VALUES (3, "/img/playroom3.jpeg", 1);
+-- INSERT INTO Pictures(PicId, Link, PId)
+-- VALUES (4, "/img/playroom4_cropped.jpg", 2);
