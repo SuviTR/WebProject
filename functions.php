@@ -445,7 +445,7 @@ function getPortfolio($parameters){
     $db = new Database();
     $conn = $db->getConnection();
 
-    $sql = "SELECT Name, Subtitle, Description, Picture, Tag FROM Project";
+    $sql = "SELECT Name, Subtitle, Description, Picture, Tag, PId FROM Project";
     $statement = $conn->prepare($sql);
 
     $statement->execute();
@@ -454,17 +454,16 @@ function getPortfolio($parameters){
     header("Content-Type: application/json; charset=UTF-8");
     echo json_encode($rows);
 }
-function getProject($parameters){
+function getProject($id){
     # Example: GET /portfolio/id
-    $putdata = file_get_contents('php://input');
-    $para = json_decode($putdata, true);
+
 
     $db = new Database();
     $conn = $db->getConnection();
 
     $sql = "SELECT Name, Subtitle, Description, Picture, Tag FROM Project WHERE PId=:id";
     $statement = $conn->prepare($sql);
-    $statement->bindParam(':id', $para["PId"], PDO::PARAM_STR);
+    $statement->bindParam(':id', $id, PDO::PARAM_INT);
 
     $statement->execute();
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
