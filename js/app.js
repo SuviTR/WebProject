@@ -1,5 +1,5 @@
 const el = $('#app');
-const serv = 'http://vcust539.louhi.net:81';
+const serv = 'http://vcust539.louhi.net:81/api';
 
 
 window.addEventListener('load', app);
@@ -24,13 +24,14 @@ function app() {
 
 		getAjaxData('/cv/education', showEducation);
 
-		getAjaxData('/cv/portfolio', showPortfolio);
+		getAjaxData('/portfolio', showPortfolio);
 
-		getAjaxData('/cv/concact', showContact);
+		getAjaxData('/cv/contact', showContact);
 	})
 
-	router.add('/portfolio/project1', () => {
+	router.add('/portfolio/(:any)', (id) => {
 		showTemplate('project');
+		getAjaxData('/portfolio/' + id, showProject);
 	});
 
 	router.navigateTo(window.location.pathname);
@@ -53,7 +54,7 @@ function getAjaxData(address, processingFunction) {
 		}
 	}
 
-	console.log('address: ' + serv + address);
+	console.log(serv + address);
 	httpRequest.open('GET', serv + address, true);
 	httpRequest.send();
 }
@@ -139,8 +140,6 @@ function showEducation(json) {
 	var table = id.getElementsByTagName('table')[0];
 	var template = document.getElementById('edurow');
 
-	console.log(template);
-
 	for(var i = 0; i < json.length; i++) {
 		var row = document.importNode(template.content, true);
 
@@ -158,7 +157,24 @@ function showEducation(json) {
 }
 
 function showPortfolio(json) {
+	var id = document.getElementById('portfolio');
+	var row = id.getElementsByClassName('row2')[0];
+	var template = document.getElementById('portfolioproject');
 
+	for(var i = 0; i < json.length; i++) {
+		var project = document.importNode(template.content, true);
+
+		var link = project.querySelector('a');
+		link.setAttribute('href', '/portfolio/' + i);
+		var image = project.querySelector('.image');
+		image.setAttribute('src', json[i].Picture);
+		project.querySelector('.name').textContent
+		= json[i].Name;
+		project.querySelector('.portfolioinfo').textContent
+		= json[i].Subtitle;
+		row.appendChild(project);
+
+	}
 }
 
 function showContact(json) {
@@ -169,5 +185,19 @@ function showContact(json) {
 	contact.getElementById('phone_number').textContent=json.Phone;
 	contact.getElementById('email_address').textContent=json.Mail;
 	contact.getElementById('street_address').textContent=json.Address;
+
+}
+
+function showProject(json) {
+	json = json[0];
+
+	console.log('json:' + json);
+
+	var content = document.getElementsByClassName('columnportfolio2')[0];
+	content.getElementsByTagName('h3')[0].textContent = "Kekkuli";
+	var textArea = content.getElementsByTagName('portfoliocolumn');
+	textArea.innerHTML = "<p>Test paragraph</p><p>Another text paragraph</p>";
+
+
 
 }
