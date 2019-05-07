@@ -95,15 +95,14 @@ if ($resource[0]=="cv") {
     if ($request_method=="GET" && $resource[1]=="") {
         getPortfolio($parameters);
     }
-    else if ($request_method=="GET" && $resource[1]=="id") {
-        echo "one project with id";
-        getProject($resource[2]);
+    else if ($request_method=="GET" && is_numeric($resource[1])) {
+        getProject($resource[1]);
     }
-    else if ($request_method=="PUT" && $resource[1]=="id" && $loggedin) {
-        putProject($resource[2]);
+    else if ($request_method=="PUT" && is_numeric($resource[1]) && $loggedin) {
+        putProject($resource[1]);
     }
-    else if ($request_method=="DELETE" && $resource[1]=="id" && $loggedin) {
-        deleteProject($resource[2]);
+    else if ($request_method=="DELETE" && is_numeric($resource[1]) && $loggedin) {
+        deleteProject($resource[1]);
     }
 
     else {
