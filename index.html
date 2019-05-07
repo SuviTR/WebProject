@@ -80,26 +80,8 @@
                 <!-- SKILLS -->
                 <p id="skills"></p>
                 <div class="portfolio"><h3>Skills</h3></div>
-                <div class="skillsdiv">
+                <div id="skillsdiv" class="skillsdiv">
                     <table>
-                        <tr>
-                            <td class="skillstdh"><h5>HTML5</h5></td>
-                            <td class="skillstd">
-                                <div class="skillsbarcontainer">
-                                    <div class="skillsbarvalue value-90"></div>
-                                </div>
-                            </td>
-                            <td class="skillstdh"><h6>90%</h6></td>
-                        </tr>
-                        <tr>
-                            <td class="skillstdh"><h5>CSS3</h5></td>
-                            <td class="skillstd">
-                                <div class="skillsbarcontainer">
-                                    <div class="skillsbarvalue value-80"></div>
-                                </div>
-                            </td>
-                            <td class="skillstdh"><h6>80%</h6></td>
-                        </tr>
                     </table>
                     <p id="experience"></p>
                 </div>
@@ -107,34 +89,16 @@
 
                 <!-- EXPERIENCE -->
                 <div class="portfolio"><h3>Experience</h3></div>
-                <div class="education">
+                <div id ="expdiv" class="education">
                     <table>
-                        <tr>
-                            <td><p class="time">2018--</p><p class="experiencep">Junior Developer</p></td>
-                            <td class="timeline"><h6>Rovio Entertainment Oyj</h6><p class="educationpi">I made a website for my company's client.</p></td>
-                        </tr>
-                        <tr>
-                            <td><p class="time">2016-2017</p><p class="experiencep">Visual Merchandiser Assistant</p></td>
-                            <td class="timeline"><h6>Stockmann Oyj Abp</h6><p class="educationpi">I made campaigns.</p></td>
-                        </tr>
                     </table>
                     <p id="education"></p>
                 </div>
 
                 <!-- EDUCATION -->
                 <div class="portfolio"><h3>Education</h3></div>
-                <div class="education">
+                <div id="edudiv" class="education">
                     <table>
-                        <tr>
-                            <td><p class="time">2012-2015</p><p class="experiencep">Bachelor's Degree</p></td>
-                            <td class="timeline"><h6>Software Engineer</h6><p class="educationp">Metropolia University of Applied Sciences</p>
-                                <p class="educationpi">I graduated..</p></td>
-                        </tr>
-                        <tr>
-                            <td><p class="time">2011-2012</p><p class="experiencep">Further Qualification in Marketing Communications</p></td>
-                            <td class="timeline"><h6>Visual Merchandiser</h6><p class="educationp">Vocational School</p>
-                                <p class="educationpi">I graduated from Vocational School.</p></td>
-                        </tr>
                     </table>
                     <p id="portfolio"></p>
                 </div>
@@ -181,24 +145,24 @@
                             <img class="icon img-fluid" align="right" src="img/iconfinder_skype2512x512_197582.png" alt="Phone number">
                         </div>
                         <div class="columncontainer2">
-                            <h5>Call</h5><p class="contactp">123-456-7890​</p>
+                            <h5>Call</h5><p id="phone_number" class="contactp"></p>
                         </div>
                         <div class="columncontainer3">
                             <img class="icon img-fluid" align="right" src="img/iconfinder_mail512x512_197584.png" alt="Mail address">
                         </div>
                         <div class="columncontainer2">
-                            <h5>Contact</h5><p class="contactp">jane.doe(at)mail.com</p>
+                            <h5>Contact</h5><p id="email_address" class="contactp"></p>
                         </div>
                         <div class="columncontainer3">
                             <img class="icon img-fluid" align="right" src="img/iconfinder_home512x512_197589.png" alt="Home address">
                         </div>
                         <div class="columncontainer2">
-                            <h5>Address</h5><p class="contactp">Example Street 10<br>London, UK</p>
+                            <h5>Address</h5><p id="street_address" class="contactp"></p>
                         </div>
                         <div class="columncontainer4">
-                            <img class="icon img-fluid" align="right" src="img/iconfinder_linkedin_2691280.png" alt="Linkedin link">
-                            <img class="icon img-fluid" align="right" src="img/iconfinder_twitter_2691271.png" alt="Twitter link">
-                            <img class="icon img-fluid" align="right" src="img/iconfinder_instagram_2691281.png" alt="Instagram link">
+                            <a href="" id="linkedinlink"><img class="icon img-fluid" align="right" src="img/iconfinder_linkedin_2691280.png" alt="Linkedin link"></a>
+                            <a href="" id="twitterlink"><img class="icon img-fluid" align="right" src="img/iconfinder_twitter_2691271.png" alt="Twitter link"></a>
+                            <a href="" id="instagramlink"><img class="icon img-fluid" align="right" src="img/iconfinder_instagram_2691281.png" alt="Instagram link"></a>
                         </div>
                     </div>
                 </div>
@@ -206,6 +170,30 @@
             </div>
         <script src="/js/navigationbar.js" type="text/javascript"></script>
 
+    </template>
+
+    <template id="skillsrow"><tr>
+                            <td class="skillstdh"><h5><span class="skillsname"></span></h5></td>
+                            <td class="skillstd">
+                                <div class="skillsbarcontainer">
+                                    <div class="skillsbarvalue"></div>
+                                </div>
+                            </td>
+                            <td class="skillstdh"><h6><span class="skillsvalue"></span></h6></td>
+                        </tr>
+    </template>
+    <template id="exprow">
+        <tr>
+                            <td><p class="time"></p><p class="experiencep"></p></td>
+                            <td class="timeline"><h6><span class="expplace"></span></h6><p class="expdesc educationpi"></p></td>
+                        </tr>
+    </template>
+    <template id="edurow">
+        <tr>
+                            <td><p class="time"></p><p class="experiencep"></p></td>
+                            <td class="timeline"><h6><span class="edutitle"></span></h6><p class="educationp"></p>
+                                <p class="educationpi"></p></td>
+                        </tr>
     </template>
     
     <script src="/node_modules/vanilla-router/dist/vanilla-router.js" type="text/javascript"></script>
