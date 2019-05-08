@@ -73,10 +73,6 @@ nav a:active {
     background-color: #ddd;
 }
 
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
 #password {
     font-family: 'Questrial', sans-serif;
     font-size: 0.75rem;

@@ -13,24 +13,24 @@ function app() {
 	router.add('/', () => {
 		showTemplate('index');
 
-		getAjaxData('/cv/front', showFront);
+		getAjaxData('/cv/front', 'GET', showFront);
 
-		getAjaxData('/cv/about', showAbout);
+		getAjaxData('/cv/about', 'GET', showAbout);
 
-		getAjaxData('/cv/skills', showSkills);
+		getAjaxData('/cv/skills', 'GET', showSkills);
 
-		getAjaxData('/cv/experience', showExperience);
+		getAjaxData('/cv/experience', 'GET', showExperience);
 
-		getAjaxData('/cv/education', showEducation);
+		getAjaxData('/cv/education', 'GET', showEducation);
 
-		getAjaxData('/portfolio', showPortfolio);
+		getAjaxData('/portfolio', 'GET', showPortfolio);
 
-		getAjaxData('/cv/contact', showContact);
+		getAjaxData('/cv/contact', 'GET', showContact);
 	})
 
 	router.add('/portfolio/(:any)', (id) => {
 		showTemplate('project');
-		getAjaxData('/portfolio/' + id, showProject);
+		getAjaxData('/portfolio/' + id, 'GET', showProject);
 	});
 
 	router.add('/login', () => {
@@ -42,15 +42,34 @@ function app() {
 	const link = $(`a[href$='${window.location.pathname}']`);
 	link.addClass('active');
 
+
+	loginButton = document.getElementById('login');
+	loginButton.onClick
+
+}
+
+function showLogin() {
+	$( "#loginform" ).toggle();
+}
+
+function login(form) {
+	console.log(form.action);
+	console.log(form.Username.value);
+	console.log(form.Password.value);
+
+	getAjaxData('/login', 'POST', (json) => {
+		console.log(json);
+	})
 }
 
 /* Contents functions */
-function getAjaxData(address, processingFunction) {
+function getAjaxData(address, method, processingFunction) {
 	var httpRequest = new XMLHttpRequest();
 	httpRequest.onreadystatechange = function () {
 		if(httpRequest.readyState === XMLHttpRequest.DONE) {
 			if(httpRequest.status === 200 ) {
 				
+				console.log(httpRequest.responseText);
 				var json = JSON.parse(httpRequest.responseText)
 				processingFunction(json);
 			}
@@ -58,7 +77,7 @@ function getAjaxData(address, processingFunction) {
 	}
 
 	console.log(serv + address);
-	httpRequest.open('GET', serv + address, true);
+	httpRequest.open(method, serv + address, true);
 	httpRequest.send();
 }
 
@@ -160,7 +179,7 @@ function showEducation(json) {
 }
 
 function showPortfolio(json) {
-	var id = document.getElementById('portfolio');
+	var id = document.getElementById('portfoliodiv');
 	var row = id.getElementsByClassName('row2')[0];
 	var template = document.getElementById('portfolioproject');
 
@@ -182,12 +201,10 @@ function showPortfolio(json) {
 
 function showContact(json) {
 	json = json[0];
-	//     $sql = "SELECT Phone, Mail, Address, Name, Link ,SomeIcon FROM 
-	var div = document.getElementById('contact');
 
-	contact.getElementById('phone_number').textContent=json.Phone;
-	contact.getElementById('email_address').textContent=json.Mail;
-	contact.getElementById('street_address').textContent=json.Address;
+	document.getElementById('phone_number').textContent=json.Phone;
+	document.getElementById('email_address').textContent=json.Mail;
+	document.getElementById('street_address').textContent=json.Address;
 
 }
 
@@ -197,8 +214,20 @@ function showProject(json) {
 	var content = document.getElementsByClassName('columnportfolio2')[0];
 	content.getElementsByTagName('h3')[0].textContent = json.Subtitle;
 	var textArea = content.querySelector('.portfoliocolumn');
-	console.log(textArea);
 	textArea.innerHTML = json.Description;
+
+	var pictureArea = document.getElementsByClassName('columnportfolio')[0];
+	var imagetag = pictureArea.getElementsByTagName('img')[0];
+	console.log(imagetag);
+	pictureArea.textContent = "";
+	for(key in json.Pictures) {
+		var clone = imagetag.cloneNode();
+		clone.setAttribute('src', json.Pictures[key]);
+		console.log(clone);
+		console.log(key);
+		pictureArea.appendChild(clone);
+
+	}
 
 
 

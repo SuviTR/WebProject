@@ -16,7 +16,7 @@
 
     
     <template id="project">
-        <a class="spa" href="/"><img class="close" src="/img/close_cropped.png"></a> <!-- Muuta linkki-->
+        <a class="spa" href="#" onclick="router.back()"><img class="close" src="/img/close_cropped.png"></a> <!-- Muuta linkki-->
         <div class="content">
 
             <p class="projecthead">Jane Doe</p>
@@ -37,31 +37,42 @@
     </template>
 
     <template id="login">
-        <nav id="navbar">
-                <a class="active" href="/#front">Home</a>
-                <a href="/#about">About</a>
-                <a href="/#skills2">Skills</a>
-                <a href="/#experience">Experience</a>
-                <a href="/#education">Education</a>
-                <a href="/#portfolio">Portfolio</a>
-                <a href="/#contact">Contact</a>
-                <a class="log spa" href="/login">Log in</a>
-            </nav>
-        <p>This is a test login paragraph</p>
-        <a class="spa" href="/">Cancel login</a>
+                <form method="post" action="/api/login">
+                    <fieldset id="inputs">
+                        <input id="username" type="text" name="Username" placeholder="Username" required="">
+                        <input id="password" type="password" name="Password" placeholder="Password" required="">
+                    </fieldset>
+                    <fieldset id="actions">
+                        <input type="button" id="submit" class="resumebutton" value="Log in"
+                        onclick="return login(this.form)">
+                    </fieldset>
+                </form>
+                <a class="spa" href="/">Cancel login</a>
     </template>
 
     <template id="index">
         <nav id="navbar">
-                <a class="active" href="#front">Home</a>
-                <a href="#about">About</a>
-                <a href="#skills2">Skills</a>
-                <a href="#experience">Experience</a>
-                <a href="#education">Education</a>
-                <a href="#portfolio">Portfolio</a>
-                <a href="#contact">Contact</a>
-                <a class="log spa" href="/login">Log in</a>
-            </nav>
+            <a class="active" href="/#front">Home</a>
+            <a href="/#about">About</a>
+            <a href="/#skills2">Skills</a>
+            <a href="/#experience">Experience</a>
+            <a href="/#education">Education</a>
+            <a href="/#portfolio">Portfolio</a>
+            <a href="/#contact">Contact</a>
+            <div class="dropdown log">
+                <a href="#login" onclick="showLogin()">Log in</a>
+                <div id="loginform" class="dropdown-content">
+                    <form>
+                        <fieldset id="inputs">
+                            <input id="password" type="password" name="Password" placeholder="Password" required>
+                        </fieldset>
+                        <fieldset id="actions">
+                            <input type="submit" id="submit" class="resumebutton" value="Log in">
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </nav>
 
             <div class="content" id="front">
                 <!-- FRONT PAGE -->
@@ -109,10 +120,11 @@
                 <div id="edudiv" class="education">
                     <table>
                     </table>
+                    <p id="portfolio"></p>
                 </div>
 
                 <!-- PORTFOLIO -->
-                <div id="portfolio">
+                <div id="portfoliodiv">
                     <div class="portfolio"><h3>Portfolio</h3></div>
                     <div class="row2"></div>
                 </div>
