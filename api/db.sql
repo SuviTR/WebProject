@@ -95,7 +95,7 @@ CREATE TABLE Pictures
 INSERT INTO CV (CvId, Fullname, FrontPicture, AboutPicture, Profession, Heading,
 Description, Phone, Mail, Address)
 VALUES (1, "Jane Doe", "/img/cv_janeDoe_cropped2_darkened.jpg",
-"img/cv_janeDoe2_cropped.jpg", "Software engineer", "Hello! I'm Jane",
+"/img/cv_janeDoe2_cropped.jpg", "Software engineer", "Hello! I'm Jane",
 "I am energetic software engineer
                     with 4 years experience developing robust code for high-volume businesses.
                     I'm a hard working, flexible and reliable person,
@@ -104,7 +104,7 @@ VALUES (1, "Jane Doe", "/img/cv_janeDoe_cropped2_darkened.jpg",
                     I am also fun and caring. My family including my sweet dog means everything to me.
                     I love hanging out with my family and friends.
                     On my spare time I enjoy reading, going hiking and just walking in nature.
-                    <br><br><button class=\"resumebutton\" onclick=\"window.location.href = \'resume.html\';\">See My Resume</button>
+                    <br><br><button class=\"resumebutton\" onclick=\"router.navigateTo(window.location.href = \'/resume\');\">See My Resume</button>
                 </p>",
 "123-456-7890", "jane.doe(at)mail.com", "Example Street 10 London, UK");
 
