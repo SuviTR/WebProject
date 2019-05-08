@@ -62,12 +62,14 @@
             <div class="dropdown log">
                 <a href="#login" onclick="showLogin()">Log in</a>
                 <div id="loginform" class="dropdown-content">
-                    <form>
+                    <form enctype="multipart/form-data" method="post" action="/api/login">
                         <fieldset id="inputs">
-                            <input id="password" type="password" name="Password" placeholder="Password" required>
+                            <input id="username" type="text" name="Username" placeholder="Username" required="">
+                            <input id="password" type="password" name="Password" placeholder="Password" required="">
                         </fieldset>
                         <fieldset id="actions">
-                            <input type="submit" id="submit" class="resumebutton" value="Log in">
+                            <input type="button" id="submit" class="resumebutton" value="Log in"
+                            onclick="return login(this.form)">
                         </fieldset>
                     </form>
                 </div>
