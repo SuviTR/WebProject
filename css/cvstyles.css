@@ -73,7 +73,7 @@ nav a:active {
     background-color: #ddd;
 }
 
-#password {
+#password, #username {
     font-family: 'Questrial', sans-serif;
     font-size: 0.75rem;
     letter-spacing: 0.1em;

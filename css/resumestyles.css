@@ -80,7 +80,7 @@ h3 {
 .resumecolumn {
     float: left;
     padding-top: 10px;
-    padding-bottom: 60px;
+    padding-bottom: 30px;
     padding-left: 0px;
     padding-right: 20px;
     font-family: 'Questrial', sans-serif;
@@ -292,9 +292,9 @@ td {
     line-height: 20px;
     margin-block-start: 0em;
     margin-block-end: 0em;
-    padding-right: 5px;
+    padding: 0.8rem 0rem 0rem 0rem;
     float: left;
-    width: 15rem;
+    width: 7rem;
 }
 .skillstdh h6{
     font-family: 'Questrial', sans-serif;
@@ -304,7 +304,7 @@ td {
     letter-spacing: 0.1em;
     text-align: left;
     line-height: 20px;
-    padding-left: 5px;
+    padding: 0.8rem 0rem 0rem 0rem;
     margin-block-start: 0em;
     margin-block-end: 0em;
     float: left;
@@ -317,6 +317,11 @@ td {
 .skillsdiv {
     padding-bottom: 60px;
     width: 350px;
+}
+.skillsline {
+    border-top: 1px solid goldenrod;
+    margin-left: 8.7rem;
+    margin-right: 0.3rem;
 }
 
 .skillstdh {
