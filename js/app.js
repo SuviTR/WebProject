@@ -12,6 +12,7 @@ function app() {
 
 	router.add('/', () => {
 		showTemplate('index');
+		showNav();
 
 		ajaxRequest('/cv/front', showFront);
 
@@ -41,12 +42,27 @@ function app() {
 		showTemplate('resume');
 	})
 
+	router.add('/edit', () => {
+		showTemplate('index');
+		showNav();
+		showEditLinks();
+	})
+
 	router.navigateTo(window.location.pathname);
 
 	const link = $(`a[href$='${window.location.pathname}']`);
 	link.addClass('active');
 
 }
+
+function showNav() {
+	$( '#navbar').show()
+}
+
+function hideNav() {
+	$( '#navbar').hide()
+}
+
 
 /* Login functions */ 
 function showLogin() {
@@ -63,7 +79,7 @@ function login(form) {
 		alert(json.Message);
 	}, 'POST', data);
 
-	$( "loginform").hide();
+	$( "#loginform").hide();
 }
 
 /* Ajax functions */
@@ -98,7 +114,7 @@ function showTemplate(templateName) {
 		const href = target.attr('href');
 		const path = href;
 
-		console.log(path);
+		hideNav();
 		router.navigateTo(path);
 	});
 }
@@ -108,6 +124,116 @@ function printResume() {
 }
 
 /* Contents functions */
+function showEditLinks() {
+
+}
+
+function showEditViews() {
+
+	var template;
+	var contents;
+
+	//front
+	template = document.getElementById('frontedit');
+	contents = document.importNode(template.content, true);
+	var front = document.getElementById('frontpagediv');
+	front.innerHTML = "";
+	front.appendChild(contents);
+
+	//about
+	template = document.getElementById('aboutedit');
+	contents = document.importNode(template.content, true);
+	var about = document.getElementById('aboutdiv');
+
+	var aboutimg = about.querySelector('.column');
+	aboutimg.innerHTML = "";
+	aboutimg.appendChild(contents.querySelector('#inputaboutimg'));
+
+	var text = about.querySelector('.column2');
+	text.innerHTML = "";
+	text.appendChild(contents.querySelector('#inputhello'));
+	text.appendChild(contents.querySelector('.aboutcolumn'));
+	text.appendChild(contents.querySelector('.save'));
+
+
+	//skills
+	template = document.getElementById('skillsedit');
+	contents = document.importNode(template.content, true);
+	var skills = document.getElementById('skillsdiv');
+
+	skills.appendChild(contents);
+
+	skills.querySelector('.add').onclick
+		= function () { addRow('skillseditrow','#sklsdiv > table'); };
+
+	//experience
+	template = document.getElementById('skillsedit');
+	contents = document.importNode(template.content, true);
+	var experience = document.getElementById('experiencediv');
+
+	contents.querySelector('button.add').textContent = "Add new experience";
+
+	experience.appendChild(contents);
+
+	experience.querySelector('.add').onclick
+		= function() { addRow('experienceeditrow', "#expdiv > table"); };
+
+	//education
+	template = document.getElementById('skillsedit');
+	contents = document.importNode(template.content, true);
+	var education = document.getElementById('educationdiv');
+
+	contents.querySelector('button.add').textContent = "Add new education";
+
+	education.appendChild(contents);
+
+	education.querySelector('.add').onclick
+		= function() { addRow('educationeditrow', "#edudiv > table"); };
+
+	//portfolio
+	template = document.getElementById('portfolioedit');
+	contents = document.importNode(template.content, true);
+	var portfolio = document.getElementById('portfoliodiv');
+
+	portfolio.appendChild(contents);
+
+	portfolio.querySelector('.add').onclick
+		= function() { addRow('projectadd', ".row2"); };
+
+	//contact
+	template = document.getElementById('contactedit');
+	contents = document.importNode(template.content, true);
+	var contact = document.getElementById('contact');
+	console.log(contact);
+
+	contact.innerHTML = "";
+	contact.appendChild(contents);
+
+	saveButtons();
+}
+
+function addRow(template, selector) {
+	console.log('hello');
+	var template = document.getElementById(template);
+	var contents = document.importNode(template.content, true);
+
+	var table = document.querySelector(selector);
+	table.appendChild(contents);
+	saveButtons();
+
+}
+
+function saveButtons() {
+	//Save buttons
+	var savebuttons = document.getElementsByClassName('save');
+	console.log(savebuttons);
+	for(var i=0; i < savebuttons.length; i++) {
+		savebuttons[i].onclick = function() {
+			alert('pressed!');
+		};
+	}
+}
+
 function showFront(json) {
 			json = json[0];
 			document.getElementById('fullname').textContent=json.Fullname;
@@ -127,7 +253,7 @@ function showAbout(json) {
 		}
 
 function showSkills(json) {
-	var id = document.getElementById('skillsdiv');
+	var id = document.getElementById('sklsdiv');
 	var table = id.getElementsByTagName('table')[0];
 	var template = document.getElementById('skillsrow');
 
