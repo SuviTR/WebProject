@@ -37,14 +37,14 @@ function app() {
 		showTemplate('login');
 	})
 
+	router.add('/resume', () => {
+		showTemplate('resume');
+	})
+
 	router.navigateTo(window.location.pathname);
 
 	const link = $(`a[href$='${window.location.pathname}']`);
 	link.addClass('active');
-
-
-	loginButton = document.getElementById('login');
-	loginButton.onClick
 
 }
 
@@ -81,7 +81,7 @@ function ajaxRequest(address, processingFunction, method = 'GET', data) {
 	}
 
 	httpRequest.open(method, serv + address, true);
-	httpRequest.send(JSON.stringify(data);
+	httpRequest.send(JSON.stringify(data));
 }
 
 function showTemplate(templateName) {
@@ -101,6 +101,10 @@ function showTemplate(templateName) {
 		console.log(path);
 		router.navigateTo(path);
 	});
+}
+
+function printResume() {
+    window.print();
 }
 
 /* Contents functions */
