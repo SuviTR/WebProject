@@ -542,3 +542,13 @@ function putProject($parameters) {
             echo json_encode($message["msgE"]);}
     }
 }
+
+//Other functions
+function login() {
+    $data = file_get_contents('php://input');
+    $params = json_decode($data, true);
+    $return["Message"] = "Success";
+
+    header("Content-Type: application/json; charset=UTF-8");
+    echo json_encode($return);
+}

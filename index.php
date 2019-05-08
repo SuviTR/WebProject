@@ -108,5 +108,7 @@ if ($resource[0]=="cv") {
     else {
         http_response_code(405); # Method not allowed
     }
+} else if ($request_method=="POST" && $resource[0]=="login") {
+    login();
 }
 ?>
