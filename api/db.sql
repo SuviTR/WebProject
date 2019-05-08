@@ -127,6 +127,7 @@ INSERT INTO Some (SomeId, Name, Link, SomeIcon, CvId)
 VALUES (3, "Instagram", "","img/iconfinder_instagram_2691281.png", 1);
 
 INSERT INTO Project (PId, Name, Subtitle, Description, Picture, Tag, CvId)
+
 VALUES (1, "Playroom", "Playroom for 6 year old girl",
                 "The purpose of this project was to design a playroom to my client''s daughter.
                 Principles of designing the playroom were its cost and budget. Low-budget means creativity and making things yourself.
@@ -137,5 +138,9 @@ VALUES (1, "Playroom", "Playroom for 6 year old girl",
                 "img/playroom4_cropped2.jpg", "Visual Merchandising", 1);
 
 INSERT INTO Pictures(PicId, Link, PId)
-VALUES (1, "img/playroom4_cropped.jpg", 1);
+VALUES (1, "/img/playroom.jpeg", 1);
+INSERT INTO Pictures(PicId, Link, PId)
+VALUES (2, "/img/playroom2.jpg", 1);
+INSERT INTO Pictures(PicId, Link, PId)
+VALUES (3, "/img/playroom3.jpeg", 1);
 

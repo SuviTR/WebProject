@@ -465,8 +465,14 @@ function getProject($id){
     $statement = $conn->prepare($sql);
     $statement->bindParam(':id', $id, PDO::PARAM_INT);
 
+    $sql2 = "SELECT PicID, Link FROM Pictures WHERE PId = :id";
+    $statement2 = $conn->prepare($sql2);
+    $statement2->bindParam(':id', $id, PDO::PARAM_INT);
+
     $statement->execute();
+    $statement2->execute();
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+    $rows[0]['Pictures']= $statement2->fetchAll(PDO::FETCH_KEY_PAIR);
 
     header("Content-Type: application/json; charset=UTF-8");
     echo json_encode($rows);
