@@ -4,7 +4,7 @@ input:focus::-webkit-input-placeholder {
 input[type="file"] {
     display: none;
 }
-.button {
+.contentportfolioedit .button {
     background-color: crimson;
     border: none;
     color: white;
@@ -15,7 +15,7 @@ input[type="file"] {
     font-size: 13px;
     margin-left: 295px;
 }
-.close {
+.contentportfolioedit .close {
     float: right;
     margin-top: 50px;
     margin-right: 60px;
@@ -24,7 +24,19 @@ input[type="file"] {
 }
 
 /*----- HEADER -----*/
-.inputfullname {
+.contentportfolioedit .projecthead {
+    left: 50%;
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    color: black;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    padding-top: 30px;
+    clear: right;
+}
+.contentportfolioedit .inputfullname {
     left: 50%;
     text-align: center;
     font-size: 20px;
@@ -42,7 +54,7 @@ input[type="file"] {
 }
 
 /*----- CONTENT FRAME -----*/
-.row {
+.contentportfolioedit .row {
     padding-left: 30px;
     padding-right: 30px;
     padding-bottom: 60px;
@@ -50,20 +62,20 @@ input[type="file"] {
 
 /*----- PROJECT -----*/
 /*----- Image -----*/
-.projectimg {
+.contentportfolioedit .projectimg {
     width: 100%;
     float: left;
     padding-bottom: 10px;
     padding-left: 170px;
 }
-.columnportfolio {
+.contentportfolioedit .columnportfolio {
     float: left;
     width: 50%;
     padding: 5px;
     position: relative;
     padding-top: 50px;
 }
-.labelportfolio {
+.contentportfolioedit .labelportfolio {
     margin-left: 170px;
     margin-top: 0px;
     padding-top: 170px;
@@ -71,7 +83,7 @@ input[type="file"] {
     padding-left: 120px;
     padding-right: 100px;
 }
-label {
+.contentportfolioedit label {
     margin-left: 100px;
     margin-top: 130px;
     margin-bottom: 10px;
@@ -85,13 +97,13 @@ label {
 }
 
 /*----- Text Frame -----*/
-.columnportfolio2 {
+.contentportfolioedit .columnportfolio2 {
     float: left;
     width: 40%;
     padding: 5px;
     padding-top: 15px;
 }
-.inputh3 {
+.contentportfolioedit .inputh3 {
     margin-left: 40px;
     margin-top: 40px;
     margin-block-end: 0em;
@@ -106,7 +118,7 @@ label {
 }
 
 /*----- Description Header -----*/
-.columnportfolio2 h3 {
+.contentportfolioedit .columnportfolio2 h3 {
     padding-left: 38px;
     margin-top: 40px;
     margin-block-end: 0em;
@@ -120,7 +132,7 @@ label {
     width: 540px;
 }
 /*----- Description Text -----*/
-.portfoliocolumn {
+.contentportfolioedit .portfoliocolumn {
     float: left;
     padding-top: 10px;
     padding-bottom: 64px;
@@ -130,7 +142,7 @@ label {
     letter-spacing: 0.1em;
     line-height: 2em;
 }
-.inputportfoliocolumn {
+.contentportfolioedit .inputportfoliocolumn {
     float: left;
     margin-top: 10px;
     margin-bottom: 64px;
