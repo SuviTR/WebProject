@@ -275,12 +275,18 @@ h6 {
 tr {
     margin-bottom: 26px;
 }
+td {
+    padding: 0.7rem 1.4rem 1rem;
+    padding-bottom: 0.74rem;
+    padding-left: 0px;
+    vertical-align: top;
+}
 /* ----- Skills -----*/
 .skillstdh h5 {
     font-family: 'Questrial', sans-serif;
-    font-size: 14px;
-    font-weight: bold;
-    color: black;
+    font-size: 12px;
+    font-weight: normal;
+    color: goldenrod;
     letter-spacing: 0.1em;
     text-align: left;
     line-height: 20px;
@@ -288,10 +294,11 @@ tr {
     margin-block-end: 0em;
     padding-right: 5px;
     float: left;
+    width: 15rem;
 }
 .skillstdh h6{
     font-family: 'Questrial', sans-serif;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: bold;
     color: #C0C0C0;
     letter-spacing: 0.1em;
@@ -314,6 +321,8 @@ tr {
 
 .skillstdh {
     width: 100px;
+    padding-top: 0px;
+    padding-bottom: 0px;
 }
 
 .skillstd {

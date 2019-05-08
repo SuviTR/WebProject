@@ -112,17 +112,30 @@ INSERT INTO Skills (Name, SkillLevel, SId, CVId)
 VALUES ("HTML", 90, 1, 1);
 
 INSERT INTO Experience (Title, Exp_year, ExId, Company, Description, TagLink, CvId)
-VALUES ("Junior Developer", "2018--", 1, "Rovio Entertainment Oyj", "I made..", "", 1);
+VALUES ("Junior Developer", "2018--", 1, "Rovio Entertainment Oyj", "I participated in creating the Angry Birds 2 mobile game. ", "Rovio", 1);
 
 INSERT INTO Education (EdId, Academy, Description, Degree, Edu_year, TagLink, CvId)
-VALUES (1, "Metropolia University of Applied Sciences", "I graduated..", "Bachelor\'s Degree", "2012-2015", "", 1);
+VALUES (1, "Metropolia University of Applied Sciences",
+                            "I studied software engineering and graduated with a Bachelor in Information and Communications Technology.
+                            I got familiar with Java, Python, making web applications and so on.", "Bachelor\'s Degree", "2012-2015", "Metropolia", 1);
 
 INSERT INTO Some (SomeId, Name, Link, SomeIcon, CvId)
-VALUES (1, "Instagram", "","img/", 1);
+VALUES (1, "LinkedIn", "","img/iconfinder_linkedin_2691280.png", 1);
+INSERT INTO Some (SomeId, Name, Link, SomeIcon, CvId)
+VALUES (2, "Twitter", "","img/iconfinder_twitter_2691271.png", 1);
+INSERT INTO Some (SomeId, Name, Link, SomeIcon, CvId)
+VALUES (3, "Instagram", "","img/iconfinder_instagram_2691281.png", 1);
 
 INSERT INTO Project (PId, Name, Subtitle, Description, Picture, Tag, CvId)
-VALUES (1, "Playroom", "Play room for 6 year old girl", "", "", "Visual Merchandising", 1);
+VALUES (1, "Playroom", "Playroom for 6 year old girl",
+                "The purpose of this project was to design a playroom to my client''s daughter.
+                Principles of designing the playroom were its cost and budget. Low-budget means creativity and making things yourself.
+                The parents'' wished for good storage system, ease of cleaning and reconfigurability. Colors and small interior items were all child''s choices.
+                Type of furniture and materials choices and overall designing were left for me.
+                Reconfigurability means that the room was decided to paint white.
+                When the child grows older, it''s much easier to change the furniture and decor when walls are neutral.",
+                "img/playroom4_cropped2.jpg", "Visual Merchandising", 1);
 
 INSERT INTO Pictures(PicId, Link, PId)
-VALUES (1, "", 1);
+VALUES (1, "img/playroom4_cropped.jpg", 1);
 
