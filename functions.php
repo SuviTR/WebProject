@@ -547,8 +547,14 @@ function putProject($parameters) {
 function login() {
     $data = file_get_contents('php://input');
     $params = json_decode($data, true);
-    $return["Message"] = "Success";
-
+    if( $params['Username']=="janedoe"
+        && $params['Password']=="password") {
+        
+        $return["Message"] = "Success";
+    } else {
+        $return["Message"] = "Error";
+    }
+    
     header("Content-Type: application/json; charset=UTF-8");
     echo json_encode($return);
 }
