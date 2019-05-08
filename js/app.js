@@ -13,28 +13,32 @@ function app() {
 	router.add('/', () => {
 		showTemplate('index');
 
-		getAjaxData('/cv/front', 'GET', showFront);
+		ajaxRequest('/cv/front', showFront);
 
-		getAjaxData('/cv/about', 'GET', showAbout);
+		ajaxRequest('/cv/about', showAbout);
 
-		getAjaxData('/cv/skills', 'GET', showSkills);
+		ajaxRequest('/cv/skills', showSkills);
 
-		getAjaxData('/cv/experience', 'GET', showExperience);
+		ajaxRequest('/cv/experience', showExperience);
 
-		getAjaxData('/cv/education', 'GET', showEducation);
+		ajaxRequest('/cv/education', showEducation);
 
-		getAjaxData('/portfolio', 'GET', showPortfolio);
+		ajaxRequest('/portfolio', showPortfolio);
 
-		getAjaxData('/cv/contact', 'GET', showContact);
+		ajaxRequest('/cv/contact', showContact);
 	})
 
 	router.add('/portfolio/(:any)', (id) => {
 		showTemplate('project');
-		getAjaxData('/portfolio/' + id, 'GET', showProject);
+		ajaxRequest('/portfolio/' + id, showProject);
 	});
 
 	router.add('/login', () => {
 		showTemplate('login');
+	})
+
+	router.add('/resume', () => {
+		showTemplate('resume');
 	})
 
 	router.navigateTo(window.location.pathname);
@@ -42,45 +46,43 @@ function app() {
 	const link = $(`a[href$='${window.location.pathname}']`);
 	link.addClass('active');
 
-
-	loginButton = document.getElementById('login');
-	loginButton.onClick
-
 }
 
+/* Login functions */ 
 function showLogin() {
 	$( "#loginform" ).toggle();
 }
 
 function login(form) {
-	console.log(form.action);
-	console.log(form.Username.value);
-	console.log(form.Password.value);
+	var data = {"Username": form.Username.value,
+				"Password": form.Password.value};
 
-	getAjaxData('/login', 'POST', (json) => {
+
+	ajaxRequest('/login', (json) => {
 		console.log(json);
-	})
+		alert(json.Message);
+	}, 'POST', data);
+
+	$( "loginform").hide();
 }
 
-/* Contents functions */
-function getAjaxData(address, method, processingFunction) {
+/* Ajax functions */
+function ajaxRequest(address, processingFunction, method = 'GET', data) {
+	//Data must be JSON
 	var httpRequest = new XMLHttpRequest();
 	httpRequest.onreadystatechange = function () {
 		if(httpRequest.readyState === XMLHttpRequest.DONE) {
 			if(httpRequest.status === 200 ) {
 				
-				console.log(httpRequest.responseText);
 				var json = JSON.parse(httpRequest.responseText)
 				processingFunction(json);
 			}
 		}
 	}
 
-	console.log(serv + address);
 	httpRequest.open(method, serv + address, true);
-	httpRequest.send();
+	httpRequest.send(JSON.stringify(data));
 }
-
 
 function showTemplate(templateName) {
 	let template = document.getElementById(templateName);
@@ -101,13 +103,18 @@ function showTemplate(templateName) {
 	});
 }
 
+function printResume() {
+    window.print();
+}
 
+/* Contents functions */
 function showFront(json) {
 			json = json[0];
 			document.getElementById('fullname').textContent=json.Fullname;
 			document.getElementById('profession')
 			.textContent=json.Profession;
-			document.getElementById('frontpicture').setAttribute('src', json.FrontPicture);
+			document.getElementById('frontpicture')
+				.setAttribute('src', json.FrontPicture);
 }
 
 function showAbout(json) {
@@ -115,7 +122,8 @@ function showAbout(json) {
 			document.getElementById('aboutheading').textContent=json.Heading;
 			document.getElementById('aboutdescription')
 			.innerHTML=json.Description;
-			document.getElementById('aboutimg').setAttribute('src', json.AboutPicture);
+			document.getElementById('aboutimg')
+				.setAttribute('src', json.AboutPicture);
 		}
 
 function showSkills(json) {
@@ -129,7 +137,8 @@ function showSkills(json) {
 		= json[i].Name;
 		
 		var bar = row.querySelector('.skillsbarvalue');
-		bar.setAttribute('class', 'skillsbarvalue value-' + json[i].SkillLevel);
+		bar.setAttribute('class', 'skillsbarvalue value-'
+			+ json[i].SkillLevel);
 		row.querySelector('.skillsvalue').textContent
 		= json[i].SkillLevel;
 		table.appendChild(row);
@@ -223,8 +232,6 @@ function showProject(json) {
 	for(key in json.Pictures) {
 		var clone = imagetag.cloneNode();
 		clone.setAttribute('src', json.Pictures[key]);
-		console.log(clone);
-		console.log(key);
 		pictureArea.appendChild(clone);
 
 	}
