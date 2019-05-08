@@ -477,7 +477,7 @@ function getProject($id){
     header("Content-Type: application/json; charset=UTF-8");
     echo json_encode($rows);
 }
-function putProject($parameters) {
+function putProject($parameters){
 
     $putdata = file_get_contents('php://input');
     $para = json_decode($putdata, true);
@@ -500,8 +500,8 @@ function putProject($parameters) {
 
         header("Content-Type: application/json; charset=UTF-8");
         echo json_encode($rows);
-    }
-    else {
+        $return["Message"] = "Success";
+    } else {
         $sql = "UPDATE Project SET Name=:name, Subtitle=:subtitle, Description=:description, Picture=:picture, Tag=:tag";
 
         $statement = $conn->prepare($sql);
@@ -516,32 +516,30 @@ function putProject($parameters) {
 
         header("Content-Type: application/json; charset=UTF-8");
         echo json_encode($rows);
-    }
-    function deleteProject($parameters){
-        $message = array("msgS"=>"success", "msgE"=>"error");
-
-        $putdata = file_get_contents('php://input');
-        $para = json_decode($putdata, true);
-
-        $db = new Database();
-        $conn = $db->getConnection();
-
-        if (!isset($parameters)) {
-            $sql = "DELETE FROM Project WHERE PId=:id";
-            $statement = $conn->prepare($sql);
-            $statement->bindParam(':id', $para["PId"], PDO::PARAM_STR);
-
-            $statement->execute();
-            $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-            header("Content-Type: application/json; charset=UTF-8");
-            echo json_encode($rows);
-            echo json_encode($message["msgS"]);
-        }
-        else {
-            echo json_encode($message["msgE"]);}
+        $return["Message"] = "Success";
     }
 }
+function deleteProject($parameters){
+
+    $putdata = file_get_contents('php://input');
+    $para = json_decode($putdata, true);
+
+    $db = new Database();
+    $conn = $db->getConnection();
+
+    if (!isset($parameters)) {
+        $sql = "DELETE FROM Project WHERE PId=:id";
+        $statement = $conn->prepare($sql);
+        $statement->bindParam(':id', $para["PId"], PDO::PARAM_STR);
+
+        $statement->execute();
+        $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        header("Content-Type: application/json; charset=UTF-8");
+        echo json_encode($rows);
+    }
+}
+
 
 //Other functions
 function login() {
