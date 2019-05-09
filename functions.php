@@ -80,7 +80,7 @@ function getSkills($parameters) {
     $db = new Database();
     $conn = $db->getConnection();
 
-    $sql = "SELECT Name, SkillLevel FROM Skills";
+    $sql = "SELECT Name, SkillLevel,SId FROM Skills";
     $statement = $conn->prepare($sql);
 
     $statement->execute();
@@ -95,7 +95,7 @@ function getExperiences($parameters) {
     $db = new Database();
     $conn = $db->getConnection();
 
-    $sql = "SELECT Title, Exp_Year, Company, Description, TagLink FROM Experience";
+    $sql = "SELECT Title, Exp_Year, Company, Description, TagLink,ExId FROM Experience";
     $statement = $conn->prepare($sql);
 
     $statement->execute();
@@ -110,7 +110,7 @@ function getEducations($parameters) {
     $db = new Database();
     $conn = $db->getConnection();
 
-    $sql = "SELECT Academy, Description, Degree, Edu_Year, TagLink FROM Education";
+    $sql = "SELECT Academy, Description, Degree, Edu_Year, TagLink,EdId FROM Education";
     $statement = $conn->prepare($sql);
 
     $statement->execute();
