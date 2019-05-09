@@ -173,9 +173,12 @@ function putAbout($parameters) {
     $statement->bindParam(':heading', $para["Heading"], PDO::PARAM_STR);
     $statement->bindParam(':description', $para["Description"], PDO::PARAM_STR);
 
-    $statement->execute();
-    $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
-
+    try {
+        $statement->execute();
+        $rows['Message'] = "Success";
+    } catch(PDOException $e) {
+        $rows['Message'] = $e->getMessage();
+    }
     header("Content-Type: application/json; charset=UTF-8");
     echo json_encode($rows);
 }
@@ -184,6 +187,7 @@ function putSkills($id) {
 
     $putdata = file_get_contents('php://input');
     $para = json_decode($putdata, true);
+    $rows['parameters'] = $para;
 
     $db = new Database();
     $conn = $db->getConnection();
@@ -216,13 +220,11 @@ function putSkills($id) {
 function putExperience($parameters) {
     $putdata = file_get_contents('php://input');
     $para = json_decode($putdata, true);
-    var_dump($para);
 
     $db = new Database();
     $conn = $db->getConnection();
 
     if (!isset($parameters) || $parameters == "") {
-        echo "insert";
         $sql = "INSERT INTO Experience (Title, Exp_Year, Company, Description, TagLink,CvId) VALUES (:title, :exp_year, :company, :description, :taglink, 1)";
 
         $statement = $conn->prepare($sql);
@@ -235,7 +237,6 @@ function putExperience($parameters) {
 
     }
     else {
-        echo "update";
         $sql = "UPDATE Experience SET Title=:title, Exp_Year=:expyear, Company=:company, Description=:description, TagLink=:taglink WHERE ExId=:id";
 
         $statement = $conn->prepare($sql);
