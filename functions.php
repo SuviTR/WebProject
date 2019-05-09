@@ -95,7 +95,7 @@ function getExperiences($parameters) {
     $db = new Database();
     $conn = $db->getConnection();
 
-    $sql = "SELECT Title, Exp_Year, Company, Description, TagLink,ExId FROM Experience";
+    $sql = "SELECT Title, Exp_Year, Company, Description, TagLink FROM Experience ORDER BY Exp_Year DESC, Company";
     $statement = $conn->prepare($sql);
 
     $statement->execute();
@@ -110,7 +110,7 @@ function getEducations($parameters) {
     $db = new Database();
     $conn = $db->getConnection();
 
-    $sql = "SELECT Academy, Description, Degree, Edu_Year, TagLink,EdId FROM Education";
+    $sql = "SELECT Academy, Description, Degree, Edu_Year, TagLink FROM Education ORDER BY Edu_Year DESC, Academy";
     $statement = $conn->prepare($sql);
 
     $statement->execute();

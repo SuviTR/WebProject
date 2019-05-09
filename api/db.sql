@@ -36,7 +36,7 @@ CREATE TABLE Skills
 CREATE TABLE Experience
 (
   Title VARCHAR(100) NOT NULL,
-  Exp_year VARCHAR(50) NOT NULL,
+  Exp_Year VARCHAR(50) NOT NULL,
   ExId INT NOT NULL AUTO_INCREMENT,
   Company VARCHAR(100) NOT NULL,
   Description VARCHAR(2000) NOT NULL,
@@ -111,10 +111,10 @@ VALUES (1, "Jane Doe", "/img/cv_janeDoe_cropped2_darkened.jpg",
 INSERT INTO Skills (Name, SkillLevel, SId, CVId)
 VALUES ("HTML", 90, 1, 1);
 
-INSERT INTO Experience (Title, Exp_year, ExId, Company, Description, TagLink, CvId)
+INSERT INTO Experience (Title, Exp_Year, ExId, Company, Description, TagLink, CvId)
 VALUES ("Junior Developer", "2018--", 1, "Rovio Entertainment Oyj", "I participated in creating the Angry Birds 2 mobile game. ", "Rovio", 1);
 
-INSERT INTO Education (EdId, Academy, Description, Degree, Edu_year, TagLink, CvId)
+INSERT INTO Education (EdId, Academy, Description, Degree, Edu_Year, TagLink, CvId)
 VALUES (1, "Metropolia University of Applied Sciences",
                             "I studied software engineering and graduated with a Bachelor in Information and Communications Technology.
                             I got familiar with Java, Python, making web applications and so on.", "Bachelor\'s Degree", "2012-2015", "Metropolia", 1);
