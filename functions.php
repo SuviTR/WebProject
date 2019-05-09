@@ -179,41 +179,44 @@ function putAbout($parameters) {
     header("Content-Type: application/json; charset=UTF-8");
     echo json_encode($rows);
 }
-function putSkills($parameters) {
+function putSkills($id) {
     # Example: GET /cv/skills
 
     $putdata = file_get_contents('php://input');
     $para = json_decode($putdata, true);
+    var_dump($para);
 
     $db = new Database();
     $conn = $db->getConnection();
 
-    if (!isset($parameters)) {
+    if (!isset($id) || $id=="") {
+        echo "insert";
         $sql = "INSERT INTO Skills (Name, SkillLevel) VALUES (:skill, :level)";
 
         $statement = $conn->prepare($sql);
         $statement->bindParam(':skill', $para["Name"], PDO::PARAM_STR);
-        $statement->bindParam(':level', $para["SkillLevel"], PDO::PARAM_STR);
+        $statement->bindParam(':level', $para["SkillLevel"], PDO::PARAM_INT);
 
         $statement->execute();
-        $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
 
         header("Content-Type: application/json; charset=UTF-8");
         echo json_encode($rows);
     }
     else {
-        $sql = "UPDATE Skills SET Name=:skill, SkillLevel=:level";
+        echo "update";
+        $sql = "UPDATE Skills SET Name=:skill, SkillLevel=:level WHERE SId=:id";
 
         $statement = $conn->prepare($sql);
         $statement->bindParam(':skill', $para["Name"], PDO::PARAM_STR);
         $statement->bindParam(':level', $para["SkillLevel"], PDO::PARAM_STR);
+        $statement->bindParam(':id', $id);
 
         $statement->execute();
-        $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
 
         header("Content-Type: application/json; charset=UTF-8");
         echo json_encode($rows);
     }
+
 }
 
 function putExperience($parameters) {
