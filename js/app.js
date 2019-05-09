@@ -186,7 +186,7 @@ function showEditViews() {
 	text.querySelector('[name=Heading]').value = data.about[0].Heading;
 	text.querySelector('[name=Description]').value = data.about[0].Description;
 	text.querySelector('[name=AboutPicture]').value
-		= data.front[0].AboutPicture;
+		= data.about[0].AboutPicture;
 
 
 	//skills
@@ -438,6 +438,7 @@ function ajaxRequest(address, processingFunction, method = 'GET', data) {
 		if(httpRequest.readyState === XMLHttpRequest.DONE) {
 			if(httpRequest.status === 200 ) {
 				
+				console.log(httpRequest.responseText);
 				var json = JSON.parse(httpRequest.responseText)
 				processingFunction(json);
 			}
