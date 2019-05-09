@@ -155,7 +155,7 @@ function putFront($parameters) {
     $statement->bindParam(':picture', $para["FrontPicture"], PDO::PARAM_STR);
 
     $statement->execute();
-    $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+    $rows['Message'] = "success";
 
     header("Content-Type: application/json; charset=UTF-8");
     echo json_encode($rows);
