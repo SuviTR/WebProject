@@ -1,5 +1,8 @@
 const el = $('#app');
 const serv = '/api';
+var editmode = false;
+//All the JSON data will be saved here:
+var data = {};
 
 const router = new Router({
 	mode: 'history',
@@ -14,19 +17,7 @@ function app() {
 		showTemplate('index');
 		showNav();
 
-		ajaxRequest('/cv/front', showFront);
-
-		ajaxRequest('/cv/about', showAbout);
-
-		ajaxRequest('/cv/skills', showSkills);
-
-		ajaxRequest('/cv/experience', showExperience);
-
-		ajaxRequest('/cv/education', showEducation);
-
-		ajaxRequest('/portfolio', showPortfolio);
-
-		ajaxRequest('/cv/contact', showContact);
+		getIndexData();
 	})
 
 	router.add('/portfolio/(:any)', (id) => {
@@ -50,19 +41,32 @@ function app() {
 
 	router.navigateTo(window.location.pathname);
 
-	const link = $(`a[href$='${window.location.pathname}']`);
-	link.addClass('active');
-
 }
 
 function showNav() {
 	$( '#navbar').show()
+	$( '#navbar > a').on('click', (event) => {
+		document.getElementsByClassName('active')[0].className="";
+		console.log(event.target);
+		event.target.setAttribute('class', 'active');
+	});
 }
 
 function hideNav() {
 	$( '#navbar').hide()
 }
 
+function spaLink(event) {
+	event.preventDefault();
+
+	var target = $(event.target).closest('a');
+
+	const href = target.attr('href');
+	const path = href;
+
+	hideNav();
+	router.navigateTo(path);
+}
 
 /* Login functions */ 
 function showLogin() {
@@ -82,23 +86,30 @@ function login(form) {
 	$( "#loginform").hide();
 }
 
-/* Ajax functions */
-function ajaxRequest(address, processingFunction, method = 'GET', data) {
-	//Data must be JSON
-	var httpRequest = new XMLHttpRequest();
-	httpRequest.onreadystatechange = function () {
-		if(httpRequest.readyState === XMLHttpRequest.DONE) {
-			if(httpRequest.status === 200 ) {
-				
-				var json = JSON.parse(httpRequest.responseText)
-				processingFunction(json);
-			}
-		}
-	}
 
-	httpRequest.open(method, serv + address, true);
-	httpRequest.send(JSON.stringify(data));
+function printResume() {
+    window.print();
 }
+
+function toggleEdit() {
+	if(editmode) {
+		showTemplate('index');
+		getIndexData();
+
+		document.getElementById('editpagebutton').textContent = "Edit page";
+
+		editmode = false;
+	} else {
+		showEditViews();
+
+		document.getElementById('editpagebutton').textContent = "End editing";
+		document.getElementsByClassName('contentcv')[0]
+			.setAttribute('class', 'contentcvedit');
+
+		editmode = true;
+	}
+}
+
 
 function showTemplate(templateName) {
 	let template = document.getElementById(templateName);
@@ -106,24 +117,38 @@ function showTemplate(templateName) {
 	app.textContent = "";
 	app.appendChild(template.content.cloneNode(true));
 
-	$('a.spa').on('click', (event) => {
-		event.preventDefault();
-
-		var target = $(event.target).closest('a');
-
-		const href = target.attr('href');
-		const path = href;
-
-		hideNav();
-		router.navigateTo(path);
-	});
-}
-
-function printResume() {
-    window.print();
+	$('a.spa').on('click', spaLink);
 }
 
 /* Contents functions */
+function getIndexData() {
+	//If data is empty, fetch stuff via Ajax
+	if(Object.entries(data).length === 0 
+		&& data.constructor === Object) {
+		ajaxRequest('/cv/front', showFront);
+
+		ajaxRequest('/cv/about', showAbout);
+
+		ajaxRequest('/cv/skills', showSkills);
+
+		ajaxRequest('/cv/experience', showExperience);
+
+		ajaxRequest('/cv/education', showEducation);
+
+		ajaxRequest('/portfolio', showPortfolio);
+
+		ajaxRequest('/cv/contact', showContact);
+	} else {
+		showFront(data.front);
+		showAbout(data.about);
+		showSkills(data.skills);
+		showExperience(data.experience);
+		showEducation(data.education);
+		showPortfolio(data.portfolio);
+		showContact(data.contact);
+	}
+}
+
 function showEditLinks() {
 
 }
@@ -139,6 +164,11 @@ function showEditViews() {
 	var front = document.getElementById('frontpagediv');
 	front.innerHTML = "";
 	front.appendChild(contents);
+
+	front.querySelector('[name=Fullname]').value = data.front[0].Fullname;
+	front.querySelector('[name=Profession]').value = data.front[0].Profession;
+	front.querySelector('[name=FrontPicture]').value
+		= data.front[0].FrontPicture;
 
 	//about
 	template = document.getElementById('aboutedit');
@@ -204,7 +234,6 @@ function showEditViews() {
 	template = document.getElementById('contactedit');
 	contents = document.importNode(template.content, true);
 	var contact = document.getElementById('contact');
-	console.log(contact);
 
 	contact.innerHTML = "";
 	contact.appendChild(contents);
@@ -213,7 +242,6 @@ function showEditViews() {
 }
 
 function addRow(template, selector) {
-	console.log('hello');
 	var template = document.getElementById(template);
 	var contents = document.importNode(template.content, true);
 
@@ -226,16 +254,35 @@ function addRow(template, selector) {
 function saveButtons() {
 	//Save buttons
 	var savebuttons = document.getElementsByClassName('save');
-	console.log(savebuttons);
 	for(var i=0; i < savebuttons.length; i++) {
-		savebuttons[i].onclick = function() {
-			alert('pressed!');
-		};
+		savebuttons[i].onclick = () => {
+			saveData($(event.target).closest('div[id]'));
+		}
 	}
 }
 
+function saveData(div) {
+	var toSave = {};
+	var inputs = div.find(":input");
+	var url;
+
+	for(var i = 0; i < inputs.length; i++) {
+		var input = inputs[i];
+		if(input.name === "url") {
+			url = input.value;
+		} else {
+			toSave[input.name] = input.value;
+		}
+	}
+	console.log(toSave);
+
+	ajaxRequest(url, (json) => {console.log(json)}, 'PUT', toSave);
+}
+
 function showFront(json) {
+			data.front = json;
 			json = json[0];
+			document.title = json.Fullname;
 			document.getElementById('fullname').textContent=json.Fullname;
 			document.getElementById('profession')
 			.textContent=json.Profession;
@@ -244,6 +291,7 @@ function showFront(json) {
 }
 
 function showAbout(json) {
+			data.about = json;
 			json = json[0];
 			document.getElementById('aboutheading').textContent=json.Heading;
 			document.getElementById('aboutdescription')
@@ -253,6 +301,7 @@ function showAbout(json) {
 		}
 
 function showSkills(json) {
+	data.skills = json;
 	var id = document.getElementById('sklsdiv');
 	var table = id.getElementsByTagName('table')[0];
 	var template = document.getElementById('skillsrow');
@@ -273,6 +322,7 @@ function showSkills(json) {
 }
 
 function showExperience(json) {
+	data.experience = json;
 	var id = document.getElementById('expdiv');
 	var table = id.getElementsByTagName('table')[0];
 	var template = document.getElementById('exprow');
@@ -293,6 +343,7 @@ function showExperience(json) {
 }
 
 function showEducation(json) {
+	data.education = json;
 	var id = document.getElementById('edudiv');
 	var table = id.getElementsByTagName('table')[0];
 	var template = document.getElementById('edurow');
@@ -314,6 +365,7 @@ function showEducation(json) {
 }
 
 function showPortfolio(json) {
+	data.portfolio = json;
 	var id = document.getElementById('portfoliodiv');
 	var row = id.getElementsByClassName('row2')[0];
 	var template = document.getElementById('portfolioproject');
@@ -323,6 +375,7 @@ function showPortfolio(json) {
 
 		var link = project.querySelector('a');
 		link.setAttribute('href', '/portfolio/' + json[i].PId);
+		link.onclick = spaLink;
 		var image = project.querySelector('.image');
 		image.setAttribute('src', json[i].Picture);
 		project.querySelector('.name').textContent
@@ -335,6 +388,7 @@ function showPortfolio(json) {
 }
 
 function showContact(json) {
+	data.contact = json;
 	json = json[0];
 
 	document.getElementById('phone_number').textContent=json.Phone;
@@ -353,7 +407,6 @@ function showProject(json) {
 
 	var pictureArea = document.getElementsByClassName('columnportfolio')[0];
 	var imagetag = pictureArea.getElementsByTagName('img')[0];
-	console.log(imagetag);
 	pictureArea.textContent = "";
 	for(key in json.Pictures) {
 		var clone = imagetag.cloneNode();
@@ -364,4 +417,22 @@ function showProject(json) {
 
 
 
+}
+
+/* Ajax functions */
+function ajaxRequest(address, processingFunction, method = 'GET', data) {
+	//Data must be JSON
+	var httpRequest = new XMLHttpRequest();
+	httpRequest.onreadystatechange = function () {
+		if(httpRequest.readyState === XMLHttpRequest.DONE) {
+			if(httpRequest.status === 200 ) {
+				
+				var json = JSON.parse(httpRequest.responseText)
+				processingFunction(json);
+			}
+		}
+	}
+
+	httpRequest.open(method, serv + address, true);
+	httpRequest.send(JSON.stringify(data));
 }

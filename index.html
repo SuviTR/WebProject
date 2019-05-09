@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Jane Doe</title> <!--Vaihda nimi aina uuteen-->
+    <title></title> <!--Vaihda nimi aina uuteen-->
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link href="/css/cvstyles.css" type="text/css" rel="stylesheet" />
-    <link href="/css/portfolio.css" type="text/css" rel="stylesheet" />
-    <link href="/css/resumestyles.css" type="text/css" rel="stylesheet" />
+    <link href="/css/allstyles.css" type="text/css" rel="stylesheet" />
+
 
 </head>
 
@@ -21,6 +20,7 @@
         <a href="/#education">Education</a>
         <a href="/#portfolio">Portfolio</a>
         <a href="/#contact">Contact</a>
+        <button class="button" id="editpagebutton" onclick="toggleEdit()">Edit page</button>
         <div class="dropdown log">
             <a href="#login" onclick="showLogin()">Log in</a>
             <div id="loginform" class="dropdown-content">
@@ -42,7 +42,7 @@
     
     <template id="project">
         <a class="spa" href="#" onclick="router.back()"><img class="close" src="/img/close_cropped.png"></a> <!-- Muuta linkki-->
-        <div class="content">
+        <div class="contentportfolio">
 
             <p class="projecthead">Jane Doe</p>
 
@@ -65,7 +65,7 @@
                 <a class="spa" href="/"><img class="close no-print" src="img/close_cropped.png" alt="Close page"></a> <!-- Muuta linkki-->
         <button class="button no-print" onclick="printResume()">Print resume</button>
 
-        <div class="content">
+        <div class="contentresume">
 
             <!-- IMAGE -->
             <div class="row">
@@ -153,7 +153,7 @@
 
     <template id="index">
 
-            <div class="content" id="front">
+            <div class="contentcv" id="front">
                 <!-- FRONT PAGE -->
                 <div id="frontpagediv">
                     <figure>
@@ -162,8 +162,6 @@
                         <div id="profession" class="centered2"></div>
                     </figure>
                 </div>
-
-                <button class="button centered2" onclick="showEditViews()">Edit page!</button>
 
                 <!-- ABOUT ME -->
                 <div id="aboutdiv">
@@ -298,8 +296,10 @@
             <label class="labelhome">Enter Your Picture
                 <input class="inputhomeimg" type="file" size="60" >
             </label>
-            <div class="centered" id="fullname"><input class="inputfullname" type="text" name="fullname" placeholder="Full Name"/></div>
-            <div class="centered2" id="profession"><input class="inputprofession" type="text" name="profession" placeholder="Profession"/></div>
+            <div class="centered" id="fullname"><input class="inputfullname" type="text" name="Fullname" placeholder="Full Name"/></div>
+            <div class="centered2" id="Profession"><input class="inputprofession" type="text" name="Profession" placeholder="Profession"/></div>
+            <input type="hidden" name="FrontPicture">
+            <input type="hidden" name="url" value="/cv/front">
         </figure>
         <button class="save button">Save</button>
     </template>
@@ -308,11 +308,13 @@
                 <label id="inputaboutimg" class="inputaboutimg"> Enter Your Picture
                     <input type="file" size="60" >
                 </label>
-                <input id="inputhello" class="inputhello" type="text" name="hello" placeholder="Hello.."/>
+                <input id="inputhello" class="inputhello" type="text" name="Heading" placeholder="Hello.."/>
                 <p class="aboutcolumn">
-                    <textarea rows="10" cols="50" id="inputabout" class="inputabout" name="about" placeholder="Introduce yourself"></textarea>
+                    <textarea rows="10" cols="50" id="inputabout" class="inputabout" name="Description" placeholder="Introduce yourself"></textarea>
                 </p>
                 <button class="save button">Save</button>
+                <input type="hidden" name="AboutPicture">
+                <input type="hidden" name="url" value="/cv/about">
     </template>
 
     <template id="skillsedit">
@@ -322,34 +324,34 @@
 
     <template id="skillseditrow">
         <tr>
-            <td class="skillstdh"><h7><input class="inputskillsh" type="text" name="skill" placeholder="HTML5"/></h7></td>
+            <td class="skillstdh"><h7><input class="inputskillsh" type="text" name="Name" placeholder="HTML5"/></h7></td>
             <td class="skillstd">
                 <div class="skillsbarcontainer">
                     <div class="skillsbarvalue value-90"></div>
                 </div>
             </td>
-            <td class="skillstdh"><h72><input class="inputskills" type="text" name="skill" placeholder="90%"/></h72></td>
+            <td class="skillstdh"><h72><input class="inputskills" type="text" name="SkillLevel" placeholder="90%"/></h72></td>
         </tr>
     </template>
 
     <template id="experienceeditrow">
         <tr>
-                    <td><p class="time"><input class="inputtime" type="text" name="year" placeholder="2018--"/></p>
-                        <p class="experiencep"><input class="inputtitle" type="text" name="jdeveloper" placeholder="Junior developer"/></p></td>
-                    <td class="timeline"><h6><input class="inputcompany" type="text" name="rovio" placeholder="Rovio Entertainment Oyj"/></h6>
-                        <p class="educationpi"><textarea rows="3" cols="30" class="inputdesc" type="text" name="desc" placeholder="I made.."/></textarea></p>
-                        <p class="educationpi"><input class="inputdesc" type="text" name="extag" placeholder="Add tag to projects 'Rovio'"/></p></td>
+                    <td><p class="time"><input class="inputtime" type="text" name="Exp_Year" placeholder="2018--"/></p>
+                        <p class="experiencep"><input class="inputtitle" type="text" name="Title" placeholder="Junior developer"/></p></td>
+                    <td class="timeline"><h6><input class="inputcompany" type="text" name="Company" placeholder="Rovio Entertainment Oyj"/></h6>
+                        <p class="educationpi"><textarea rows="3" cols="30" class="inputdesc" type="text" name="Description" placeholder="I made.."/></textarea></p>
+                        <p class="educationpi"><input class="inputdesc" type="text" name="TagLink" placeholder="Add tag to projects 'Rovio'"/></p></td>
                 </tr>
             </table>
     </template>
     <template id="educationeditrow">
         <tr>
-            <td><p class="time"><input class="inputtime" type="text" name="year" placeholder="2012-2015"/></p>
-                <p class="experiencep"><input class="inputtitle" type="text" name="bachelors" placeholder="Bachelor's Degree"/></p></td>
+            <td><p class="time"><input class="inputtime" type="text" name="Edu_Year" placeholder="2012-2015"/></p>
+                <p class="experiencep"><input class="inputtitle" type="text" name="Degree" placeholder="Bachelor's Degree"/></p></td>
             <td class="timeline"><h6><input class="inputcompany" type="text" name="swe" placeholder="Software Engineer"/></h6>
-                <p class="educationp"><input class="inputschool" type="text" name="metropolia" placeholder="Metropolia University of Applied Sciences"/></p>
-                <p class="educationpi"><textarea rows="3" cols="30" class="inputdesc" type="text" name="desc" placeholder="I studied.."/></textarea></p>
-                <p class="educationpi"><input class="inputdesc" type="text" name="extag" placeholder="Add tag to projects 'metropolia'"/></p></td>
+                <p class="educationp"><input class="inputschool" type="text" name="Academy" placeholder="Metropolia University of Applied Sciences"/></p>
+                <p class="educationpi"><textarea rows="3" cols="30" class="inputdesc" type="text" name="Description" placeholder="I studied.."/></textarea></p>
+                <p class="educationpi"><input class="inputdesc" type="text" name="TagLink" placeholder="Add tag to projects 'metropolia'"/></p></td>
         </tr>
 
     </template>
