@@ -169,6 +169,9 @@ function showEditViews() {
 	front.querySelector('[name=FrontPicture]').value
 		= data.front[0].FrontPicture;
 
+	front.querySelector('.inputhomeimg').onchange = fileButtons;
+	
+
 	//about
 	template = document.getElementById('aboutedit');
 	contents = document.importNode(template.content, true);
@@ -272,6 +275,12 @@ function saveButtons() {
 	}
 }
 
+function fileButtons() {
+	var newname = this.files[0].name;
+	this.parentNode.parentNode
+		.querySelector('.imgfilename').value = newname;
+}
+
 function saveData(div) {
 	var toSave = {};
 	var inputs = div.find(":input");
@@ -281,6 +290,15 @@ function saveData(div) {
 		var input = inputs[i];
 		if(input.name === "url") {
 			url = input.value;
+		} else if (input.type == "file") {
+			var formData = new FormData();
+			var file = input.files[0];
+			if(file.type.match('image.*')) {
+				formData.append('upload', file, file.name);				
+			}
+			ajaxRequest('/uploadimage',
+			(json) => {console.log(json)},
+			'POST', formData)
 		} else {
 			toSave[input.name] = input.value;
 		}
@@ -458,7 +476,11 @@ function ajaxRequest(address, processingFunction, method = 'GET', data) {
 	}
 
 	httpRequest.open(method, serv + address, true);
-	httpRequest.send(JSON.stringify(data));
+	if(data instanceof FormData) {
+		httpRequest.send(data);
+	} else {
+		httpRequest.send(JSON.stringify(data));		
+	}
 }
 
 /* Helper functions */

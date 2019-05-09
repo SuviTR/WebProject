@@ -293,15 +293,12 @@
 
 <template id="frontedit">
     <figure>
-        <form action="/api/uploadimage" method="post" enctype="multipart/form-data">
-            <label class="labelhome">Enter Your Picture
-                <input class="inputhomeimg" type="file" name="upload" id="upload" size="60" >
-                <input class="frontuploadbutton" type="submit" value="Upload Image" name="submit">
-            </label>
-        </form>
+        <label class="labelhome">Enter Your Picture
+            <input class="inputhomeimg" type="file" size="60" >
+        </label>
         <div class="centered" id="fullname"><input class="inputfullname" type="text" name="Fullname" placeholder="Full Name"/></div>
         <div class="centered2" id="Profession"><input class="inputprofession" type="text" name="Profession" placeholder="Profession"/></div>
-        <input type="hidden" name="FrontPicture">
+        <input class="imgfilename" type="hidden" name="FrontPicture">
         <input type="hidden" name="url" value="/cv/front">
     </figure>
     <button class="save button">Save</button>
