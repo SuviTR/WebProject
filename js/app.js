@@ -18,7 +18,7 @@ function app() {
 		showNav();
 
 		getIndexData();
-	})
+	});
 
 	router.add('/portfolio/(:any)', (id) => {
 		showTemplate('project');
@@ -27,33 +27,32 @@ function app() {
 
 	router.add('/login', () => {
 		showTemplate('login');
-	})
+	});
 
 	router.add('/resume', () => {
 		showTemplate('resume');
-	})
+	});
 
 	router.add('/edit', () => {
 		showTemplate('index');
 		showNav();
 		showEditLinks();
-	})
+	});
 
 	router.navigateTo(window.location.pathname);
 
 }
 
 function showNav() {
-	$( '#navbar').show()
+	$( '#navbar').show();
 	$( '#navbar > a').on('click', (event) => {
 		document.getElementsByClassName('active')[0].className="";
-		console.log(event.target);
 		event.target.setAttribute('class', 'active');
 	});
 }
 
 function hideNav() {
-	$( '#navbar').hide()
+	$( '#navbar').hide();
 }
 
 function spaLink(event) {
@@ -182,8 +181,12 @@ function showEditViews() {
 	var text = about.querySelector('.column2');
 	text.innerHTML = "";
 	text.appendChild(contents.querySelector('#inputhello'));
-	text.appendChild(contents.querySelector('.aboutcolumn'));
-	text.appendChild(contents.querySelector('.save'));
+	text.appendChild(contents.querySelector('.aboutcontents'));
+
+	text.querySelector('[name=Heading]').value = data.about[0].Heading;
+	text.querySelector('[name=Description]').value = data.about[0].Description;
+	text.querySelector('[name=AboutPicture]').value
+		= data.front[0].AboutPicture;
 
 
 	//skills
@@ -237,6 +240,14 @@ function showEditViews() {
 
 	contact.innerHTML = "";
 	contact.appendChild(contents);
+
+	contact.querySelector('[name=Phone]').value = data.contact[0].Phone;
+	contact.querySelector('[name=Mail]').value = data.contact[0].Mail;
+	contact.querySelector('[name=Address]').value
+		= data.contact[0].Address;
+	// contact.querySelector('[name=Name]').value = data.front[0].Name;
+	// contact.querySelector('[name=SomeIcon]').value = data.front[0].SomeIcon;
+
 
 	saveButtons();
 }
