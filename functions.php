@@ -186,13 +186,13 @@ function putSkills($id) {
     $para = json_decode($putdata, true);
     var_dump($para);
 
+
     $db = new Database();
     $conn = $db->getConnection();
 
     if (!isset($id) || $id=="") {
         echo "insert";
-        $sql = "INSERT INTO Skills (Name, SkillLevel) VALUES (:skill, :level)";
-
+        $sql = "INSERT INTO Skills (Name, SkillLevel, CvId) VALUES (:skill, :level,1)";
         $statement = $conn->prepare($sql);
         $statement->bindParam(':skill', $para["Name"], PDO::PARAM_STR);
         $statement->bindParam(':level', $para["SkillLevel"], PDO::PARAM_INT);
@@ -228,7 +228,7 @@ function putExperience($parameters) {
 
     if (!isset($parameters)) {
 
-        $sql = "INSERT INTO Experience (Title, Exp_Year, Company, Description, TagLink) VALUES (:title, :exp_year, :company, :description, :taglink)";
+        $sql = "INSERT INTO Experience (Title, Exp_Year, Company, Description, TagLink,CvId) VALUES (:title, :exp_year, :company, :description, :taglink,1)";
 
         $statement = $conn->prepare($sql);
 
@@ -272,7 +272,7 @@ function putEducation($parameters) {
     $conn = $db->getConnection();
 
     if (!isset($parameters)) {
-        $sql = "INSERT INTO Education (Academy, Description, Degree, Edu_year, TagLink) VALUES (:academy, :description, :degree, :eduyear, :taglink)";
+        $sql = "INSERT INTO Education (Academy, Description, Degree, Edu_year, TagLink,CvId) VALUES (:academy, :description, :degree, :eduyear, :taglink,1)";
 
         $statement = $conn->prepare($sql);
         $statement->bindParam(':academy', $para["Academy"], PDO::PARAM_STR);
@@ -314,7 +314,7 @@ function putContact($parameters) {
     $conn = $db->getConnection();
 
     if (!isset($parameters)) {
-        $sql = "INSERT INTO Contact (Phone, Mail, Address) VALUES (:phone, :mail, :address)";
+        $sql = "INSERT INTO Contact (Phone, Mail, Address,CvId) VALUES (:phone, :mail, :address,1)";
 
         $statement = $conn->prepare($sql);
         $statement->bindParam(':phone', $para["Phone"], PDO::PARAM_STR);
@@ -324,7 +324,7 @@ function putContact($parameters) {
         $statement->execute();
         $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-        $sql = "INSERT INTO Some (Name, Link) VALUES (:name, :link)";
+        $sql = "INSERT INTO Some (Name, Link,CvId) VALUES (:name, :link,1)";
 
         $statement = $conn->prepare($sql);
         $statement->bindParam(':name', $para["Name"], PDO::PARAM_STR);
