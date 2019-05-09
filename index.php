@@ -3,6 +3,7 @@
 # ----- SQL OPERATIONS -----
 include_once 'config.php';
 include_once 'functions.php';
+include_once 'upload.php';
 
 # Main
 // echo "REQUEST_URI: " . $_SERVER['REQUEST_URI'];
@@ -110,5 +111,7 @@ if ($resource[0]=="cv") {
     }
 } else if ($request_method=="POST" && $resource[0]=="login") {
     login();
+} else if ($request_method=="POST" && $resource[0]=="uploadimage") {
+    uploadImage();
 }
 ?>

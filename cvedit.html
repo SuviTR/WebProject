@@ -23,11 +23,15 @@
     <div class="contentcvedit">
         <!-- FRONT PAGE -->
         <figure>
-            <label class="labelhome">Enter Your Picture
-                <input class="inputhomeimg" type="file" size="60" >
-            </label>
-            <div class="centered" id="fullname"><input class="inputfullname" type="text" name="fullname" placeholder="Full Name"/></div>
-            <div class="centered2" id="profession"><input class="inputprofession" type="text" name="profession" placeholder="Profession"/></div>
+            <form action="upload.php" method="post" enctype="multipart/form-data">
+                <label class="labelhome">Enter Your Picture
+                    <input class="inputhomeimg" type="file" name="upload" id="upload" size="60" >
+                    <input class="frontuploadbutton" type="submit" value="Upload Image" name="submit">
+                </label>
+            </form>
+                <div class="centered" id="fullname"><input class="inputfullname" type="text" name="fullname" placeholder="Full Name"/></div>
+                <div class="centered2" id="profession"><input class="inputprofession" type="text" name="profession" placeholder="Profession"/></div>
+
         </figure>
 
         <!-- ABOUT ME -->

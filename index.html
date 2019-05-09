@@ -293,9 +293,12 @@
 
 <template id="frontedit">
     <figure>
-        <label class="labelhome">Enter Your Picture
-            <input class="inputhomeimg" type="file" size="60" >
-        </label>
+        <form action="/api/uploadimage" method="post" enctype="multipart/form-data">
+            <label class="labelhome">Enter Your Picture
+                <input class="inputhomeimg" type="file" name="upload" id="upload" size="60" >
+                <input class="frontuploadbutton" type="submit" value="Upload Image" name="submit">
+            </label>
+        </form>
         <div class="centered" id="fullname"><input class="inputfullname" type="text" name="Fullname" placeholder="Full Name"/></div>
         <div class="centered2" id="Profession"><input class="inputprofession" type="text" name="Profession" placeholder="Profession"/></div>
         <input type="hidden" name="FrontPicture">
@@ -305,9 +308,12 @@
 </template>
 
 <template id="aboutedit">
-    <label id="inputaboutimg" class="inputaboutimg"> Enter Your Picture
-        <input type="file" size="60" >
-    </label>
+    <form action="/api/uploadimage" method="post" enctype="multipart/form-data">
+        <label id="inputaboutimg" class="inputaboutimg">Enter Your Picture
+            <input class="inputhomeimg" type="file" name="upload" id="upload" size="60" >
+            <input class="frontuploadbutton" type="submit" value="Upload Image" name="submit">
+        </label>
+    </form>
     <div class="aboutcontents">
         <input id="inputhello" class="inputhello" type="text" name="Heading" placeholder="Hello.."/>
         <p class="aboutcolumn">
@@ -368,9 +374,12 @@
 
 <template id="projectadd">
     <div class="columncontainer">
-        <label class="labelportfolio">Enter Your Picture
-            <input type="file" size="60" >
-        </label>
+        <form action="/api/uploadimage" method="post" enctype="multipart/form-data">
+            <label class="labelportfolio">Enter Your Picture
+                <input class="inputhomeimg" type="file" name="upload" id="upload" size="60" >
+                <input class="frontuploadbutton" type="submit" value="Upload Image" name="submit">
+            </label>
+        </form>
         <div class="text"><input class="inputportfolioname" type="text" placeholder="Project type"/>​<p class="portfolioinfo"><input class="inputportfolioinfo" type="text" placeholder="Project title"/>​</p>
             <p class="portfolioinfo"><input class="inputportfolioinfo" type="text" placeholder="Add experience or education tag"/>​</p>
         </div>
