@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title></title> <!--Vaihda nimi aina uuteen-->
-    
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link href="/css/allstyles.css" type="text/css" rel="stylesheet" />
 
@@ -12,399 +12,400 @@
 </head>
 
 <body>
-    <nav id="navbar" style="display: none">
-        <a class="active" href="/#front">Home</a>
-        <a href="/#about">About</a>
-        <a href="/#skills2">Skills</a>
-        <a href="/#experience">Experience</a>
-        <a href="/#education">Education</a>
-        <a href="/#portfolio">Portfolio</a>
-        <a href="/#contact">Contact</a>
-        <button class="button" id="editpagebutton" onclick="toggleEdit()">Edit page</button>
-        <div class="dropdown log">
-            <a href="#login" onclick="showLogin()">Log in</a>
-            <div id="loginform" class="dropdown-content">
-                <form enctype="multipart/form-data" method="post" action="/api/login">
-                    <fieldset id="inputs">
-                        <input id="username" type="text" name="Username" placeholder="Username" required="">
-                        <input id="password" type="password" name="Password" placeholder="Password" required>
-                    </fieldset>
-                    <fieldset id="actions">
-                        <input type="button" id="submit" class="resumebutton" value="Log in"
-                        onclick="return login(this.form)">
-                    </fieldset>
-                </form>
+<nav id="navbar" style="display: none">
+    <a class="active" href="/#front">Home</a>
+    <a href="/#about">About</a>
+    <a href="/#skills2">Skills</a>
+    <a href="/#experience">Experience</a>
+    <a href="/#education">Education</a>
+    <a href="/#portfolio">Portfolio</a>
+    <a href="/#contact">Contact</a>
+    <button class="button" id="editpagebutton" onclick="toggleEdit()">Edit page</button>
+    <div class="dropdown log">
+        <a href="#login" onclick="showLogin()">Log in</a>
+        <div id="loginform" class="dropdown-content">
+            <form enctype="multipart/form-data" method="post" action="/api/login">
+                <fieldset id="inputs">
+                    <input id="username" type="text" name="Username" placeholder="Username" required="">
+                    <input id="password" type="password" name="Password" placeholder="Password" required>
+                </fieldset>
+                <fieldset id="actions">
+                    <input type="button" id="submit" class="resumebutton" value="Log in"
+                           onclick="return login(this.form)">
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</nav>
+<div id="app"></div>
+
+
+<template id="project">
+    <a class="spa" href="#" onclick="router.back()"><img class="close" src="/img/close_cropped.png"></a> <!-- Muuta linkki-->
+    <div class="contentportfolio">
+
+        <p class="projecthead">Jane Doe</p>
+
+        <!-- PROJECT -->
+        <div class="row">
+            <div class="columnportfolio">
+                <img class="projectimg" src="" alt="Playroom">
+            </div>
+            <div class="columnportfolio2">
+                <h3></h3>
+                <div class="portfoliocolumn"></div>
             </div>
         </div>
-    </nav>
-    <div id="app"></div>
 
-    
-    <template id="project">
-        <a class="spa" href="#" onclick="router.back()"><img class="close" src="/img/close_cropped.png"></a> <!-- Muuta linkki-->
-        <div class="contentportfolio">
+    </div>
 
-            <p class="projecthead">Jane Doe</p>
+</template>
 
-            <!-- PROJECT -->
-            <div class="row">
-                <div class="columnportfolio">
-                    <img class="projectimg" src="" alt="Playroom">
-                </div>
-                <div class="columnportfolio2">
-                    <h3></h3>
-                    <div class="portfoliocolumn"></div>
-                </div>
-            </div>
+<template id="resume">
+    <a class="spa" href="/"><img class="close no-print" src="img/close_cropped.png" alt="Close page"></a> <!-- Muuta linkki-->
+    <button class="button no-print" onclick="printResume()">Print resume</button>
 
-        </div>
+    <div class="contentresume">
 
-    </template>
+        <!-- IMAGE -->
+        <div class="row">
+            <div class="columnleft">
+                <img class="img img-fluid" src="img/cv_janeDoe2_cropped.jpg" alt="Picture of Jane Doe">
 
-    <template id="resume">
-                <a class="spa" href="/"><img class="close no-print" src="img/close_cropped.png" alt="Close page"></a> <!-- Muuta linkki-->
-        <button class="button no-print" onclick="printResume()">Print resume</button>
+                <h4>Personal Info</h4>
 
-        <div class="contentresume">
-
-            <!-- IMAGE -->
-            <div class="row">
-                <div class="columnleft">
-                    <img class="img img-fluid" src="img/cv_janeDoe2_cropped.jpg" alt="Picture of Jane Doe">
-
-                    <h4>Personal Info</h4>
-
-                    <p class="infoh">Phone</p>
-                    <p class="infocolumn">123-456-7890</p>
-                    <p class="infoh">Mail</p>
-                    <p class="infocolumn">jane.doe(at)mail.com</p>
-                    <p class="infoh">Address</p>
-                    <p class="infocolumn">Example Street 10 <br>London, UK</p>
-                    <p><br><br><br></p>
-
-                    <!-- SKILLS -->
-                    <h5>Skills</h5>
-
-                    <div class="skillsdiv">
-
-                        <table class="skillstable">
-                            <tr>
-                                <td class="skillstdh"><h5>HTML5</h5></td>
-                                <td class="skillstdh"><h6>90%</h6></td>
-                            </tr>
-
-                            <tr>
-                                <td class="skillstdh"><h5>English</h5></td>
-                                <td class="skillstdh"><h6>80%</h6></td>
-                            </tr>
-                        </table>
-                    </div>
-
-                </div>
-                <div class="columnright">
-                    <div class="line">
-                        <h3>Jane Doe</h3>
-
-                        <p class="profession">Software Engineer & Visual Merchandiser</p>
-                        <p class="resumecolumn">IT Professional with over 4 years of experience
-                            developing robust code for high-volume businesses.
-                            My greatest strength is business awareness, flexibility and accuracy.
-                            I'm a hard working and reliable person,
-                            who learns quickly and willing to undertake any task given me.
-                            I enjoy meeting people and work well as part of a team or on my own.
-                        </p>
-
-                        <!-- EXPERIENCE -->
-                        <h5>Experience</h5>
-                        <table class="resumetable">
-                            <tr>
-                                <td class="td"><p class="time">2018--</p><p class="experiencep">Junior Developer</p></td>
-                                <td><h6>Rovio Entertainment Oyj</h6><p class="educationpi">I participated in creating the Angry Birds 2 mobile game.</p></td>
-                            </tr>
-                            <tr>
-                                <td class="td"><p class="time">2016-2017</p><p class="experiencep">Visual Merchandiser Assistant</p></td>
-                                <td><h6>Stockmann Oyj Abp</h6><p class="educationpi">I made several product campaigns, visual presentations and window displays.
-                                I also developed my customer service.</p></td>
-                            </tr>
-                        </table>
-
-                        <!-- EDUCATION -->
-                        <h4>Education</h4>
-                        <table class="resumetable">
-                            <tr>
-                                <td class="td"><p class="time">2012-2015</p><p class="experiencep">Bachelor's Degree</p></td>
-                                <td><h6>Software Engineer</h6><p class="educationp">Metropolia University of Applied Sciences</p>
-                                    <p class="educationpi">I studied software engineering and graduated with a Bachelor in Information and Communications Technology.
-                                    I got familiar with Java, Python, making web applications and so on.</p></td>
-                            </tr>
-                            <tr>
-                                <td class="td"><p class="time">2011-2012</p><p class="experiencep">Further Qualification in Marketing Communications</p></td>
-                                <td><h6>Visual Merchandiser</h6><p class="educationp">Vocational School</p>
-                                    <p class="educationpi">I studied visual merchandising, marketing, interior designing and technical drawing.</p></td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </template>
-
-    <template id="index">
-
-            <div class="contentcv" id="front">
-                <!-- FRONT PAGE -->
-                <div id="frontpagediv">
-                    <figure>
-                        <img id="frontpicture" class="homeimg img-fluid" src="" alt="Front page image"/>
-                        <div id="fullname" class="centered"></div>
-                        <div id="profession" class="centered2"></div>
-                    </figure>
-                </div>
-
-                <!-- ABOUT ME -->
-                <div id="aboutdiv">
-                    <div class="row">
-                        <div class="column">
-                            <img id="aboutimg" class="aboutimg img-fluid" src="" alt="Picture of Jane Doe">
-                        </div>
-                        <div class="column2">
-                            <h3 id="aboutheading"></h3>
-                            <p id="aboutdescription" class="aboutcolumn">
-                            </p>
-                        </div>
-                        <p id="about"></p>
-                    </div>
-                </div>
-
+                <p class="infoh">Phone</p>
+                <p class="infocolumn">123-456-7890</p>
+                <p class="infoh">Mail</p>
+                <p class="infocolumn">jane.doe(at)mail.com</p>
+                <p class="infoh">Address</p>
+                <p class="infocolumn">Example Street 10 <br>London, UK</p>
+                <p><br><br><br></p>
 
                 <!-- SKILLS -->
-                <div id="skillsdiv">
-                    <div class="portfolio"><p id="skills2"></p></div>
-                    <p id="skills"></p>
-                    <div class="portfolio"><h3>Skills</h3></div>
-                    <div id="sklsdiv" class="skillsdiv">
-                        <table>
-                        </table>
-                        <p id="experience"></p>
-                    </div>
-                </div>
+                <h5>Skills</h5>
 
+                <div class="skillsdiv">
 
-                <!-- EXPERIENCE -->
-                <div id="experiencediv">
-                    <div class="portfolio"><h3>Experience</h3></div>
-                    <div id ="expdiv" class="education">
-                        <table>
-                        </table>
-                        <p id="education"></p>
-                    </div>
-                </div>
+                    <table class="skillstable">
+                        <tr>
+                            <td class="skillstdh"><h5>HTML5</h5></td>
+                            <td class="skillstdh"><h6>90%</h6></td>
+                        </tr>
 
-                <!-- EDUCATION -->
-                <div id="educationdiv">
-                    <div class="portfolio"><h3>Education</h3></div>
-                    <div id="edudiv" class="education">
-                        <table>
-                        </table>
-                        <p id="portfolio"></p>
-                    </div>
-                </div>
-
-                <!-- PORTFOLIO -->
-                <div id="portfoliodiv">
-                    <div class="portfolio"><h3>Portfolio</h3></div>
-                    <div class="row2"></div>
-                </div>
-
-                <!-- CONTACT -->
-                <div class="contact" id="contact">
-                    <br>
-                    <h3>Get In Touch!</h3>
-
-                    <div class="row">
-                        <div class="columncontainer3">
-                            <img class="icon img-fluid" align="right" src="img/iconfinder_skype2512x512_197582.png" alt="Phone number">
-                        </div>
-                        <div class="columncontainer2">
-                            <h5>Call</h5><p id="phone_number" class="contactp"></p>
-                        </div>
-                        <div class="columncontainer3">
-                            <img class="icon img-fluid" align="right" src="img/iconfinder_mail512x512_197584.png" alt="Mail address">
-                        </div>
-                        <div class="columncontainer2">
-                            <h5>Contact</h5><p id="email_address" class="contactp"></p>
-                        </div>
-                        <div class="columncontainer3">
-                            <img class="icon img-fluid" align="right" src="img/iconfinder_home512x512_197589.png" alt="Home address">
-                        </div>
-                        <div class="columncontainer2">
-                            <h5>Address</h5><p id="street_address" class="contactp"></p>
-                        </div>
-                        <div class="columncontainer4">
-                            <a href="" id="linkedinlink"><img class="icon img-fluid" align="right" src="img/iconfinder_linkedin_2691280.png" alt="Linkedin link"></a>
-                            <a href="" id="twitterlink"><img class="icon img-fluid" align="right" src="img/iconfinder_twitter_2691271.png" alt="Twitter link"></a>
-                            <a href="" id="instagramlink"><img class="icon img-fluid" align="right" src="img/iconfinder_instagram_2691281.png" alt="Instagram link"></a>
-                        </div>
-                    </div>
+                        <tr>
+                            <td class="skillstdh"><h5>English</h5></td>
+                            <td class="skillstdh"><h6>80%</h6></td>
+                        </tr>
+                    </table>
                 </div>
 
             </div>
-        <script src="/js/navigationbar.js" type="text/javascript"></script>
+            <div class="columnright">
+                <div class="line">
+                    <h3>Jane Doe</h3>
 
-    </template>
+                    <p class="profession">Software Engineer & Visual Merchandiser</p>
+                    <p class="resumecolumn">IT Professional with over 4 years of experience
+                        developing robust code for high-volume businesses.
+                        My greatest strength is business awareness, flexibility and accuracy.
+                        I'm a hard working and reliable person,
+                        who learns quickly and willing to undertake any task given me.
+                        I enjoy meeting people and work well as part of a team or on my own.
+                    </p>
 
-    <template id="skillsrow"><tr>
-                            <td class="skillstdh"><h5><span class="skillsname"></span></h5></td>
-                            <td class="skillstd">
-                                <div class="skillsbarcontainer">
-                                    <div class="skillsbarvalue"></div>
-                                </div>
-                            </td>
-                            <td class="skillstdh"><h6><span class="skillsvalue"></span>%</h6></td>
+                    <!-- EXPERIENCE -->
+                    <h5>Experience</h5>
+                    <table class="resumetable">
+                        <tr>
+                            <td class="td"><p class="time">2018--</p><p class="experiencep">Junior Developer</p></td>
+                            <td><h6>Rovio Entertainment Oyj</h6><p class="educationpi">I participated in creating the Angry Birds 2 mobile game.</p></td>
                         </tr>
-    </template>
-    <template id="exprow">
-        <tr>
-                            <td><p class="time"></p><p class="experiencep"></p></td>
-                            <td class="timeline"><h6><span class="expplace"></span></h6><p class="expdesc educationpi"></p></td>
+                        <tr>
+                            <td class="td"><p class="time">2016-2017</p><p class="experiencep">Visual Merchandiser Assistant</p></td>
+                            <td><h6>Stockmann Oyj Abp</h6><p class="educationpi">I made several product campaigns, visual presentations and window displays.
+                                I also developed my customer service.</p></td>
                         </tr>
-    </template>
-    <template id="edurow">
-        <tr>
-                            <td><p class="time"></p><p class="experiencep"></p></td>
-                            <td class="timeline"><h6><span class="edutitle"></span></h6><p class="educationp"></p>
-                                <p class="educationpi"></p></td>
+                    </table>
+
+                    <!-- EDUCATION -->
+                    <h4>Education</h4>
+                    <table class="resumetable">
+                        <tr>
+                            <td class="td"><p class="time">2012-2015</p><p class="experiencep">Bachelor's Degree</p></td>
+                            <td><h6>Software Engineer</h6><p class="educationp">Metropolia University of Applied Sciences</p>
+                                <p class="educationpi">I studied software engineering and graduated with a Bachelor in Information and Communications Technology.
+                                    I got familiar with Java, Python, making web applications and so on.</p></td>
                         </tr>
-    </template>
-    <template id="portfolioproject">
-        <a class="spa" href="">
-            <div class="columncontainer">
-                <img class="image" src="" alt="Project_image">
-                <div class="middle">
-                    <div class="text"><span class="name"></span><p class="portfolioinfo"></p></div>
+                        <tr>
+                            <td class="td"><p class="time">2011-2012</p><p class="experiencep">Further Qualification in Marketing Communications</p></td>
+                            <td><h6>Visual Merchandiser</h6><p class="educationp">Vocational School</p>
+                                <p class="educationpi">I studied visual merchandising, marketing, interior designing and technical drawing.</p></td>
+                        </tr>
+                    </table>
                 </div>
             </div>
-        </a>
-    </template>
 
-    <!-- Edit templates -->
+        </div>
 
-    <template id="frontedit">
-        <figure>
-            <label class="labelhome">Enter Your Picture
-                <input class="inputhomeimg" type="file" size="60" >
-            </label>
-            <div class="centered" id="fullname"><input class="inputfullname" type="text" name="Fullname" placeholder="Full Name"/></div>
-            <div class="centered2" id="Profession"><input class="inputprofession" type="text" name="Profession" placeholder="Profession"/></div>
-            <input type="hidden" name="FrontPicture">
-            <input type="hidden" name="url" value="/cv/front">
-        </figure>
-        <button class="save button">Save</button>
-    </template>
+    </div>
+</template>
 
-    <template id="aboutedit">
-                <label id="inputaboutimg" class="inputaboutimg"> Enter Your Picture
-                    <input type="file" size="60" >
-                </label>
-                <input id="inputhello" class="inputhello" type="text" name="Heading" placeholder="Hello.."/>
-                <p class="aboutcolumn">
-                    <textarea rows="10" cols="50" id="inputabout" class="inputabout" name="Description" placeholder="Introduce yourself"></textarea>
-                </p>
-                <button class="save button">Save</button>
-                <input type="hidden" name="AboutPicture">
-                <input type="hidden" name="url" value="/cv/about">
-    </template>
+<template id="index">
 
-    <template id="skillsedit">
-        <div class="portfolio"><button type="button" class="add button">Add new skill</button></div>
-        <button class="save button">Save</button>
-    </template>
+    <div class="contentcv" id="front">
+        <!-- FRONT PAGE -->
+        <div id="frontpagediv">
+            <figure>
+                <img id="frontpicture" class="homeimg img-fluid" src="" alt="Front page image"/>
+                <div id="fullname" class="centered"></div>
+                <div id="profession" class="centered2"></div>
+            </figure>
+        </div>
 
-    <template id="skillseditrow">
-        <tr>
-            <td class="skillstdh"><h7><input class="inputskillsh" type="text" name="Name" placeholder="HTML5"/></h7></td>
-            <td class="skillstd">
-                <div class="skillsbarcontainer">
-                    <div class="skillsbarvalue value-90"></div>
+        <!-- ABOUT ME -->
+        <div id="aboutdiv">
+            <div class="row">
+                <div class="column">
+                    <img id="aboutimg" class="aboutimg img-fluid" src="" alt="Picture of Jane Doe">
                 </div>
-            </td>
-            <td class="skillstdh"><h72><input class="inputskills" type="text" name="SkillLevel" placeholder="90%"/></h72></td>
-        </tr>
-    </template>
+                <div class="column2">
+                    <h3 id="aboutheading"></h3>
+                    <p id="aboutdescription" class="aboutcolumn">
+                    </p>
+                </div>
+                <p id="about"></p>
+            </div>
+        </div>
 
-    <template id="experienceeditrow">
-        <tr>
-                    <td><p class="time"><input class="inputtime" type="text" name="Exp_Year" placeholder="2018--"/></p>
-                        <p class="experiencep"><input class="inputtitle" type="text" name="Title" placeholder="Junior developer"/></p></td>
-                    <td class="timeline"><h6><input class="inputcompany" type="text" name="Company" placeholder="Rovio Entertainment Oyj"/></h6>
-                        <p class="educationpi"><textarea rows="3" cols="30" class="inputdesc" type="text" name="Description" placeholder="I made.."/></textarea></p>
-                        <p class="educationpi"><input class="inputdesc" type="text" name="TagLink" placeholder="Add tag to projects 'Rovio'"/></p></td>
-                </tr>
-            </table>
-    </template>
-    <template id="educationeditrow">
-        <tr>
-            <td><p class="time"><input class="inputtime" type="text" name="Edu_Year" placeholder="2012-2015"/></p>
-                <p class="experiencep"><input class="inputtitle" type="text" name="Degree" placeholder="Bachelor's Degree"/></p></td>
-            <td class="timeline"><h6><input class="inputcompany" type="text" name="swe" placeholder="Software Engineer"/></h6>
-                <p class="educationp"><input class="inputschool" type="text" name="Academy" placeholder="Metropolia University of Applied Sciences"/></p>
-                <p class="educationpi"><textarea rows="3" cols="30" class="inputdesc" type="text" name="Description" placeholder="I studied.."/></textarea></p>
-                <p class="educationpi"><input class="inputdesc" type="text" name="TagLink" placeholder="Add tag to projects 'metropolia'"/></p></td>
-        </tr>
 
-    </template>
+        <!-- SKILLS -->
+        <div id="skillsdiv">
+            <div class="portfolio"><p id="skills2"></p></div>
+            <p id="skills"></p>
+            <div class="portfolio"><h3>Skills</h3></div>
+            <div id="sklsdiv" class="skillsdiv">
+                <table>
+                </table>
+                <p id="experience"></p>
+            </div>
+        </div>
 
-    <template id="portfolioedit">
-        <button class="add button">Add project</button>
-    </template>
 
-    <template id="projectadd">
+        <!-- EXPERIENCE -->
+        <div id="experiencediv">
+            <div class="portfolio"><h3>Experience</h3></div>
+            <div id ="expdiv" class="education">
+                <table>
+                </table>
+                <p id="education"></p>
+            </div>
+        </div>
+
+        <!-- EDUCATION -->
+        <div id="educationdiv">
+            <div class="portfolio"><h3>Education</h3></div>
+            <div id="edudiv" class="education">
+                <table>
+                </table>
+                <p id="portfolio"></p>
+            </div>
+        </div>
+
+        <!-- PORTFOLIO -->
+        <div id="portfoliodiv">
+            <div class="portfolio"><h3>Portfolio</h3></div>
+            <div class="row2"></div>
+        </div>
+
+        <!-- CONTACT -->
+        <div class="contact" id="contact">
+            <br>
+            <h3>Get In Touch!</h3>
+
+            <div class="row">
+                <div class="columncontainer3">
+                    <img class="icon img-fluid" align="right" src="img/iconfinder_skype2512x512_197582.png" alt="Phone number">
+                </div>
+                <div class="columncontainer2">
+                    <h5>Call</h5><p id="phone_number" class="contactp"></p>
+                </div>
+                <div class="columncontainer3">
+                    <img class="icon img-fluid" align="right" src="img/iconfinder_mail512x512_197584.png" alt="Mail address">
+                </div>
+                <div class="columncontainer2">
+                    <h5>Contact</h5><p id="email_address" class="contactp"></p>
+                </div>
+                <div class="columncontainer3">
+                    <img class="icon img-fluid" align="right" src="img/iconfinder_home512x512_197589.png" alt="Home address">
+                </div>
+                <div class="columncontainer2">
+                    <h5>Address</h5><p id="street_address" class="contactp"></p>
+                </div>
+                <div class="columncontainer4">
+                    <a href="" id="linkedinlink"><img class="icon img-fluid" align="right" src="img/iconfinder_linkedin_2691280.png" alt="Linkedin link"></a>
+                    <a href="" id="twitterlink"><img class="icon img-fluid" align="right" src="img/iconfinder_twitter_2691271.png" alt="Twitter link"></a>
+                    <a href="" id="instagramlink"><img class="icon img-fluid" align="right" src="img/iconfinder_instagram_2691281.png" alt="Instagram link"></a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="/js/navigationbar.js" type="text/javascript"></script>
+
+</template>
+
+<template id="skillsrow"><tr>
+    <td class="skillstdh"><h5><span class="skillsname"></span></h5></td>
+    <td class="skillstd">
+        <div class="skillsbarcontainer">
+            <div class="skillsbarvalue"></div>
+        </div>
+    </td>
+    <td class="skillstdh"><h6><span class="skillsvalue"></span>%</h6></td>
+</tr>
+</template>
+<template id="exprow">
+    <tr>
+        <td><p class="time"></p><p class="experiencep"></p></td>
+        <td class="timeline"><h6><span class="expplace"></span></h6><p class="expdesc educationpi"></p></td>
+    </tr>
+</template>
+<template id="edurow">
+    <tr>
+        <td><p class="time"></p><p class="experiencep"></p></td>
+        <td class="timeline"><h6><span class="edutitle"></span></h6><p class="educationp"></p>
+            <p class="educationpi"></p></td>
+    </tr>
+</template>
+<template id="portfolioproject">
+    <a class="spa" href="">
         <div class="columncontainer">
-            <label class="labelportfolio">Enter Your Picture
-                <input type="file" size="60" >
-            </label>
-            <div class="text"><input class="inputportfolioname" type="text" placeholder="Project type"/>​<p class="portfolioinfo"><input class="inputportfolioinfo" type="text" placeholder="Project title"/>​</p>
-                <p class="portfolioinfo"><input class="inputportfolioinfo" type="text" placeholder="Add experience or education tag"/>​</p>
-            </div>
-            <div class="portfolio"><button class="save button">Add new project</button></div>
-        </div>
-    </template>
-
-    <template id="contactedit">
-        <div class="row">
-            <div class="columncontainer3">
-                <img class="icon" src="img/iconfinder_skype2512x512_197582.png" alt="Phone number">
-            </div>
-            <div class="columncontainer2">
-                <h5>Call</h5><p class="contactp"><input class="inputcontact" type="text" name="call" placeholder="123-456-7890"/>​</p>
-            </div>
-            <div class="columncontainer3">
-                <img class="icon" src="img/iconfinder_mail512x512_197584.png" alt="Mail address">
-            </div>
-            <div class="columncontainer2">
-                <h5>Contact</h5><p class="contactp"><input class="inputcontact" type="text" name="mail" placeholder="jane.doe(at)mail.com"/></p>
-            </div>
-            <div class="columncontainer3">
-                <img class="icon" src="img/iconfinder_home512x512_197589.png" alt="Home address">
-            </div>
-            <div class="columncontainer2">
-                <h5>Address</h5><p class="contactp"><input class="inputcontact" type="text" name="address" placeholder="Example Street 10, London, UK"/></p>
-            </div>
-            <div class="columncontainer4">
-                    <input class="inputcontact" type="text" name="linkedinlink" placeholder="LinkedIn link"><br>
-                    <input class="inputcontact" type="text" name="twitterlink" placeholder="Twitter link"><br>
-                    <input class="inputcontact" type="text" name="instagramlink" placeholder="Instagram link"><br>
-                    <button class="save button2">Save</button>
+            <img class="image" src="" alt="Project_image">
+            <div class="middle">
+                <div class="text"><span class="name"></span><p class="portfolioinfo"></p></div>
             </div>
         </div>
-    </template>
+    </a>
+</template>
 
-    
-    <script src="/node_modules/vanilla-router/dist/vanilla-router.js" type="text/javascript"></script>
-    <script src="/js/jquery-3.4.0.min.js" type="text/javascript"></script>
-    <script src="/js/app.js" type="text/javascript"></script>
+<!-- Edit templates -->
+
+<template id="frontedit">
+    <figure>
+        <label class="labelhome">Enter Your Picture
+            <input class="inputhomeimg" type="file" size="60" >
+        </label>
+        <div class="centered" id="fullname"><input class="inputfullname" type="text" name="Fullname" placeholder="Full Name"/></div>
+        <div class="centered2" id="Profession"><input class="inputprofession" type="text" name="Profession" placeholder="Profession"/></div>
+        <input type="hidden" name="FrontPicture">
+        <input type="hidden" name="url" value="/cv/front">
+    </figure>
+    <button class="save button">Save</button>
+</template>
+
+<template id="aboutedit">
+    <label id="inputaboutimg" class="inputaboutimg"> Enter Your Picture
+        <input type="file" size="60" >
+    </label>
+    <input id="inputhello" class="inputhello" type="text" name="Heading" placeholder="Hello.."/>
+    <p class="aboutcolumn">
+        <textarea rows="10" cols="50" id="inputabout" class="inputabout" name="Description" placeholder="Introduce yourself"></textarea>
+    </p>
+    <button class="save button">Save</button>
+    <input type="hidden" name="AboutPicture">
+    <input type="hidden" name="url" value="/cv/about">
+</template>
+
+<template id="skillsedit">
+    <div class="portfolio"><button type="button" class="add button">Add new skill</button><br><button class="save button">Save</button></div>
+</template>
+
+<template id="skillseditrow">
+    <tr>
+        <td class="skillstdh"><h7><input class="inputskillsh" type="text" name="Name" placeholder="HTML5"/></h7></td>
+        <td class="skillstd">
+            <div class="skillsbarcontainer">
+                <div class="skillsbarvalue value-90"></div>
+            </div>
+        </td>
+        <td class="skillstdh"><h72><input class="inputskills" type="text" name="SkillLevel" placeholder="90%"/></h72></td>
+    </tr>
+</template>
+
+<template id="experienceeditrow">
+    <tr>
+        <td><p class="time"><input class="inputtime" type="text" name="Exp_Year" placeholder="2018--"/></p>
+            <p class="experiencep"><input class="inputtitle" type="text" name="Title" placeholder="Junior developer"/></p></td>
+        <td class="timeline"><h6><input class="inputcompany" type="text" name="Company" placeholder="Rovio Entertainment Oyj"/></h6>
+            <p class="educationpi"><textarea rows="3" cols="30" class="inputdesc" type="text" name="Description" placeholder="I made.."/></textarea></p>
+            <p class="educationpi"><input class="inputdesc" type="text" name="TagLink" placeholder="Add tag to projects 'Rovio'"/></p></td>
+    </tr>
+    </table>
+</template>
+<template id="educationeditrow">
+    <tr>
+        <td><p class="time"><input class="inputtime" type="text" name="Edu_Year" placeholder="2012-2015"/></p>
+            <p class="experiencep"><input class="inputtitle" type="text" name="Degree" placeholder="Bachelor's Degree"/></p></td>
+        <td class="timeline"><h6><input class="inputcompany" type="text" name="swe" placeholder="Software Engineer"/></h6>
+            <p class="educationp"><input class="inputschool" type="text" name="Academy" placeholder="Metropolia University of Applied Sciences"/></p>
+            <p class="educationpi"><textarea rows="3" cols="30" class="inputdesc" type="text" name="Description" placeholder="I studied.."/></textarea></p>
+            <p class="educationpi"><input class="inputdesc" type="text" name="TagLink" placeholder="Add tag to projects 'metropolia'"/></p></td>
+    </tr>
+
+</template>
+
+<template id="portfolioedit">
+    <button class="add button">Add project</button>
+</template>
+
+<template id="projectadd">
+    <div class="columncontainer">
+        <label class="labelportfolio">Enter Your Picture
+            <input type="file" size="60" >
+        </label>
+        <div class="text"><input class="inputportfolioname" type="text" placeholder="Project type"/>​<p class="portfolioinfo"><input class="inputportfolioinfo" type="text" placeholder="Project title"/>​</p>
+            <p class="portfolioinfo"><input class="inputportfolioinfo" type="text" placeholder="Add experience or education tag"/>​</p>
+        </div>
+        <div class="portfolio"><button class="save button">Add new project</button></div>
+    </div>
+</template>
+
+<template id="contactedit">
+    <br>
+    <h3>Get In Touch!</h3>
+    <div class="row">
+        <div class="columncontainer3">
+            <img class="icon" src="img/iconfinder_skype2512x512_197582.png" alt="Phone number">
+        </div>
+        <div class="columncontainer2">
+            <h5>Call</h5><p class="contactp"><input class="inputcontact" type="text" name="call" placeholder="123-456-7890"/>​</p>
+        </div>
+        <div class="columncontainer3">
+            <img class="icon" src="img/iconfinder_mail512x512_197584.png" alt="Mail address">
+        </div>
+        <div class="columncontainer2">
+            <h5>Contact</h5><p class="contactp"><input class="inputcontact" type="text" name="mail" placeholder="jane.doe(at)mail.com"/></p>
+        </div>
+        <div class="columncontainer3">
+            <img class="icon" src="img/iconfinder_home512x512_197589.png" alt="Home address">
+        </div>
+        <div class="columncontainer2">
+            <h5>Address</h5><p class="contactp"><input class="inputcontact" type="text" name="address" placeholder="Example Street 10, London, UK"/></p>
+        </div>
+        <div class="columncontainer4">
+            <input class="inputcontact" type="text" name="linkedinlink" placeholder="LinkedIn link"><br>
+            <input class="inputcontact" type="text" name="twitterlink" placeholder="Twitter link"><br>
+            <input class="inputcontact" type="text" name="instagramlink" placeholder="Instagram link"><br>
+            <button class="save button2">Save</button>
+        </div>
+    </div>
+</template>
+
+
+<script src="/node_modules/vanilla-router/dist/vanilla-router.js" type="text/javascript"></script>
+<script src="/js/jquery-3.4.0.min.js" type="text/javascript"></script>
+<script src="/js/app.js" type="text/javascript"></script>
 
 </body>
 </html>
