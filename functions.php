@@ -184,21 +184,17 @@ function putSkills($id) {
 
     $putdata = file_get_contents('php://input');
     $para = json_decode($putdata, true);
-    var_dump($para);
-
 
     $db = new Database();
     $conn = $db->getConnection();
 
     if (!isset($id) || $id=="") {
-        echo "insert";
         $sql = "INSERT INTO Skills (Name, SkillLevel, CvId) VALUES (:skill, :level,1)";
         $statement = $conn->prepare($sql);
         $statement->bindParam(':skill', $para["Name"], PDO::PARAM_STR);
         $statement->bindParam(':level', $para["SkillLevel"], PDO::PARAM_INT);
     }
     else {
-        echo "update";
         $sql = "UPDATE Skills SET Name=:skill, SkillLevel=:level WHERE SId=:id";
 
         $statement = $conn->prepare($sql);
@@ -210,7 +206,6 @@ function putSkills($id) {
     try {
         $statement->execute();        
     } catch(PDOException $e) {
-        echo "Error";
         echo $e->getMessage();
     }
 
@@ -221,25 +216,27 @@ function putSkills($id) {
 function putExperience($parameters) {
     $putdata = file_get_contents('php://input');
     $para = json_decode($putdata, true);
+    var_dump($para);
 
     $db = new Database();
     $conn = $db->getConnection();
 
     if (!isset($parameters) || $parameters == "") {
-
-        $sql = "INSERT INTO Experience (Title, Exp_Year, Company, Description, TagLink,CvId) VALUES (:title, :exp_year, :company, :description, :taglink,1)";
+        echo "insert";
+        $sql = "INSERT INTO Experience (Title, Exp_Year, Company, Description, TagLink,CvId) VALUES (:title, :exp_year, :company, :description, :taglink, 1)";
 
         $statement = $conn->prepare($sql);
 
         $statement->bindParam(':title', $para["Title"], PDO::PARAM_STR);
-        $statement->bindParam(':expyear', $para["Exp_year"], PDO::PARAM_STR);
+        $statement->bindParam(':exp_year', $para["Exp_Year"], PDO::PARAM_STR);
         $statement->bindParam(':company', $para["Company"], PDO::PARAM_STR);
         $statement->bindParam(':description', $para["Description"], PDO::PARAM_STR);
         $statement->bindParam(':taglink', $para["TagLink"], PDO::PARAM_STR);
 
     }
     else {
-        $sql = "UPDATE Experience SET Title=:title, Exp_Year=:expyear, Company=:company, Description=:description, TagLink=:taglink";
+        echo "update";
+        $sql = "UPDATE Experience SET Title=:title, Exp_Year=:expyear, Company=:company, Description=:description, TagLink=:taglink WHERE ExId=:id";
 
         $statement = $conn->prepare($sql);
 
@@ -248,13 +245,13 @@ function putExperience($parameters) {
         $statement->bindParam(':company', $para["Company"], PDO::PARAM_STR);
         $statement->bindParam(':description', $para["Description"], PDO::PARAM_STR);
         $statement->bindParam(':taglink', $para["TagLink"], PDO::PARAM_STR);
+        $statement->bindParam(':id', $parameters, PDO::PARAM_INT);
 
     }
 
     try {
         $statement->execute();        
     } catch(PDOException $e) {
-        echo "Error";
         echo $e->getMessage();
     }
     header("Content-Type: application/json; charset=UTF-8");
