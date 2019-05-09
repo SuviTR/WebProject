@@ -160,7 +160,7 @@ function showEditViews() {
 	//front
 	template = document.getElementById('frontedit');
 	contents = document.importNode(template.content, true);
-	var front = document.getElementById('frontpagediv');
+	var front = document.getElementById('frontdiv');
 	front.innerHTML = "";
 	front.appendChild(contents);
 
@@ -286,8 +286,14 @@ function saveData(div) {
 		}
 	}
 	console.log(toSave);
+	var dataName = capitalize(div[0].id.replace('div', ""));
+	//console.log(showFunction);
 
 	ajaxRequest(url, (json) => {console.log(json)}, 'PUT', toSave);
+	data = {};
+	// ajaxRequest(url, window[showFunction]);
+	toggleEdit();
+	router.navigateTo("/");
 }
 
 function showFront(json) {
@@ -316,6 +322,7 @@ function showSkills(json) {
 	var id = document.getElementById('sklsdiv');
 	var table = id.getElementsByTagName('table')[0];
 	var template = document.getElementById('skillsrow');
+	table.textContent="";
 
 	for(var i = 0; i < json.length; i++) {
 		var row = document.importNode(template.content, true);
@@ -337,6 +344,8 @@ function showExperience(json) {
 	var id = document.getElementById('expdiv');
 	var table = id.getElementsByTagName('table')[0];
 	var template = document.getElementById('exprow');
+	table.textContent="";
+
 
 	for(var i = 0; i < json.length; i++) {
 		var row = document.importNode(template.content, true);
@@ -358,6 +367,8 @@ function showEducation(json) {
 	var id = document.getElementById('edudiv');
 	var table = id.getElementsByTagName('table')[0];
 	var template = document.getElementById('edurow');
+	table.textContent="";
+
 
 	for(var i = 0; i < json.length; i++) {
 		var row = document.importNode(template.content, true);
@@ -380,6 +391,7 @@ function showPortfolio(json) {
 	var id = document.getElementById('portfoliodiv');
 	var row = id.getElementsByClassName('row2')[0];
 	var template = document.getElementById('portfolioproject');
+	row.textContent = "";
 
 	for(var i = 0; i < json.length; i++) {
 		var project = document.importNode(template.content, true);
@@ -438,7 +450,7 @@ function ajaxRequest(address, processingFunction, method = 'GET', data) {
 		if(httpRequest.readyState === XMLHttpRequest.DONE) {
 			if(httpRequest.status === 200 ) {
 				
-				console.log(httpRequest.responseText);
+				// console.log(httpRequest.responseText);
 				var json = JSON.parse(httpRequest.responseText)
 				processingFunction(json);
 			}
@@ -447,4 +459,9 @@ function ajaxRequest(address, processingFunction, method = 'GET', data) {
 
 	httpRequest.open(method, serv + address, true);
 	httpRequest.send(JSON.stringify(data));
+}
+
+/* Helper functions */
+function capitalize(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }
