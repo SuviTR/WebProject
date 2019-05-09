@@ -225,7 +225,7 @@ function putExperience($parameters) {
     $db = new Database();
     $conn = $db->getConnection();
 
-    if (!isset($parameters)) {
+    if (!isset($parameters) || $parameters == "") {
 
         $sql = "INSERT INTO Experience (Title, Exp_Year, Company, Description, TagLink,CvId) VALUES (:title, :exp_year, :company, :description, :taglink,1)";
 
@@ -269,7 +269,7 @@ function putEducation($parameters) {
     $db = new Database();
     $conn = $db->getConnection();
 
-    if (!isset($parameters)) {
+    if (!isset($parameters) || $parameters == "") {
         $sql = "INSERT INTO Education (Academy, Description, Degree, Edu_year, TagLink,CvId) VALUES (:academy, :description, :degree, :eduyear, :taglink,1)";
 
         $statement = $conn->prepare($sql);
@@ -310,7 +310,7 @@ function putContact($parameters) {
     $db = new Database();
     $conn = $db->getConnection();
 
-    if (!isset($parameters)) {
+    if (!isset($parameters) || $parameters == "") {
         $sql = "INSERT INTO Contact (Phone, Mail, Address,CvId) VALUES (:phone, :mail, :address,1)";
 
         $statement = $conn->prepare($sql);
@@ -368,7 +368,7 @@ function deleteSkills($parameters) {
     $db = new Database();
     $conn = $db->getConnection();
 
-    if (!isset($parameters)) {
+    if (!isset($parameters) || $parameters == "") {
         $sql = "DELETE FROM Skills WHERE SId=:id";
         $statement = $conn->prepare($sql);
         $statement->bindParam(':id', $para["SId"], PDO::PARAM_STR);
@@ -394,7 +394,7 @@ function deleteExperience($parameters) {
     $db = new Database();
     $conn = $db->getConnection();
 
-    if (!isset($parameters)) {
+    if (!isset($parameters) || $parameters == "") {
         $sql = "DELETE FROM Experience WHERE ExId=:id";
         $statement = $conn->prepare($sql);
         $statement->bindParam(':id', $para["ExId"], PDO::PARAM_STR);
@@ -420,7 +420,7 @@ function deleteEducation($parameters) {
     $db = new Database();
     $conn = $db->getConnection();
 
-    if (!isset($parameters)) {
+    if (!isset($parameters) || $parameters == "") {
         $sql = "DELETE FROM Education WHERE EdId=:id";
         $statement = $conn->prepare($sql);
         $statement->bindParam(':id', $para["EdId"], PDO::PARAM_STR);
