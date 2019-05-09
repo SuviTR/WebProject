@@ -196,11 +196,6 @@ function putSkills($id) {
         $statement = $conn->prepare($sql);
         $statement->bindParam(':skill', $para["Name"], PDO::PARAM_STR);
         $statement->bindParam(':level', $para["SkillLevel"], PDO::PARAM_INT);
-
-        $statement->execute();
-
-        header("Content-Type: application/json; charset=UTF-8");
-        echo json_encode($rows);
     }
     else {
         echo "update";
@@ -210,13 +205,17 @@ function putSkills($id) {
         $statement->bindParam(':skill', $para["Name"], PDO::PARAM_STR);
         $statement->bindParam(':level', $para["SkillLevel"], PDO::PARAM_STR);
         $statement->bindParam(':id', $id);
-
-        $statement->execute();
-
-        header("Content-Type: application/json; charset=UTF-8");
-        echo json_encode($rows);
     }
 
+    try {
+        $statement->execute();        
+    } catch(PDOException $e) {
+        echo "Error";
+        echo $e->getMessage();
+    }
+
+    header("Content-Type: application/json; charset=UTF-8");
+    //echo json_encode($rows);
 }
 
 function putExperience($parameters) {
@@ -238,11 +237,6 @@ function putExperience($parameters) {
         $statement->bindParam(':description', $para["Description"], PDO::PARAM_STR);
         $statement->bindParam(':taglink', $para["TagLink"], PDO::PARAM_STR);
 
-        $statement->execute();
-        $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-        header("Content-Type: application/json; charset=UTF-8");
-        echo json_encode($rows);
     }
     else {
         $sql = "UPDATE Experience SET Title=:title, Exp_Year=:expyear, Company=:company, Description=:description, TagLink=:taglink";
@@ -255,12 +249,16 @@ function putExperience($parameters) {
         $statement->bindParam(':description', $para["Description"], PDO::PARAM_STR);
         $statement->bindParam(':taglink', $para["TagLink"], PDO::PARAM_STR);
 
-        $statement->execute();
-        $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-        header("Content-Type: application/json; charset=UTF-8");
-        echo json_encode($rows);
     }
+
+    try {
+        $statement->execute();        
+    } catch(PDOException $e) {
+        echo "Error";
+        echo $e->getMessage();
+    }
+    header("Content-Type: application/json; charset=UTF-8");
+    //echo json_encode($rows);
 }
 
 function putEducation($parameters) {
@@ -281,11 +279,6 @@ function putEducation($parameters) {
         $statement->bindParam(':eduyear', $para["Edu_year"], PDO::PARAM_STR);
         $statement->bindParam(':taglink', $para["TagLink"], PDO::PARAM_STR);
 
-        $statement->execute();
-        $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-        header("Content-Type: application/json; charset=UTF-8");
-        echo json_encode($rows);
     }
     else {
         $sql = "UPDATE Education SET Academy=:academy, Description=:description, Degree=:degree, Edu_year=:eduyear, TagLink=:taglink";
@@ -297,12 +290,16 @@ function putEducation($parameters) {
         $statement->bindParam(':eduyear', $para["Edu_year"], PDO::PARAM_STR);
         $statement->bindParam(':taglink', $para["TagLink"], PDO::PARAM_STR);
 
-        $statement->execute();
-        $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-        header("Content-Type: application/json; charset=UTF-8");
-        echo json_encode($rows);
     }
+
+    try {
+        $statement->execute();        
+    } catch(PDOException $e) {
+        echo "Error";
+        echo $e->getMessage();
+    }
+    header("Content-Type: application/json; charset=UTF-8");
+    //echo json_encode($rows);
 }
 
 function putContact($parameters) {
