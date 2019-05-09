@@ -204,13 +204,13 @@ function putSkills($id) {
     }
 
     try {
-        $statement->execute();        
+        $statement->execute();
+        $rows['Message'] = "Success";
     } catch(PDOException $e) {
-        echo $e->getMessage();
+        $rows['Message'] = $e->getMessage();
     }
-
     header("Content-Type: application/json; charset=UTF-8");
-    //echo json_encode($rows);
+    echo json_encode($rows);
 }
 
 function putExperience($parameters) {
@@ -250,12 +250,13 @@ function putExperience($parameters) {
     }
 
     try {
-        $statement->execute();        
+        $statement->execute();
+        $rows['Message'] = "Success";
     } catch(PDOException $e) {
-        echo $e->getMessage();
+        $rows['Message'] = $e->getMessage();
     }
     header("Content-Type: application/json; charset=UTF-8");
-    //echo json_encode($rows);
+    echo json_encode($rows);
 }
 
 function putEducation($parameters) {
@@ -290,13 +291,13 @@ function putEducation($parameters) {
     }
 
     try {
-        $statement->execute();        
+        $statement->execute();
+        $rows['Message'] = "Success";
     } catch(PDOException $e) {
-        echo "Error";
-        echo $e->getMessage();
+        $rows['Message'] = $e->getMessage();
     }
     header("Content-Type: application/json; charset=UTF-8");
-    //echo json_encode($rows);
+    echo json_encode($rows);
 }
 
 function putContact($parameters) {
