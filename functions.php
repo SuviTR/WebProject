@@ -196,11 +196,6 @@ function putSkills($id) {
         $statement = $conn->prepare($sql);
         $statement->bindParam(':skill', $para["Name"], PDO::PARAM_STR);
         $statement->bindParam(':level', $para["SkillLevel"], PDO::PARAM_INT);
-
-        $statement->execute();
-
-        header("Content-Type: application/json; charset=UTF-8");
-        echo json_encode($rows);
     }
     else {
         echo "update";
@@ -210,13 +205,17 @@ function putSkills($id) {
         $statement->bindParam(':skill', $para["Name"], PDO::PARAM_STR);
         $statement->bindParam(':level', $para["SkillLevel"], PDO::PARAM_STR);
         $statement->bindParam(':id', $id);
-
-        $statement->execute();
-
-        header("Content-Type: application/json; charset=UTF-8");
-        echo json_encode($rows);
     }
 
+    try {
+        $statement->execute();        
+    } catch(PDOException $e) {
+        echo "Error";
+        echo $e->getMessage();
+    }
+
+    header("Content-Type: application/json; charset=UTF-8");
+    //echo json_encode($rows);
 }
 
 function putExperience($parameters) {
