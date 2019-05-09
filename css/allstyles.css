@@ -1016,6 +1016,20 @@ input[type="file"] {
     margin-left: auto;
     margin-right: auto;
 }
+nav .resumebutton {
+    font-family: 'Questrial', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    line-height: 2em;
+    background-color: crimson;
+    border: none;
+    color: white;
+    padding: 0.25rem 0.73rem;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 1px;
+    display: inline-block;
+}
 /*----- FRONT PAGE -----*/
 /*----- Name -----*/
 .contentcvedit .inputhomeimg {
@@ -1386,7 +1400,6 @@ input[type="file"] {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-
 }
 
 /* ----- SKILLS -----*/
