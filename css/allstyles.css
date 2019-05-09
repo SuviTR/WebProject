@@ -1709,13 +1709,6 @@ input[type="file"] {
 }
 
 /*---------------------------------------------------------------PORTFOLIO EDIT-------------------------------------------------*/
-
-input:focus::-webkit-input-placeholder {
-    color:transparent;
-}
-input[type="file"] {
-    display: none;
-}
 .contentportfolioedit .button {
     background-color: crimson;
     border: none;
