@@ -308,13 +308,15 @@
     <label id="inputaboutimg" class="inputaboutimg"> Enter Your Picture
         <input type="file" size="60" >
     </label>
-    <input id="inputhello" class="inputhello" type="text" name="Heading" placeholder="Hello.."/>
-    <p class="aboutcolumn">
-        <textarea rows="10" cols="50" id="inputabout" class="inputabout" name="Description" placeholder="Introduce yourself"></textarea>
-    </p>
-    <button class="save button">Save</button>
-    <input type="hidden" name="AboutPicture">
-    <input type="hidden" name="url" value="/cv/about">
+    <div class="aboutcontents">
+        <input id="inputhello" class="inputhello" type="text" name="Heading" placeholder="Hello.."/>
+        <p class="aboutcolumn">
+            <textarea rows="10" cols="50" id="inputabout" class="inputabout" name="Description" placeholder="Introduce yourself"></textarea>
+        </p>
+        <button class="save button">Save</button>
+        <input type="hidden" name="AboutPicture">
+        <input type="hidden" name="url" value="/cv/about">
+    </div>
 </template>
 
 <template id="skillsedit">
@@ -330,6 +332,7 @@
             </div>
         </td>
         <td class="skillstdh"><h72><input class="inputskills" type="text" name="SkillLevel" placeholder="90%"/></h72></td>
+        <input type="hidden" name="url" value="/cv/skills">
     </tr>
 </template>
 
@@ -340,6 +343,8 @@
         <td class="timeline"><h6><input class="inputcompany" type="text" name="Company" placeholder="Rovio Entertainment Oyj"/></h6>
             <p class="educationpi"><textarea rows="3" cols="30" class="inputdesc" type="text" name="Description" placeholder="I made.."/></textarea></p>
             <p class="educationpi"><input class="inputdesc" type="text" name="TagLink" placeholder="Add tag to projects 'Rovio'"/></p></td>
+            <input type="hidden" name="url" value="/cv/experience">
+
     </tr>
     </table>
 </template>
@@ -351,6 +356,8 @@
             <p class="educationp"><input class="inputschool" type="text" name="Academy" placeholder="Metropolia University of Applied Sciences"/></p>
             <p class="educationpi"><textarea rows="3" cols="30" class="inputdesc" type="text" name="Description" placeholder="I studied.."/></textarea></p>
             <p class="educationpi"><input class="inputdesc" type="text" name="TagLink" placeholder="Add tag to projects 'metropolia'"/></p></td>
+            <input type="hidden" name="url" value="/cv/education">
+
     </tr>
 
 </template>
@@ -368,6 +375,7 @@
             <p class="portfolioinfo"><input class="inputportfolioinfo" type="text" placeholder="Add experience or education tag"/>​</p>
         </div>
         <div class="portfolio"><button class="save button">Add new project</button></div>
+        <input type="hidden" name="url" value="/portfolio">
     </div>
 </template>
 
@@ -379,25 +387,26 @@
             <img class="icon" src="img/iconfinder_skype2512x512_197582.png" alt="Phone number">
         </div>
         <div class="columncontainer2">
-            <h5>Call</h5><p class="contactp"><input class="inputcontact" type="text" name="call" placeholder="123-456-7890"/>​</p>
+            <h5>Call</h5><p class="contactp"><input class="inputcontact" type="text" name="Phone" placeholder="123-456-7890"/>​</p>
         </div>
         <div class="columncontainer3">
             <img class="icon" src="img/iconfinder_mail512x512_197584.png" alt="Mail address">
         </div>
         <div class="columncontainer2">
-            <h5>Contact</h5><p class="contactp"><input class="inputcontact" type="text" name="mail" placeholder="jane.doe(at)mail.com"/></p>
+            <h5>Contact</h5><p class="contactp"><input class="inputcontact" type="text" name="Mail" placeholder="jane.doe(at)mail.com"/></p>
         </div>
         <div class="columncontainer3">
             <img class="icon" src="img/iconfinder_home512x512_197589.png" alt="Home address">
         </div>
         <div class="columncontainer2">
-            <h5>Address</h5><p class="contactp"><input class="inputcontact" type="text" name="address" placeholder="Example Street 10, London, UK"/></p>
+            <h5>Address</h5><p class="contactp"><input class="inputcontact" type="text" name="Address" placeholder="Example Street 10, London, UK"/></p>
         </div>
         <div class="columncontainer4">
             <input class="inputcontact" type="text" name="linkedinlink" placeholder="LinkedIn link"><br>
             <input class="inputcontact" type="text" name="twitterlink" placeholder="Twitter link"><br>
             <input class="inputcontact" type="text" name="instagramlink" placeholder="Instagram link"><br>
             <button class="save button2">Save</button>
+            <input type="hidden" name="url" value="/cv/contact">
         </div>
     </div>
 </template>
