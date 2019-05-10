@@ -3,6 +3,7 @@ const serv = '/api';
 var editmode = false;
 //All the JSON data will be saved here:
 var data = {};
+var loggedin = false;
 
 const router = new Router({
 	mode: 'history',
@@ -31,6 +32,7 @@ function app() {
 
 	router.add('/resume', () => {
 		showTemplate('resume');
+		hideNav();
 	});
 
 	router.add('/edit', () => {
@@ -40,6 +42,7 @@ function app() {
 	});
 
 	router.navigateTo(window.location.pathname);
+	showEditLinks();
 
 }
 
@@ -79,7 +82,15 @@ function login(form) {
 
 	ajaxRequest('/login', (json) => {
 		console.log(json);
-		alert(json.Message);
+		if(json.Message === "Success") {
+			loggedin = true;
+		} else {
+			loggedin = false;
+		}
+
+		showEditLinks();
+
+
 	}, 'POST', data);
 
 	$( "#loginform").hide();
@@ -149,7 +160,12 @@ function getIndexData() {
 }
 
 function showEditLinks() {
-
+	if(loggedin) {
+		$('#editpagebutton').show();
+	} else {
+		$('#editpagebutton').hide();
+		router.navigateTo('/');
+	}
 }
 
 function showEditViews() {
@@ -270,6 +286,7 @@ function saveButtons() {
 	var savebuttons = document.getElementsByClassName('save');
 	for(var i=0; i < savebuttons.length; i++) {
 		savebuttons[i].onclick = () => {
+			console.log($(event.target).closest('div[id]'));
 			saveData($(event.target).closest('div[id]'));
 		}
 	}
@@ -293,6 +310,11 @@ function saveData(div) {
 		} else if (input.type == "file") {
 			var formData = new FormData();
 			var file = input.files[0];
+
+			if(file == undefined) {
+				continue;
+			}
+
 			if(file.type.match('image.*')) {
 				formData.append('upload', file, file.name);				
 			}
