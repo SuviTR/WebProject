@@ -15,7 +15,7 @@ DELETE|/cv/experience/1| |`{'message':'success'}` tai `{'message':'error'}`
 GET|/cv/education/| |`{[ {'year': 2017, 'degree': '', 'title': '', 'academy': '', 'description':''}, {...}, {...} ]}` 
 PUT|/cv/education|| 
 DELETE|/cv/education/{id}|| 
-GET|/portfolio/| |`{['id': 0, 'name': 'projekti 1', 'desription':'', 'picture': 'https://...'}, {...}, {...} ]} ``
-GET|/portfolio/{id}||{'name':'', 'description': '', 'long_description':'HTML code ', 'picture': 'https://...', 'git_link': 'https://...', 'link', ' git_link’:’https://...’, link _type':'github|gitlab'} 
+GET|/portfolio/| |`{['id': 0, 'name': 'projekti 1', 'desription':'', 'picture': 'https://...'}, {...}, {...} ]} `
+GET|/portfolio/{id}| |`{'name':'', 'description': '', 'long_description':'HTML code ', 'picture': 'https://...', 'git_link': 'https://...', 'link', ' git_link’:’https://...’, link _type':'github|gitlab'} `
 PUT|/portfolio/{id}|`{'name':'', 'description': '', 'long_description': 'HTML code', 'picture': 'https://... ', 'git_link': 'https://... ', 'link_type': 'gitlab'}` |`{'message':'success'}` tai `{'message':'error'}`
 DELETE|/portfolio/{id}||||| 
