@@ -1,5 +1,6 @@
 # Portfolio 
 A simple web portfolio.
+
 ![A screen capture of the portfolio](/img/screenshot.jpg "A screen capture of the portfolio")
 
 ## REST API description
