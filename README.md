@@ -1,12 +1,14 @@
 # Portfolio 
 A simple web portfolio.
 
-![A screen capture of the front page](/img/Cv_FrontPage.jpg "A screen capture of the front page")
-![A screen capture of the about](/img/Cv_About.jpg "A screen capture of the about")
-![A screen capture of the skills](/img/Cv_Skills.jpg "A screen capture of the skills")
-![A screen capture of the experience](/img/Cv_Experience.jpg "A screen capture of the experience")
-![A screen capture of the portfolio](/img/Cv_Portfolio.jpg "A screen capture of the portfolio")
-![A screen capture of the contact](/img/Cv_Contact.jpg "A screen capture of the contact")
+![A screen capture of the front page](https://github.com/SuviTR/WebProject/tree/master/img/Cv_FrontPage.jpg "A screen capture of the front page")
+![A screen capture of the about](https://github.com/SuviTR/WebProject/tree/master/img/Cv_About.jpg "A screen capture of the about")
+![A screen capture of the skills](https://github.com/SuviTR/WebProject/tree/master/img/Cv_Skills.jpg "A screen capture of the skills")
+![A screen capture of the experience](https://github.com/SuviTR/WebProject/tree/master/img/Cv_Experience.jpg "A screen capture of the experience")
+![A screen capture of the portfolio](https://github.com/SuviTR/WebProject/tree/master/img/Cv_Portfolio.jpg "A screen capture of the portfolio")
+![A screen capture of the contact](https://github.com/SuviTR/WebProject/tree/master/img/Cv_Contact.jpg "A screen capture of the contact")
+
+![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
 
 ## REST API description
 | HTTP-Pyyntö | Polku | Data | Vastaus | 
