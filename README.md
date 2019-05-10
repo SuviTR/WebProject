@@ -1,7 +1,12 @@
 # Portfolio 
 A simple web portfolio.
 
-![A screen capture of the portfolio](/img/screenshot.jpg "A screen capture of the portfolio")
+![A screen capture of the front page](/img/Cv_FrontPage.jpg "A screen capture of the front page")
+![A screen capture of the about](/img/Cv_About.jpg "A screen capture of the about")
+![A screen capture of the skills](/img/Cv_Skills.jpg "A screen capture of the skills")
+![A screen capture of the experience](/img/Cv_Experience.jpg "A screen capture of the experience")
+![A screen capture of the portfolio](/img/Cv_Portfolio.jpg "A screen capture of the portfolio")
+![A screen capture of the contact](/img/Cv_Contact.jpg "A screen capture of the contact")
 
 ## REST API description
 | HTTP-Pyyntö | Polku | Data | Vastaus | 
