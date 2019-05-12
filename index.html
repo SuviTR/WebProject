@@ -301,7 +301,7 @@
         <input class="imgfilename" type="hidden" name="FrontPicture">
         <input type="hidden" name="url" value="/cv/front">
     </figure>
-    <button class="save button">Save</button>
+    <button class="save button2">Save</button>
 </template>
 
 <template id="aboutedit">
@@ -314,14 +314,16 @@
         <p class="aboutcolumn">
             <textarea rows="10" cols="50" id="inputabout" class="inputabout" name="Description" placeholder="Introduce yourself"></textarea>
         </p>
-        <button class="save button">Save</button>
+        <button class="save button2">Save</button>
         <input type="hidden" name="AboutPicture">
         <input type="hidden" name="url" value="/cv/about">
     </div>
 </template>
 
 <template id="skillsedit">
-    <div class="portfolio"><button type="button" class="add button">Add new skill</button><br><button class="save button">Save</button></div>
+    <div class="portfolio"><button type="button" class="add button">Add new skill</button>
+        <button type="button" class="add button">Delete</button>
+        <br><br><button class="save button2">Save</button></div>
 </template>
 
 <template id="skillseditrow">
@@ -344,7 +346,7 @@
         <td class="timeline"><h6><input class="inputcompany" type="text" name="Company" placeholder="Rovio Entertainment Oyj"/></h6>
             <p class="educationpi"><textarea rows="3" cols="30" class="inputdesc" type="text" name="Description" placeholder="I made.."/></textarea></p>
             <p class="educationpi"><input class="inputdesc" type="text" name="TagLink" placeholder="Add tag to projects 'Rovio'"/></p></td>
-            <input type="hidden" name="url" value="/cv/experience">
+        <input type="hidden" name="url" value="/cv/experience">
 
     </tr>
     </table>
@@ -357,14 +359,14 @@
             <p class="educationp"><input class="inputschool" type="text" name="Academy" placeholder="Metropolia University of Applied Sciences"/></p>
             <p class="educationpi"><textarea rows="3" cols="30" class="inputdesc" type="text" name="Description" placeholder="I studied.."/></textarea></p>
             <p class="educationpi"><input class="inputdesc" type="text" name="TagLink" placeholder="Add tag to projects 'metropolia'"/></p></td>
-            <input type="hidden" name="url" value="/cv/education">
+        <input type="hidden" name="url" value="/cv/education">
 
     </tr>
 
 </template>
 
 <template id="portfolioedit">
-    <button class="add button">Add project</button>
+    <button class="button2 add">Add new project</button>
 </template>
 
 <template id="projectadd">
@@ -375,7 +377,8 @@
         <div class="text"><input class="inputportfolioname" type="text" placeholder="Project type"/>​<p class="portfolioinfo"><input class="inputportfolioinfo" type="text" placeholder="Project title"/>​</p>
             <p class="portfolioinfo"><input class="inputportfolioinfo" type="text" placeholder="Add experience or education tag"/>​</p>
         </div>
-        <div class="portfolio"><button class="save button">Add new project</button></div>
+        <div class="portfolio"><button class="save button2">Add new project</button>
+            <button type="button" class="add button">Delete project</button></div>
         <input type="hidden" name="url" value="/portfolio">
     </div>
 </template>
@@ -406,7 +409,7 @@
             <input class="inputcontact" type="text" name="linkedinlink" placeholder="LinkedIn link"><br>
             <input class="inputcontact" type="text" name="twitterlink" placeholder="Twitter link"><br>
             <input class="inputcontact" type="text" name="instagramlink" placeholder="Instagram link"><br>
-            <button class="save button2">Save</button>
+            <button class="save button">Save</button>
             <input type="hidden" name="url" value="/cv/contact">
         </div>
     </div>
